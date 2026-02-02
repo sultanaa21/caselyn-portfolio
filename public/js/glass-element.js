@@ -241,6 +241,9 @@ class GlassElement extends HTMLElement {
     applyDynamicStyles(element) {
         const { getDisplacementFilter, getDisplacementMap } = window.DisplacementUtils;
 
+        // Detect mobile viewport (optimization)
+        const isMobile = window.innerWidth < 768;
+
         // Estilos base que siempre se aplican
         element.style.borderRadius = `${this.radius}px`;
 
@@ -277,7 +280,12 @@ class GlassElement extends HTMLElement {
             actualWidth = Math.max(actualWidth, 50);
             actualHeight = Math.max(actualHeight, 30);
 
-            this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+            // Skip SVG filters on mobile for auto-size too if needed, but usually fluid is used for headers
+            if (isMobile) {
+                this._applyLiteStyles(element);
+            } else {
+                this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+            }
 
         } else if (this.fluid) {
             // Fluid mode: takes 100% of parent
@@ -289,15 +297,34 @@ class GlassElement extends HTMLElement {
             const actualWidth = Math.max(Math.ceil(rect.width), 50);
             const actualHeight = Math.max(Math.ceil(rect.height), 30);
 
-            this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+            if (isMobile) {
+                this._applyLiteStyles(element);
+            } else {
+                this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+            }
 
         } else {
             // Fixed size: usar dimensiones específicas
             element.style.height = `${this.height}px`;
             element.style.width = `${this.width}px`;
 
-            this._applyFilterStyles(element, this.width, this.height, getDisplacementMap, getDisplacementFilter);
+            if (isMobile) {
+                this._applyLiteStyles(element);
+            } else {
+                this._applyFilterStyles(element, this.width, this.height, getDisplacementMap, getDisplacementFilter);
+            }
         }
+    }
+
+    _applyLiteStyles(element) {
+        // Lightweight fallback for mobile
+        element.style.backdropFilter = `blur(10px)`; // Reduced blur for performance
+        element.style.background = 'rgba(255, 255, 255, 0.65)'; // Slightly more opaque
+        element.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+        element.style.borderBottom = '1px solid rgba(255, 255, 255, 0.3)';
+
+        // Clear any SVG filter references
+        element.style.filter = 'none';
     }
 
     _applyFilterStyles(element, width, height, getDisplacementMap, getDisplacementFilter) {
