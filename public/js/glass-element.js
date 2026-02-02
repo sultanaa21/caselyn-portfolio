@@ -192,21 +192,9 @@ class GlassElement extends HTMLElement {
         return this.getAttribute('background-color') || 'rgba(255, 255, 255, 0.4)';
     }
 
-    get autoSize() {
-        return this.hasAttribute('auto-size');
-    }
-
-    get minWidth() {
-        return parseInt(this.getAttribute('min-width')) || 0;
-    }
-
-    get minHeight() {
-        return parseInt(this.getAttribute('min-height')) || 0;
-    }
-
-    // Calcular la profundidad dinámica basada en el estado de click
-    get depth() {
-        return this.baseDepth / (this.clicked ? 0.7 : 1);
+    // Getter fluid
+    get fluid() {
+        return this.hasAttribute('fluid');
     }
 
     setupEventListeners() {
@@ -234,6 +222,13 @@ class GlassElement extends HTMLElement {
                 this.updateStyles();
             }
         });
+
+        // Window resize for fluid mode
+        if (this.fluid) {
+            window.addEventListener('resize', () => {
+                this.updateStyles();
+            });
+        }
     }
 
     updateStyles() {
@@ -250,6 +245,8 @@ class GlassElement extends HTMLElement {
         element.style.borderRadius = `${this.radius}px`;
 
         if (this.autoSize) {
+            // Auto-size logic... (unchanged for brevity, but I strictly need to replicate strict logic or reference it. 
+            // Since I am replacing a big chunk, I will copy the auto-size block logic below but for now focusing on the 'else' block split)
             // Auto-size: obtener dimensiones del contenido de manera más precisa
             // Primero, asegurar que no hay filtros interfiriendo
             element.style.backdropFilter = 'none';
@@ -280,71 +277,59 @@ class GlassElement extends HTMLElement {
             actualWidth = Math.max(actualWidth, 50);
             actualHeight = Math.max(actualHeight, 30);
 
-            if (this.debug) {
-                element.style.background = `url("${getDisplacementMap({
-                    height: actualHeight,
-                    width: actualWidth,
-                    radius: this.radius,
-                    depth: this.depth
-                })}")`;
-                element.style.boxShadow = 'none';
-                element.style.backdropFilter = 'none';
-            } else if (!this.hasSVGFilterSupport) {
-                // Fallback para navegadores sin soporte
-                element.style.backdropFilter = `blur(${this.blur * 2}px)`;
-                element.style.background = this.backgroundColor;
-                element.style.boxShadow =
-                    '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
-                element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-            } else {
-                // Efecto completo con SVG filters
-                element.style.backdropFilter = `blur(${this.blur / 2}px) url('${getDisplacementFilter({
-                    height: actualHeight,
-                    width: actualWidth,
-                    radius: this.radius,
-                    depth: this.depth,
-                    strength: this.strength,
-                    chromaticAberration: this.chromaticAberration
-                })}') blur(${this.blur}px) brightness(1.1) saturate(1.5)`;
-                element.style.background = this.backgroundColor;
-                element.style.boxShadow =
-                    '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
-            }
+            this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+
+        } else if (this.fluid) {
+            // Fluid mode: takes 100% of parent
+            element.style.width = '100%';
+            element.style.height = this.hasAttribute('height') ? `${this.height}px` : '100%';
+
+            // Measure actual size for filter generation
+            const rect = this.getBoundingClientRect();
+            const actualWidth = Math.max(Math.ceil(rect.width), 50);
+            const actualHeight = Math.max(Math.ceil(rect.height), 30);
+
+            this._applyFilterStyles(element, actualWidth, actualHeight, getDisplacementMap, getDisplacementFilter);
+
         } else {
             // Fixed size: usar dimensiones específicas
             element.style.height = `${this.height}px`;
             element.style.width = `${this.width}px`;
 
-            if (this.debug) {
-                element.style.background = `url("${getDisplacementMap({
-                    height: this.height,
-                    width: this.width,
-                    radius: this.radius,
-                    depth: this.depth
-                })}")`;
-                element.style.boxShadow = 'none';
-                element.style.backdropFilter = 'none';
-            } else if (!this.hasSVGFilterSupport) {
-                // Fallback para navegadores sin soporte
-                element.style.backdropFilter = `blur(${this.blur * 2}px)`;
-                element.style.background = this.backgroundColor;
-                element.style.boxShadow =
-                    '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
-                element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-            } else {
-                // Efecto completo con SVG filters
-                element.style.backdropFilter = `blur(${this.blur / 2}px) url('${getDisplacementFilter({
-                    height: this.height,
-                    width: this.width,
-                    radius: this.radius,
-                    depth: this.depth,
-                    strength: this.strength,
-                    chromaticAberration: this.chromaticAberration
-                })}') blur(${this.blur}px) brightness(1.1) saturate(1.5)`;
-                element.style.background = this.backgroundColor;
-                element.style.boxShadow =
-                    '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
-            }
+            this._applyFilterStyles(element, this.width, this.height, getDisplacementMap, getDisplacementFilter);
+        }
+    }
+
+    _applyFilterStyles(element, width, height, getDisplacementMap, getDisplacementFilter) {
+        if (this.debug) {
+            element.style.background = `url("${getDisplacementMap({
+                height: height,
+                width: width,
+                radius: this.radius,
+                depth: this.depth
+            })}")`;
+            element.style.boxShadow = 'none';
+            element.style.backdropFilter = 'none';
+        } else if (!this.hasSVGFilterSupport) {
+            // Fallback para navegadores sin soporte
+            element.style.backdropFilter = `blur(${this.blur * 2}px)`;
+            element.style.background = this.backgroundColor;
+            element.style.boxShadow =
+                '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
+            element.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+        } else {
+            // Efecto completo con SVG filters
+            element.style.backdropFilter = `blur(${this.blur / 2}px) url('${getDisplacementFilter({
+                height: height,
+                width: width,
+                radius: this.radius,
+                depth: this.depth,
+                strength: this.strength,
+                chromaticAberration: this.chromaticAberration
+            })}') blur(${this.blur}px) brightness(1.1) saturate(1.5)`;
+            element.style.background = this.backgroundColor;
+            element.style.boxShadow =
+                '1px 1px 1px 0px rgba(255,255,255, 0.60) inset, -1px -1px 1px 0px rgba(255,255,255, 0.60) inset, 0px 0px 16px 0px rgba(0,0,0, 0.04)';
         }
     }
 
@@ -353,6 +338,7 @@ class GlassElement extends HTMLElement {
       <style>
         :host {
           display: ${this.autoSize ? 'inline-block' : 'block'};
+          ${this.fluid ? 'width: 100%;' : ''}
         }
 
         .glass-box {
@@ -380,7 +366,7 @@ class GlassElement extends HTMLElement {
           ${this.autoSize ? '' : 'width: 100%; height: 100%;'}
           display: flex;
           align-items: center;
-          justify-content: center;
+          /* justify-content: center; REMOVED to fix alignment issues */
           color: white;
           text-align: center;
           font-family: sans-serif;
@@ -406,7 +392,12 @@ class GlassElement extends HTMLElement {
                 });
             });
         } else {
-            this.applyDynamicStyles(glassBox);
+            // For fluid mode, we might need a tick to ensure host size is calculated
+            if (this.fluid) {
+                requestAnimationFrame(() => this.applyDynamicStyles(glassBox));
+            } else {
+                this.applyDynamicStyles(glassBox);
+            }
         }
     }
 }
