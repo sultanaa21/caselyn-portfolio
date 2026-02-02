@@ -359,8 +359,7 @@ a {
   width: 100%;
   z-index: 1000;
 
-  /* Prevent filter clipping */
-  overflow: hidden;
+  /* Removed overflow:hidden to allow mobile menu dropdown */
 
   /* Subtle shadow for depth */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -407,11 +406,19 @@ glass-element {
   width: auto;
 }
 
+/* Desktop: Inline menu */
 .navbar-menu {
   display: flex;
   align-items: center;
   gap: var(--space-6);
   list-style: none;
+  position: static;
+  background: none;
+  border: none;
+  padding: 0;
+  transform: none;
+  opacity: 1;
+  visibility: visible;
 }
 
 .navbar-menu a {
@@ -449,11 +456,13 @@ glass-element {
     backdrop-filter: blur(10px) !important;
   }
 
+  /* Mobile: Dropdown menu */
   .navbar-menu {
     position: fixed;
     top: 64px;
     left: 0;
     right: 0;
+    z-index: 999;
     flex-direction: column;
     gap: 0;
     background-color: var(--glass-bg);
