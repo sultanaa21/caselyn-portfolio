@@ -7,13 +7,15 @@ This directory contains all runtime files for the static site.
 **IMPORTANT:** Configure these settings in your Vercel project dashboard:
 
 ### Build & Development Settings
+
 - **Framework Preset:** `Other`
 - **Root Directory:** `public`
-- **Build Command:** *(leave empty)*
-- **Output Directory:** *(leave empty)*
-- **Install Command:** *(leave empty)*
+- **Build Command:** _(leave empty)_
+- **Output Directory:** _(leave empty)_
+- **Install Command:** _(leave empty)_
 
 ### Why Root Directory = "public"?
+
 All runtime files (HTML, CSS, JS, assets) are in `/public`, so Vercel must serve from this directory.
 
 ## File Structure
@@ -33,6 +35,7 @@ public/
 ```
 
 All paths in `index.html` use absolute paths from root:
+
 - `/css/styles.css`
 - `/js/script.js`
 - `/favicon.ico`
