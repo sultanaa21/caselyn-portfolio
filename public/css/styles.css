@@ -350,9 +350,25 @@ a {
 /* Navigation
    ========================================================================== */
 
-/* Liquid Glass Header Container */
+/* Full-Width Liquid Glass Header */
+.glass-header-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+
+  /* Prevent filter clipping */
+  overflow: hidden;
+
+  /* Subtle shadow for depth */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Liquid Glass Header Container (legacy, for compatibility) */
 glass-element {
-  border-radius: 18px;
+  border-radius: 0;
   transition: all var(--motion-duration-base) var(--motion-easing);
 }
 
@@ -427,6 +443,12 @@ glass-element {
 }
 
 @media (max-width: 768px) {
+  /* Mobile Performance Optimization */
+  .glass-header-full {
+    /* Reduce backdrop-filter complexity on mobile to prevent lag */
+    backdrop-filter: blur(10px) !important;
+  }
+
   .navbar-menu {
     position: fixed;
     top: 64px;
@@ -475,8 +497,8 @@ glass-element {
   justify-content: center;
   text-align: center;
 
-  /* Adjust padding for floating glass header */
-  padding-top: calc(var(--space-16) + 80px);
+  /* Adjust padding for fixed full-width header */
+  padding-top: 110px;
   padding-bottom: var(--space-12);
   position: relative;
 }
