@@ -1,0 +1,24 @@
+{
+  "name": "caselyn-portfolio",
+  "version": "1.0.0",
+  "description": "Premium portfolio website for Caselyn web agency",
+  "private": true,
+  "scripts": {
+    "lint": "eslint js/**/*.js && stylelint css/**/*.css",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "web-design",
+    "portfolio",
+    "static-site"
+  ],
+  "author": "Caselyn",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "stylelint": "^16.2.0",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}
