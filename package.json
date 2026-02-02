@@ -4,7 +4,6 @@
   "description": "Premium portfolio website for Caselyn web agency",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
     "lint": "eslint public/js/**/*.js && stylelint public/css/**/*.css",
     "lint:fix": "eslint --fix public/js/**/*.js && stylelint --fix public/css/**/*.css",
     "format": "prettier --write .",
@@ -32,7 +31,6 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^8.56.0",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.2.4",
     "stylelint": "^16.2.0",
