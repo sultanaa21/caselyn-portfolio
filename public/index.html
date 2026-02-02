@@ -43,36 +43,38 @@
 </head>
 
 <body>
-  <!-- Navigation with Liquid Glass Effect (Full Width) -->
-  <glass-element radius="0" depth="5" blur="2" strength="18" chromatic-aberration="0"
-    background-color="rgba(255,255,255,0.28)" class="glass-header-full">
-    <nav class="navbar" id="navbar">
-      <div class="navbar-container">
-        <a href="#" class="navbar-logo" aria-label="Caselyn - Inicio">
-          <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
-              font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
-              CASELYN
-            </text>
-          </svg>
-        </a>
+  <!-- Liquid Glass Header -->
+  <header class="header-wrapper">
+    <glass-element class="header-glass" width="2000" height="72" radius="0" depth="8" blur="2" strength="35"
+      chromatic-aberration="1" background-color="rgba(255,255,255,0.65)">
+      <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+          <a href="#" class="navbar-logo" aria-label="Caselyn - Inicio">
+            <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
+                font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
+                CASELYN
+              </text>
+            </svg>
+          </a>
 
-        <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-        <ul class="navbar-menu" id="navbar-menu">
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#portafolio">Portafolio</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contacto" class="btn btn-liquid-glass">Contacto</a></li>
-        </ul>
-      </div>
-    </nav>
-  </glass-element>
+          <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacto" class="btn btn-liquid-glass">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </glass-element>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">

@@ -350,38 +350,29 @@ a {
 /* Navigation
    ========================================================================== */
 
-/* Full-Width Liquid Glass Header */
-.glass-header-full {
+/* Header Wrapper - Fixed Full Width */
+.header-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1000;
-
-  /* Removed overflow:hidden to allow mobile menu dropdown */
-
-  /* Subtle shadow for depth */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* Liquid Glass Header Container (legacy, for compatibility) */
-glass-element {
-  border-radius: 0;
-  transition: all var(--motion-duration-base) var(--motion-easing);
+/* Glass Element Styling */
+.header-glass {
+  display: block;
+  width: 100% !important;
+  height: 72px !important;
 }
 
+/* Navbar inside glass element */
 .navbar {
-  /* Position handled by glass-element wrapper */
-  position: static;
-  transition: all var(--motion-duration-base) var(--motion-easing);
-}
-
-.navbar-scrolled {
-  /* Glass effect is now handled by the component */
-
-  /* Keep minimal styling for fallback */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-container {
@@ -449,14 +440,36 @@ glass-element {
   transition: all var(--transition-base);
 }
 
-@media (max-width: 768px) {
-  /* Mobile Performance Optimization */
-  .glass-header-full {
-    /* Reduce backdrop-filter complexity on mobile to prevent lag */
-    backdrop-filter: blur(10px) !important;
+/* Desktop: Force inline menu layout */
+@media (min-width: 769px) {
+  .navbar-menu {
+    /* Override any mobile styles that might bleed through */
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: var(--space-6) !important;
   }
 
-  /* Mobile: Dropdown menu */
+  .navbar-menu.active {
+    /* Prevent .active class from doing anything on desktop */
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Mobile: Dropdown menu */
+@media (max-width: 768px) {
   .navbar-menu {
     position: fixed;
     top: 64px;
