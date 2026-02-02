@@ -299,7 +299,8 @@ a {
     0 0 0 0.5px rgba(255, 255, 255, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.08),
     0 8px 16px rgba(0, 122, 255, 0.15),
-    /* Inner light reflection */ inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    /* Inner light reflection */
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 
   /* Physical material depth */
@@ -349,21 +350,23 @@ a {
 /* Navigation
    ========================================================================== */
 
+/* Liquid Glass Header Container */
+glass-element {
+  border-radius: 18px;
+  transition: all var(--motion-duration-base) var(--motion-easing);
+}
+
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  /* Position handled by glass-element wrapper */
+  position: static;
   transition: all var(--motion-duration-base) var(--motion-easing);
 }
 
 .navbar-scrolled {
-  background: linear-gradient(180deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.92) 100%);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
+  /* Glass effect is now handled by the component */
+
+  /* Keep minimal styling for fallback */
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: var(--glass-shadow);
 }
 
 .navbar-container {
@@ -471,7 +474,9 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: var(--space-16);
+
+  /* Adjust padding for floating glass header */
+  padding-top: calc(var(--space-16) + 80px);
   padding-bottom: var(--space-12);
   position: relative;
 }
