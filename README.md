@@ -77,12 +77,22 @@ npm run format:check
 npm run lint
 ```
 
-### Code Quality
+### Dev Workflow
 
-- **ESLint** - JavaScript linting with browser environment
-- **Stylelint** - CSS linting with standard config
-- **Prettier** - Consistent code formatting across HTML/CSS/JS
-- **EditorConfig** - Consistent coding styles between different editors
+This repository has **auto-formatting on commit** via Husky + lint-staged:
+
+1. **Make changes** to any file
+2. **Stage files**: `git add .`
+3. **Commit**: `git commit -m "your message"`
+4. **Auto-fix runs**: Prettier + ESLint + Stylelint auto-fix staged files
+5. **If fails**: Fix errors, then commit again
+
+**Manual commands:**
+
+```bash
+npm run lint:fix  # Auto-fix all linting issues
+npm run format    # Format all files
+```
 
 All checks run automatically via GitHub Actions on push/PR.
 
