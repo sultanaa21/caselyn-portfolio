@@ -172,7 +172,7 @@ contactForm.addEventListener('submit', async (e) => {
     // Optional: Redirect to WhatsApp as fallback
     setTimeout(() => {
       const whatsappMessage = encodeURIComponent(`Hola, soy ${formData.name}. ${formData.message}`);
-      window.open(`https://wa.me/34600000000?text=${whatsappMessage}`, '_blank');
+      window.open(`https://wa.me/34622838676?text=${whatsappMessage}`, '_blank');
     }, 1500);
 
     // Reset button after 3 seconds

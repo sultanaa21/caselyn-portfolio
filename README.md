@@ -131,7 +131,7 @@ Find and replace in `index.html`:
 
 ```html
 <!-- Search for -->
-34600000000
+34622838676
 
 <!-- Replace with your WhatsApp number (include country code) -->
 ```
