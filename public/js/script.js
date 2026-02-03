@@ -158,7 +158,11 @@ contactForm.addEventListener('submit', async (e) => {
   }
 
   if (formData.message.length > 5000) {
-    showFormMessage(submitButton, 'El mensaje es demasiado largo (máximo 5000 caracteres)', 'error');
+    showFormMessage(
+      submitButton,
+      'El mensaje es demasiado largo (máximo 5000 caracteres)',
+      'error'
+    );
     return;
   }
 
@@ -304,7 +308,6 @@ function showSuccessNotification() {
     }, 8000);
   }
 }
-
 
 // ============================================================================
 // Smooth Scroll (for older browsers that don't support CSS scroll-behavior)

@@ -25,23 +25,23 @@ const RATE_LIMIT_MAX_REQUESTS = 10;
  * Get client IP from Vercel headers
  */
 function getClientIP(req: VercelRequest): string {
-    const forwarded = req.headers['x-forwarded-for'];
-    const realIp = req.headers['x-real-ip'];
+  const forwarded = req.headers['x-forwarded-for'];
+  const realIp = req.headers['x-real-ip'];
 
-    if (typeof forwarded === 'string') {
-        return forwarded.split(',')[0].trim();
-    }
-    if (typeof realIp === 'string') {
-        return realIp;
-    }
-    return 'unknown';
+  if (typeof forwarded === 'string') {
+    return forwarded.split(',')[0].trim();
+  }
+  if (typeof realIp === 'string') {
+    return realIp;
+  }
+  return 'unknown';
 }
 
 /**
  * Get User-Agent from headers
  */
 function getUserAgent(req: VercelRequest): string {
-    return (req.headers['user-agent'] as string) || 'unknown';
+  return (req.headers['user-agent'] as string) || 'unknown';
 }
 
 /**
@@ -50,38 +50,38 @@ function getUserAgent(req: VercelRequest): string {
  * consider using Upstash Redis: https://upstash.com/docs/redis/features/ratelimiting
  */
 function checkRateLimit(ip: string): boolean {
-    const now = Date.now();
-    const record = rateLimitMap.get(ip);
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
 
-    if (!record || now > record.resetAt) {
-        // New IP or expired window
-        rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-        return true;
-    }
-
-    if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-        return false; // Rate limit exceeded
-    }
-
-    // Increment count
-    record.count += 1;
+  if (!record || now > record.resetAt) {
+    // New IP or expired window
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
     return true;
+  }
+
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false; // Rate limit exceeded
+  }
+
+  // Increment count
+  record.count += 1;
+  return true;
 }
 
 /**
  * Validate environment variables
  */
 function validateEnv(): { ok: boolean; error?: string } {
-    if (!SUPABASE_URL) {
-        return { ok: false, error: 'SUPABASE_URL no configurado' };
-    }
-    if (!SUPABASE_SERVICE_ROLE_KEY) {
-        return { ok: false, error: 'SUPABASE_SERVICE_ROLE_KEY no configurado' };
-    }
-    if (!RESEND_API_KEY) {
-        return { ok: false, error: 'RESEND_API_KEY no configurado' };
-    }
-    return { ok: true };
+  if (!SUPABASE_URL) {
+    return { ok: false, error: 'SUPABASE_URL no configurado' };
+  }
+  if (!SUPABASE_SERVICE_ROLE_KEY) {
+    return { ok: false, error: 'SUPABASE_SERVICE_ROLE_KEY no configurado' };
+  }
+  if (!RESEND_API_KEY) {
+    return { ok: false, error: 'RESEND_API_KEY no configurado' };
+  }
+  return { ok: true };
 }
 
 // ============================================================================
@@ -89,96 +89,106 @@ function validateEnv(): { ok: boolean; error?: string } {
 // ============================================================================
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    // 1. Only accept POST requests
-    if (req.method !== 'POST') {
-        return res.status(405).json({ ok: false, error: 'Método no permitido' });
+  // 1. Only accept POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, error: 'Método no permitido' });
+  }
+
+  // 2. Validate environment variables
+  const envCheck = validateEnv();
+  if (!envCheck.ok) {
+    console.error('Environment validation failed:', envCheck.error);
+    return res.status(500).json({ ok: false, error: 'Error de configuración del servidor' });
+  }
+
+  // 3. Get client info
+  const ip = getClientIP(req);
+  const userAgent = getUserAgent(req);
+
+  // 4. Check rate limit
+  if (!checkRateLimit(ip)) {
+    console.warn(`Rate limit exceeded for IP: ${ip}`);
+    return res
+      .status(429)
+      .json({ ok: false, error: 'Demasiadas solicitudes. Intenta de nuevo más tarde.' });
+  }
+
+  // 5. Parse and validate request body
+  const { name, contact, message, website } = req.body;
+
+  // Honeypot check: if "website" field is filled, reject silently
+  if (website && website.trim() !== '') {
+    console.warn(`Honeypot triggered for IP: ${ip}`);
+    // Return success to confuse bots, but don't save anything
+    return res.status(200).json({ ok: true, message: 'Mensaje enviado' });
+  }
+
+  // Validate required fields
+  if (!name || typeof name !== 'string' || name.trim() === '') {
+    return res.status(400).json({ ok: false, error: 'El nombre es obligatorio' });
+  }
+
+  if (!contact || typeof contact !== 'string' || contact.trim() === '') {
+    return res
+      .status(400)
+      .json({ ok: false, error: 'El contacto (email o teléfono) es obligatorio' });
+  }
+
+  if (!message || typeof message !== 'string' || message.trim() === '') {
+    return res.status(400).json({ ok: false, error: 'El mensaje es obligatorio' });
+  }
+
+  if (message.trim().length < 10) {
+    return res
+      .status(400)
+      .json({ ok: false, error: 'El mensaje debe tener al menos 10 caracteres' });
+  }
+
+  if (message.trim().length > 5000) {
+    return res
+      .status(400)
+      .json({ ok: false, error: 'El mensaje es demasiado largo (máximo 5000 caracteres)' });
+  }
+
+  // Sanitize inputs
+  const sanitizedName = name.trim();
+  const sanitizedContact = contact.trim();
+  const sanitizedMessage = message.trim();
+
+  try {
+    // 6. Save to Supabase
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
+    const { data: leadData, error: supabaseError } = await supabase
+      .from('leads')
+      .insert({
+        name: sanitizedName,
+        contact: sanitizedContact,
+        message: sanitizedMessage,
+        ip,
+        user_agent: userAgent,
+      })
+      .select()
+      .single();
+
+    if (supabaseError) {
+      console.error('Supabase error:', supabaseError);
+      return res
+        .status(500)
+        .json({ ok: false, error: 'Error al guardar el mensaje. Intenta de nuevo.' });
     }
 
-    // 2. Validate environment variables
-    const envCheck = validateEnv();
-    if (!envCheck.ok) {
-        console.error('Environment validation failed:', envCheck.error);
-        return res.status(500).json({ ok: false, error: 'Error de configuración del servidor' });
-    }
+    console.log('Lead saved to Supabase:', leadData?.id);
 
-    // 3. Get client info
-    const ip = getClientIP(req);
-    const userAgent = getUserAgent(req);
+    // 7. Send email via Resend
+    const resend = new Resend(RESEND_API_KEY);
 
-    // 4. Check rate limit
-    if (!checkRateLimit(ip)) {
-        console.warn(`Rate limit exceeded for IP: ${ip}`);
-        return res.status(429).json({ ok: false, error: 'Demasiadas solicitudes. Intenta de nuevo más tarde.' });
-    }
-
-    // 5. Parse and validate request body
-    const { name, contact, message, website } = req.body;
-
-    // Honeypot check: if "website" field is filled, reject silently
-    if (website && website.trim() !== '') {
-        console.warn(`Honeypot triggered for IP: ${ip}`);
-        // Return success to confuse bots, but don't save anything
-        return res.status(200).json({ ok: true, message: 'Mensaje enviado' });
-    }
-
-    // Validate required fields
-    if (!name || typeof name !== 'string' || name.trim() === '') {
-        return res.status(400).json({ ok: false, error: 'El nombre es obligatorio' });
-    }
-
-    if (!contact || typeof contact !== 'string' || contact.trim() === '') {
-        return res.status(400).json({ ok: false, error: 'El contacto (email o teléfono) es obligatorio' });
-    }
-
-    if (!message || typeof message !== 'string' || message.trim() === '') {
-        return res.status(400).json({ ok: false, error: 'El mensaje es obligatorio' });
-    }
-
-    if (message.trim().length < 10) {
-        return res.status(400).json({ ok: false, error: 'El mensaje debe tener al menos 10 caracteres' });
-    }
-
-    if (message.trim().length > 5000) {
-        return res.status(400).json({ ok: false, error: 'El mensaje es demasiado largo (máximo 5000 caracteres)' });
-    }
-
-    // Sanitize inputs
-    const sanitizedName = name.trim();
-    const sanitizedContact = contact.trim();
-    const sanitizedMessage = message.trim();
-
-    try {
-        // 6. Save to Supabase
-        const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-            auth: {
-                autoRefreshToken: false,
-                persistSession: false,
-            },
-        });
-
-        const { data: leadData, error: supabaseError } = await supabase
-            .from('leads')
-            .insert({
-                name: sanitizedName,
-                contact: sanitizedContact,
-                message: sanitizedMessage,
-                ip,
-                user_agent: userAgent,
-            })
-            .select()
-            .single();
-
-        if (supabaseError) {
-            console.error('Supabase error:', supabaseError);
-            return res.status(500).json({ ok: false, error: 'Error al guardar el mensaje. Intenta de nuevo.' });
-        }
-
-        console.log('Lead saved to Supabase:', leadData?.id);
-
-        // 7. Send email via Resend
-        const resend = new Resend(RESEND_API_KEY);
-
-        const emailHtml = `
+    const emailHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -228,7 +238,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 </html>
     `.trim();
 
-        const emailText = `
+    const emailText = `
 🎯 NUEVO LEAD DESDE CASELYN
 
 NOMBRE: ${sanitizedName}
@@ -245,33 +255,32 @@ User Agent: ${userAgent}
 Lead ID: ${leadData?.id || 'N/A'}
         `.trim();
 
-        const { data: emailData, error: resendError } = await resend.emails.send({
-            from: CONTACT_FROM_EMAIL,
-            to: CONTACT_TO_EMAIL,
-            subject: `🎯 Nuevo Lead: ${sanitizedName}`,
-            html: emailHtml,
-            text: emailText, // Fallback for email clients that don't support HTML
-        });
+    const { data: emailData, error: resendError } = await resend.emails.send({
+      from: CONTACT_FROM_EMAIL,
+      to: CONTACT_TO_EMAIL,
+      subject: `🎯 Nuevo Lead: ${sanitizedName}`,
+      html: emailHtml,
+      text: emailText, // Fallback for email clients that don't support HTML
+    });
 
-        if (resendError) {
-            console.error('Resend error:', resendError);
-            // Don't fail the request if email fails - lead is already saved
-            console.warn('Email failed but lead was saved successfully');
-        } else {
-            console.log('Email sent via Resend:', emailData?.id);
-        }
-
-        // 8. Return success
-        return res.status(200).json({
-            ok: true,
-            message: 'Mensaje enviado correctamente. Responderemos en menos de 24h.'
-        });
-
-    } catch (error) {
-        console.error('Unexpected error:', error);
-        return res.status(500).json({
-            ok: false,
-            error: 'Error inesperado. Por favor, intenta de nuevo o contacta por WhatsApp.'
-        });
+    if (resendError) {
+      console.error('Resend error:', resendError);
+      // Don't fail the request if email fails - lead is already saved
+      console.warn('Email failed but lead was saved successfully');
+    } else {
+      console.log('Email sent via Resend:', emailData?.id);
     }
+
+    // 8. Return success
+    return res.status(200).json({
+      ok: true,
+      message: 'Mensaje enviado correctamente. Responderemos en menos de 24h.',
+    });
+  } catch (error) {
+    console.error('Unexpected error:', error);
+    return res.status(500).json({
+      ok: false,
+      error: 'Error inesperado. Por favor, intenta de nuevo o contacta por WhatsApp.',
+    });
+  }
 }

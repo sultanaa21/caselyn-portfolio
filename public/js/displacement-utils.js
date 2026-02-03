@@ -8,7 +8,7 @@
  * Los gradientes toman en cuenta el radio del elemento.
  */
 function getDisplacementMap({ height, width, radius, depth }) {
-    const svg = `<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+  const svg = `<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <style>
     .mix {
       mix-blend-mode: screen;
@@ -33,7 +33,7 @@ function getDisplacementMap({ height, width, radius, depth }) {
   </g>
 </svg>`;
 
-    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
 
 /**
@@ -42,10 +42,17 @@ function getDisplacementMap({ height, width, radius, depth }) {
  * los filtros desde el primer feColorMatrix hasta el último feBlend pueden eliminarse
  * si el efecto no es necesario.
  */
-function getDisplacementFilter({ height, width, radius, depth, strength = 100, chromaticAberration = 0 }) {
-    const displacementMapUrl = getDisplacementMap({ height, width, radius, depth });
+function getDisplacementFilter({
+  height,
+  width,
+  radius,
+  depth,
+  strength = 100,
+  chromaticAberration = 0,
+}) {
+  const displacementMapUrl = getDisplacementMap({ height, width, radius, depth });
 
-    const svg = `<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+  const svg = `<svg height="${height}" width="${width}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="displace" color-interpolation-filters="sRGB">
       <feImage x="0" y="0" height="${height}" width="${width}" href="${displacementMapUrl}" result="displacementMap" />
@@ -61,11 +68,11 @@ function getDisplacementFilter({ height, width, radius, depth, strength = 100, c
   </defs>
 </svg>`;
 
-    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg) + '#displace';
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg) + '#displace';
 }
 
 // Exportar las funciones para uso global
 window.DisplacementUtils = {
-    getDisplacementMap,
-    getDisplacementFilter
+  getDisplacementMap,
+  getDisplacementFilter,
 };
