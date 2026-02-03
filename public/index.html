@@ -1,732 +1,517 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Primary Meta Tags -->
-    <title>Caselyn - Webs Profesionales para Negocios</title>
-    <meta name="title" content="Caselyn - Webs Profesionales para Negocios" />
-    <meta
-      name="description"
-      content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales que quieren crecer en internet."
-    />
-    <meta
-      name="keywords"
-      content="diseño web, desarrollo web, páginas web para negocios, diseño profesional, agencia web"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Canonical URL - TODO: Replace with actual domain -->
-    <link rel="canonical" href="https://caselyn-portfolio.vercel.app/" />
+  <!-- Primary Meta Tags -->
+  <title>Caselyn - Webs Profesionales para Negocios</title>
+  <meta name="title" content="Caselyn - Webs Profesionales para Negocios" />
+  <meta name="description"
+    content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales que quieren crecer en internet." />
+  <meta name="keywords"
+    content="diseño web, desarrollo web, páginas web para negocios, diseño profesional, agencia web" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-    <meta property="og:title" content="Caselyn - Webs Profesionales para Negocios" />
-    <meta
-      property="og:description"
-      content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales."
-    />
-    <meta property="og:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+  <!-- Canonical URL - TODO: Replace with actual domain -->
+  <link rel="canonical" href="https://caselyn-portfolio.vercel.app/" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://caselyn-portfolio.vercel.app/" />
-    <meta property="twitter:title" content="Caselyn - Webs Profesionales para Negocios" />
-    <meta
-      property="twitter:description"
-      content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales."
-    />
-    <meta property="twitter:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:title" content="Caselyn - Webs Profesionales para Negocios" />
+  <meta property="og:description"
+    content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales." />
+  <meta property="og:image" content="https://caselyn-portfolio.vercel.app/og.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://caselyn-portfolio.vercel.app/" />
+  <meta property="twitter:title" content="Caselyn - Webs Profesionales para Negocios" />
+  <meta property="twitter:description"
+    content="Webs que convierten visitas en clientes. Diseño profesional para negocios locales." />
+  <meta property="twitter:image" content="https://caselyn-portfolio.vercel.app/og.png" />
 
-    <link rel="stylesheet" href="css/styles.css" />
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
 
-    <!-- Liquid Glass Web Component -->
-    <script src="js/displacement-utils.js"></script>
-    <script src="js/glass-element.js"></script>
-  </head>
+  <link rel="stylesheet" href="css/styles.css" />
 
-  <body>
-    <!-- Liquid Glass Header -->
-    <header class="header-wrapper">
-      <glass-element
-        class="header-glass"
-        fluid
-        height="72"
-        radius="0"
-        depth="8"
-        blur="2"
-        strength="35"
-        chromatic-aberration="1"
-        background-color="rgba(255,255,255,0.65)"
-      >
-        <nav class="navbar" id="navbar">
-          <div class="navbar-container">
-            <a href="#" class="navbar-logo" aria-label="Caselyn - Inicio">
-              <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
-                <text
-                  x="0"
-                  y="110"
-                  font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
-                  font-size="100"
-                  font-weight="600"
-                  fill="#0A0A0A"
-                  letter-spacing="-2"
-                >
-                  CASELYN
-                </text>
-              </svg>
-            </a>
+  <!-- Liquid Glass Web Component -->
+  <script src="js/displacement-utils.js"></script>
+  <script src="js/glass-element.js"></script>
+</head>
 
-            <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
+<body>
+  <!-- Liquid Glass Header -->
+  <header class="header-wrapper">
+    <glass-element class="header-glass" fluid height="72" radius="0" depth="8" blur="2" strength="35"
+      chromatic-aberration="1" background-color="rgba(255,255,255,0.65)">
+      <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+          <a href="#" class="navbar-logo" aria-label="Caselyn - Inicio">
+            <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
+                font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
+                CASELYN
+              </text>
+            </svg>
+          </a>
 
-            <ul class="navbar-menu" id="navbar-menu">
-              <li><a href="#servicios">Servicios</a></li>
-              <li><a href="#portafolio">Portafolio</a></li>
-              <li><a href="#proceso">Proceso</a></li>
-              <li><a href="#faq">FAQ</a></li>
-              <li><a href="#contacto" class="btn btn-liquid-glass">Contacto</a></li>
-            </ul>
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacto" class="btn btn-liquid-glass">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </glass-element>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <h1>Webs que convierten<br />visitas en clientes</h1>
+        <p class="hero-subtitle">
+          Ayudamos a negocios locales a crecer en internet con webs profesionales, rápidas y
+          centradas en resultados reales.
+        </p>
+        <div class="hero-cta">
+          <a href="https://wa.me/34622838676?text=Hola,%20me%20interesa%20una%20web%20profesional"
+            class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+              </path>
+            </svg>
+            Hablar por WhatsApp
+          </a>
+          <a href="#portafolio" class="btn btn-secondary btn-lg">Ver trabajos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <div class="container">
+      <h2 class="social-proof-title">Diseñamos para negocios que quieren destacar</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Móvil primero</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Rápido</div>
+          <div class="stat-label">Carga instantánea</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24h</div>
+          <div class="stat-label">Tiempo de respuesta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Cómo te ayudamos</h2>
+        <p class="section-description">
+          Tres servicios diseñados para que tu negocio crezca en internet
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
           </div>
-        </nav>
-      </glass-element>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content fade-in">
-          <h1>Webs que convierten<br />visitas en clientes</h1>
-          <p class="hero-subtitle">
-            Ayudamos a negocios locales a crecer en internet con webs profesionales, rápidas y
-            centradas en resultados reales.
+          <h3 class="card-title">Diseño Web</h3>
+          <p class="card-description">
+            Tu negocio en internet, listo para vender. Diseños profesionales que transmiten
+            confianza y facilitan el contacto con tus clientes.
           </p>
-          <div class="hero-cta">
-            <a
-              href="https://wa.me/34622838676?text=Hola,%20me%20interesa%20una%20web%20profesional"
-              class="btn btn-primary btn-lg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                ></path>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="card-title">Desarrollo Web</h3>
+          <p class="card-description">
+            Rápida, profesional y fácil de actualizar. Tu web funcionará perfectamente en
+            cualquier dispositivo y será fácil de encontrar en Google.
+          </p>
+        </div>
+
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6">
+              </path>
+            </svg>
+          </div>
+          <h3 class="card-title">Estrategia Digital</h3>
+          <p class="card-description">
+            Te ayudamos a llegar a más clientes. Desde Google Maps hasta redes sociales, te
+            acompañamos para que tu negocio sea visible donde tus clientes te buscan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="section-lg" id="portafolio">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Proyectos que hablan por sí solos</h2>
+        <p class="section-description">
+          Cada web está diseñada para convertir visitantes en clientes
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card fade-in">
+          <div class="portfolio-image">
+            <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="250" fill="#FAFAF9" />
+              <rect x="20" y="20" width="360" height="40" rx="8" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="20" y="80" width="170" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="210" y="80" width="170" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <circle cx="60" cy="40" r="12" fill="#3B82F6" opacity="0.3" />
+              <text x="200" y="165" font-family="sans-serif" font-size="14" fill="#A3A3A3" text-anchor="middle">
+                Restaurante
+              </text>
+            </svg>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-tag">Restaurante</span>
+            <h3 class="portfolio-title">Casa Luna</h3>
+            <p class="portfolio-description">
+              Web profesional con carta digital y reservas por WhatsApp. Aumento del 40% en
+              consultas de clientes.
+            </p>
+            <div class="portfolio-result">
+              <span class="portfolio-result-label">Resultado:</span>
+              <span class="portfolio-result-value">+40% consultas nuevas</span>
+            </div>
+            <div class="portfolio-stack">
+              <span class="portfolio-badge">Carta digital</span>
+              <span class="portfolio-badge">WhatsApp</span>
+              <span class="portfolio-badge">SEO local</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card fade-in">
+          <div class="portfolio-image">
+            <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="250" fill="#FAFAF9" />
+              <rect x="20" y="20" width="360" height="40" rx="8" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="80" y="80" width="240" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <circle cx="200" cy="155" r="30" fill="#3B82F6" opacity="0.3" />
+              <text x="200" y="165" font-family="sans-serif" font-size="14" fill="#A3A3A3" text-anchor="middle">
+                Salón de Belleza
+              </text>
+            </svg>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-tag">Salón de Belleza</span>
+            <h3 class="portfolio-title">Studio Belle</h3>
+            <p class="portfolio-description">
+              Sitio elegante con galería de servicios y citas online. Captación de clientes nuevos
+              cada semana.
+            </p>
+            <div class="portfolio-result">
+              <span class="portfolio-result-label">Resultado:</span>
+              <span class="portfolio-result-value">8-12 citas / semana</span>
+            </div>
+            <div class="portfolio-stack">
+              <span class="portfolio-badge">Galería</span>
+              <span class="portfolio-badge">Citas online</span>
+              <span class="portfolio-badge">Mobile-first</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card fade-in">
+          <div class="portfolio-image">
+            <svg width="100%" height="100%" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="250" fill="#FAFAF9" />
+              <rect x="20" y="20" width="360" height="40" rx="8" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="20" y="80" width="110" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="145" y="80" width="110" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <rect x="270" y="80" width="110" height="150" rx="12" fill="#FFFFFF" stroke="#E5E5E5" />
+              <text x="200" y="165" font-family="sans-serif" font-size="14" fill="#A3A3A3" text-anchor="middle">
+                Servicios
+              </text>
+            </svg>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-tag">Servicios Profesionales</span>
+            <h3 class="portfolio-title">FixNow</h3>
+            <p class="portfolio-description">
+              Landing page optimizada con formulario de contacto directo. Mayor profesionalidad
+              percibida por los clientes.
+            </p>
+            <div class="portfolio-result">
+              <span class="portfolio-result-label">Resultado:</span>
+              <span class="portfolio-result-value">3x más solicitudes</span>
+            </div>
+            <div class="portfolio-stack">
+              <span class="portfolio-badge">Landing page</span>
+              <span class="portfolio-badge">Formulario</span>
+              <span class="portfolio-badge">SEO optimizado</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section-lg" id="proceso">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Cómo trabajamos contigo</h2>
+        <p class="section-description">Un proceso simple y transparente, sin sorpresas</p>
+      </div>
+
+      <div class="process-timeline">
+        <div class="process-step fade-in">
+          <div class="process-number">1</div>
+          <div class="process-content">
+            <h3>Consulta inicial</h3>
+            <p>
+              Hablamos de tu negocio, tus objetivos y qué necesitas comunicar. Sin compromisos,
+              sin presión.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in">
+          <div class="process-number">2</div>
+          <div class="process-content">
+            <h3>Diseño personalizado</h3>
+            <p>
+              Creamos un diseño único para tu marca. Te mostramos cómo quedará tu web antes de
+              empezar a programar.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in">
+          <div class="process-number">3</div>
+          <div class="process-content">
+            <h3>Desarrollo y ajustes</h3>
+            <p>
+              Construimos tu web con la mejor tecnología. Revisamos juntos cada detalle hasta que
+              esté perfecta.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step fade-in">
+          <div class="process-number">4</div>
+          <div class="process-content">
+            <h3>Lanzamiento</h3>
+            <p>
+              Tu web sale al mundo. Te enseñamos a usarla y quedamos disponibles para cualquier
+              duda o cambio que necesites.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        <p class="section-description">Respuestas claras a las dudas más comunes</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Cuánto tiempo tarda en estar lista mi web?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Dependiendo de la complejidad, entre 2 y 4 semanas. Te daremos un plazo claro desde
+              el principio y nos comprometemos a cumplirlo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Necesito conocimientos técnicos para gestionar mi web?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              No. Te entregamos todo listo para usar y te enseñamos cómo hacer cambios básicos
+              (textos, fotos, horarios). Para cambios más grandes, estamos aquí.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Funciona bien en móviles?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Sí, siempre. Diseñamos pensando primero en móvil, porque es donde la mayoría de tus
+              clientes verán tu web. Se verá perfecta en cualquier dispositivo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Qué pasa si necesito cambios después del lanzamiento?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Estamos disponibles para ayudarte. Los cambios pequeños suelen ser rápidos y sin
+              coste adicional. Para cambios grandes, te damos presupuesto previo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Me ayudáis con el dominio y hosting?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Sí, nos encargamos de todo. Te ayudamos a elegir el mejor dominio y nos ocupamos de
+              la parte técnica para que no tengas que preocuparte de nada.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Ofrecéis garantía?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              Tu web funcionará correctamente desde el día uno. Si hay algún problema técnico en
+              los primeros 30 días, lo solucionamos sin coste adicional.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section-lg contact" id="contacto">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h2>Hablemos de tu proyecto</h2>
+          <p>
+            Cuéntanos qué necesitas y te responderemos con una propuesta clara y sin compromiso.
+          </p>
+          <div class="contact-cta">
+            <a href="https://wa.me/34622838676?text=Hola,%20me%20interesa%20una%20web%20profesional"
+              class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                </path>
               </svg>
               Hablar por WhatsApp
             </a>
-            <a href="#portafolio" class="btn btn-secondary btn-lg">Ver trabajos</a>
+          </div>
+          <div class="trust-badge">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>Respuesta en menos de 24h</span>
           </div>
         </div>
+
+        <form class="contact-form fade-in" id="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" id="name" name="name" class="form-input" required placeholder="Tu nombre" />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email o Teléfono</label>
+            <input type="text" id="email" name="email" class="form-input" required
+              placeholder="Para poder contactarte" />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Cuéntanos sobre tu proyecto</label>
+            <textarea id="message" name="message" class="form-textarea" required
+              placeholder="Qué tipo de negocio tienes y qué necesitas"></textarea>
+          </div>
+
+          <!-- Honeypot field (hidden from users, catches bots) -->
+          <input type="text" name="website" id="website" autocomplete="off" tabindex="-1"
+            style="position: absolute; left: -9999px; width: 1px; height: 1px" aria-hidden="true" />
+
+          <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje</button>
+        </form>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
-      <div class="container">
-        <h2 class="social-proof-title">Diseñamos para negocios que quieren destacar</h2>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Móvil primero</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Rápido</div>
-            <div class="stat-label">Carga instantánea</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">24h</div>
-            <div class="stat-label">Tiempo de respuesta</div>
-          </div>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
+        <p style="margin-top: var(--space-2); font-size: var(--font-size-xs);">
+          <a href="/privacidad.html"
+            style="color: var(--color-text-tertiary); margin-right: var(--space-3);">Privacidad</a>
+          <a href="/cookies.html" style="color: var(--color-text-tertiary);">Cookies</a>
+        </p>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- Services Section -->
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2 class="section-title">Cómo te ayudamos</h2>
-          <p class="section-description">
-            Tres servicios diseñados para que tu negocio crezca en internet
-          </p>
-        </div>
+  <script src="js/script.js"></script>
+</body>
 
-        <div class="services-grid">
-          <div class="card fade-in">
-            <div class="card-icon">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Diseño Web</h3>
-            <p class="card-description">
-              Tu negocio en internet, listo para vender. Diseños profesionales que transmiten
-              confianza y facilitan el contacto con tus clientes.
-            </p>
-          </div>
-
-          <div class="card fade-in">
-            <div class="card-icon">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Desarrollo Web</h3>
-            <p class="card-description">
-              Rápida, profesional y fácil de actualizar. Tu web funcionará perfectamente en
-              cualquier dispositivo y será fácil de encontrar en Google.
-            </p>
-          </div>
-
-          <div class="card fade-in">
-            <div class="card-icon">
-              <svg
-                width="24"
-                height="24"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="card-title">Estrategia Digital</h3>
-            <p class="card-description">
-              Te ayudamos a llegar a más clientes. Desde Google Maps hasta redes sociales, te
-              acompañamos para que tu negocio sea visible donde tus clientes te buscan.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="section-lg" id="portafolio">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2 class="section-title">Proyectos que hablan por sí solos</h2>
-          <p class="section-description">
-            Cada web está diseñada para convertir visitantes en clientes
-          </p>
-        </div>
-
-        <div class="portfolio-grid">
-          <article class="portfolio-card fade-in">
-            <div class="portfolio-image">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 400 250"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="400" height="250" fill="#FAFAF9" />
-                <rect
-                  x="20"
-                  y="20"
-                  width="360"
-                  height="40"
-                  rx="8"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="20"
-                  y="80"
-                  width="170"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="210"
-                  y="80"
-                  width="170"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <circle cx="60" cy="40" r="12" fill="#3B82F6" opacity="0.3" />
-                <text
-                  x="200"
-                  y="165"
-                  font-family="sans-serif"
-                  font-size="14"
-                  fill="#A3A3A3"
-                  text-anchor="middle"
-                >
-                  Restaurante
-                </text>
-              </svg>
-            </div>
-            <div class="portfolio-content">
-              <span class="portfolio-tag">Restaurante</span>
-              <h3 class="portfolio-title">Casa Luna</h3>
-              <p class="portfolio-description">
-                Web profesional con carta digital y reservas por WhatsApp. Aumento del 40% en
-                consultas de clientes.
-              </p>
-              <div class="portfolio-result">
-                <span class="portfolio-result-label">Resultado:</span>
-                <span class="portfolio-result-value">+40% consultas nuevas</span>
-              </div>
-              <div class="portfolio-stack">
-                <span class="portfolio-badge">Carta digital</span>
-                <span class="portfolio-badge">WhatsApp</span>
-                <span class="portfolio-badge">SEO local</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="portfolio-card fade-in">
-            <div class="portfolio-image">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 400 250"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="400" height="250" fill="#FAFAF9" />
-                <rect
-                  x="20"
-                  y="20"
-                  width="360"
-                  height="40"
-                  rx="8"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="80"
-                  y="80"
-                  width="240"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <circle cx="200" cy="155" r="30" fill="#3B82F6" opacity="0.3" />
-                <text
-                  x="200"
-                  y="165"
-                  font-family="sans-serif"
-                  font-size="14"
-                  fill="#A3A3A3"
-                  text-anchor="middle"
-                >
-                  Salón de Belleza
-                </text>
-              </svg>
-            </div>
-            <div class="portfolio-content">
-              <span class="portfolio-tag">Salón de Belleza</span>
-              <h3 class="portfolio-title">Studio Belle</h3>
-              <p class="portfolio-description">
-                Sitio elegante con galería de servicios y citas online. Captación de clientes nuevos
-                cada semana.
-              </p>
-              <div class="portfolio-result">
-                <span class="portfolio-result-label">Resultado:</span>
-                <span class="portfolio-result-value">8-12 citas / semana</span>
-              </div>
-              <div class="portfolio-stack">
-                <span class="portfolio-badge">Galería</span>
-                <span class="portfolio-badge">Citas online</span>
-                <span class="portfolio-badge">Mobile-first</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="portfolio-card fade-in">
-            <div class="portfolio-image">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 400 250"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="400" height="250" fill="#FAFAF9" />
-                <rect
-                  x="20"
-                  y="20"
-                  width="360"
-                  height="40"
-                  rx="8"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="20"
-                  y="80"
-                  width="110"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="145"
-                  y="80"
-                  width="110"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <rect
-                  x="270"
-                  y="80"
-                  width="110"
-                  height="150"
-                  rx="12"
-                  fill="#FFFFFF"
-                  stroke="#E5E5E5"
-                />
-                <text
-                  x="200"
-                  y="165"
-                  font-family="sans-serif"
-                  font-size="14"
-                  fill="#A3A3A3"
-                  text-anchor="middle"
-                >
-                  Servicios
-                </text>
-              </svg>
-            </div>
-            <div class="portfolio-content">
-              <span class="portfolio-tag">Servicios Profesionales</span>
-              <h3 class="portfolio-title">FixNow</h3>
-              <p class="portfolio-description">
-                Landing page optimizada con formulario de contacto directo. Mayor profesionalidad
-                percibida por los clientes.
-              </p>
-              <div class="portfolio-result">
-                <span class="portfolio-result-label">Resultado:</span>
-                <span class="portfolio-result-value">3x más solicitudes</span>
-              </div>
-              <div class="portfolio-stack">
-                <span class="portfolio-badge">Landing page</span>
-                <span class="portfolio-badge">Formulario</span>
-                <span class="portfolio-badge">SEO optimizado</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="section-lg" id="proceso">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2 class="section-title">Cómo trabajamos contigo</h2>
-          <p class="section-description">Un proceso simple y transparente, sin sorpresas</p>
-        </div>
-
-        <div class="process-timeline">
-          <div class="process-step fade-in">
-            <div class="process-number">1</div>
-            <div class="process-content">
-              <h3>Consulta inicial</h3>
-              <p>
-                Hablamos de tu negocio, tus objetivos y qué necesitas comunicar. Sin compromisos,
-                sin presión.
-              </p>
-            </div>
-          </div>
-
-          <div class="process-step fade-in">
-            <div class="process-number">2</div>
-            <div class="process-content">
-              <h3>Diseño personalizado</h3>
-              <p>
-                Creamos un diseño único para tu marca. Te mostramos cómo quedará tu web antes de
-                empezar a programar.
-              </p>
-            </div>
-          </div>
-
-          <div class="process-step fade-in">
-            <div class="process-number">3</div>
-            <div class="process-content">
-              <h3>Desarrollo y ajustes</h3>
-              <p>
-                Construimos tu web con la mejor tecnología. Revisamos juntos cada detalle hasta que
-                esté perfecta.
-              </p>
-            </div>
-          </div>
-
-          <div class="process-step fade-in">
-            <div class="process-number">4</div>
-            <div class="process-content">
-              <h3>Lanzamiento</h3>
-              <p>
-                Tu web sale al mundo. Te enseñamos a usarla y quedamos disponibles para cualquier
-                duda o cambio que necesites.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2 class="section-title">Preguntas frecuentes</h2>
-          <p class="section-description">Respuestas claras a las dudas más comunes</p>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Cuánto tiempo tarda en estar lista mi web?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Dependiendo de la complejidad, entre 2 y 4 semanas. Te daremos un plazo claro desde
-                el principio y nos comprometemos a cumplirlo.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Necesito conocimientos técnicos para gestionar mi web?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                No. Te entregamos todo listo para usar y te enseñamos cómo hacer cambios básicos
-                (textos, fotos, horarios). Para cambios más grandes, estamos aquí.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Funciona bien en móviles?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Sí, siempre. Diseñamos pensando primero en móvil, porque es donde la mayoría de tus
-                clientes verán tu web. Se verá perfecta en cualquier dispositivo.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Qué pasa si necesito cambios después del lanzamiento?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Estamos disponibles para ayudarte. Los cambios pequeños suelen ser rápidos y sin
-                coste adicional. Para cambios grandes, te damos presupuesto previo.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Me ayudáis con el dominio y hosting?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Sí, nos encargamos de todo. Te ayudamos a elegir el mejor dominio y nos ocupamos de
-                la parte técnica para que no tengas que preocuparte de nada.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>¿Ofrecéis garantía?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-content">
-                Tu web funcionará correctamente desde el día uno. Si hay algún problema técnico en
-                los primeros 30 días, lo solucionamos sin coste adicional.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section-lg contact" id="contacto">
-      <div class="container">
-        <div class="contact-container">
-          <div class="contact-info fade-in">
-            <h2>Hablemos de tu proyecto</h2>
-            <p>
-              Cuéntanos qué necesitas y te responderemos con una propuesta clara y sin compromiso.
-            </p>
-            <div class="contact-cta">
-              <a
-                href="https://wa.me/34622838676?text=Hola,%20me%20interesa%20una%20web%20profesional"
-                class="btn btn-primary btn-lg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  ></path>
-                </svg>
-                Hablar por WhatsApp
-              </a>
-            </div>
-            <div class="trust-badge">
-              <svg
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-              <span>Respuesta en menos de 24h</span>
-            </div>
-          </div>
-
-          <form class="contact-form fade-in" id="contact-form">
-            <div class="form-group">
-              <label for="name" class="form-label">Nombre</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-input"
-                required
-                placeholder="Tu nombre"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="form-label">Email o Teléfono</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                class="form-input"
-                required
-                placeholder="Para poder contactarte"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="message" class="form-label">Cuéntanos sobre tu proyecto</label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-textarea"
-                required
-                placeholder="Qué tipo de negocio tienes y qué necesitas"
-              ></textarea>
-            </div>
-
-            <!-- Honeypot field (hidden from users, catches bots) -->
-            <input
-              type="text"
-              name="website"
-              id="website"
-              autocomplete="off"
-              tabindex="-1"
-              style="position: absolute; left: -9999px; width: 1px; height: 1px"
-              aria-hidden="true"
-            />
-
-            <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <p>&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
-        </div>
-      </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-  </body>
 </html>
