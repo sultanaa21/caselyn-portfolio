@@ -203,41 +203,31 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ip: ip
       };
 
-      console.log('📞 Calling Google Sheets webhook...', {
-        lead_id: leadData?.id,
-        url: sheetsWebhookUrl.substring(0, 50) + '...'
-      });
+      // Fire-and-forget controlado (se ejecuta ANTES del return)
+      try {
+        console.log('📞 Calling Google Sheets webhook...', {
+          lead_id: leadData?.id,
+          url: sheetsWebhookUrl.substring(0, 50) + '...'
+        });
 
-      // Fire-and-forget con timeout 5s y manejo robusto de errores
-      fetch(sheetsWebhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sheetsPayload),
-        signal: AbortSignal.timeout(5000)
-      })
-        .then(async (response) => {
-          // Leer response como texto primero
-          const responseText = await response.text();
+        const webhookResponse = await fetch(sheetsWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sheetsPayload),
+          signal: AbortSignal.timeout(5000)
+        });
 
-          console.log('📬 Sheets webhook response:', {
-            status: response.status,
-            ok: response.ok,
-            bodyPreview: responseText.substring(0, 500)
-          });
+        const responseText = await webhookResponse.text();
 
-          // Intentar parsear JSON
-          let data: any;
-          try {
-            data = JSON.parse(responseText);
-          } catch (e) {
-            console.error('❌ Sheets webhook response not valid JSON:', {
-              responseText: responseText,
-              parseError: e instanceof Error ? e.message : String(e)
-            });
-            return;
-          }
+        console.log('📬 Sheets webhook response:', {
+          status: webhookResponse.status,
+          ok: webhookResponse.ok,
+          bodyPreview: responseText.substring(0, 500)
+        });
 
-          // Verificar campo 'ok' en vez de HTTP status
+        // Parsear JSON
+        try {
+          const data = JSON.parse(responseText);
           if (data.ok === true) {
             console.log('✅ Google Sheets webhook success:', {
               lead_id: data.lead_id,
@@ -245,21 +235,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               row: data.row
             });
           } else {
-            console.error('❌ Google Sheets returned ok=false:', {
-              message: data.message,
-              statusHint: data.statusHint,
-              fullResponse: data
-            });
+            console.error('❌ Google Sheets returned ok=false:', data.message);
           }
-        })
-        .catch(error => {
-          // Timeout o error de red (NO bloquea el flujo)
-          console.error('❌ Google Sheets webhook error (non-blocking):', {
-            errorMessage: error.message,
-            errorName: error.name,
-            errorStack: error.stack?.substring(0, 200)
-          });
+        } catch (parseError) {
+          console.error('❌ Sheets response not valid JSON:', responseText.substring(0, 200));
+        }
+      } catch (webhookError: any) {
+        console.error('❌ Google Sheets webhook error (non-blocking):', {
+          name: webhookError.name,
+          message: webhookError.message
         });
+      }
     } else {
       console.warn('⚠️ Google Sheets webhook not configured:', {
         hasUrl: !!sheetsWebhookUrl,
