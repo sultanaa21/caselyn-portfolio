@@ -185,6 +185,88 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     console.log('Lead saved to Supabase:', leadData?.id);
 
+    // 6.5 Send to Google Sheets via webhook (non-blocking, resilient)
+    const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    const sheetsSecret = process.env.SHEETS_WEBHOOK_SECRET;
+
+    if (sheetsWebhookUrl && sheetsSecret) {
+      const sheetsPayload = {
+        secret: sheetsSecret,
+        lead_id: leadData?.id || null,
+        created_at: leadData?.created_at || new Date().toISOString(),
+        name: sanitizedName,
+        contact: sanitizedContact,
+        message: sanitizedMessage,
+        source: 'Formulario',
+        priority: 'Media',
+        notes: '',
+        ip: ip
+      };
+
+      console.log('📞 Calling Google Sheets webhook...', {
+        lead_id: leadData?.id,
+        url: sheetsWebhookUrl.substring(0, 50) + '...'
+      });
+
+      // Fire-and-forget con timeout 5s y manejo robusto de errores
+      fetch(sheetsWebhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sheetsPayload),
+        signal: AbortSignal.timeout(5000)
+      })
+        .then(async (response) => {
+          // Leer response como texto primero
+          const responseText = await response.text();
+
+          console.log('📬 Sheets webhook response:', {
+            status: response.status,
+            ok: response.ok,
+            bodyPreview: responseText.substring(0, 500)
+          });
+
+          // Intentar parsear JSON
+          let data: any;
+          try {
+            data = JSON.parse(responseText);
+          } catch (e) {
+            console.error('❌ Sheets webhook response not valid JSON:', {
+              responseText: responseText,
+              parseError: e instanceof Error ? e.message : String(e)
+            });
+            return;
+          }
+
+          // Verificar campo 'ok' en vez de HTTP status
+          if (data.ok === true) {
+            console.log('✅ Google Sheets webhook success:', {
+              lead_id: data.lead_id,
+              action: data.action,
+              row: data.row
+            });
+          } else {
+            console.error('❌ Google Sheets returned ok=false:', {
+              message: data.message,
+              statusHint: data.statusHint,
+              fullResponse: data
+            });
+          }
+        })
+        .catch(error => {
+          // Timeout o error de red (NO bloquea el flujo)
+          console.error('❌ Google Sheets webhook error (non-blocking):', {
+            errorMessage: error.message,
+            errorName: error.name,
+            errorStack: error.stack?.substring(0, 200)
+          });
+        });
+    } else {
+      console.warn('⚠️ Google Sheets webhook not configured:', {
+        hasUrl: !!sheetsWebhookUrl,
+        hasSecret: !!sheetsSecret
+      });
+    }
+
     // 7. Send email via Resend
     const resend = new Resend(RESEND_API_KEY);
 
