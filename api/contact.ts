@@ -200,21 +200,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         source: 'Formulario',
         priority: 'Media',
         notes: '',
-        ip: ip
+        ip: ip,
       };
 
       // Fire-and-forget controlado (se ejecuta ANTES del return)
       try {
         console.log('📞 Calling Google Sheets webhook...', {
           lead_id: leadData?.id,
-          url: sheetsWebhookUrl.substring(0, 50) + '...'
+          url: sheetsWebhookUrl.substring(0, 50) + '...',
         });
 
         const webhookResponse = await fetch(sheetsWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sheetsPayload),
-          signal: AbortSignal.timeout(5000)
+          signal: AbortSignal.timeout(5000),
         });
 
         const responseText = await webhookResponse.text();
@@ -222,7 +222,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         console.log('📬 Sheets webhook response:', {
           status: webhookResponse.status,
           ok: webhookResponse.ok,
-          bodyPreview: responseText.substring(0, 500)
+          bodyPreview: responseText.substring(0, 500),
         });
 
         // Parsear JSON
@@ -232,7 +232,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             console.log('✅ Google Sheets webhook success:', {
               lead_id: data.lead_id,
               action: data.action,
-              row: data.row
+              row: data.row,
             });
           } else {
             console.error('❌ Google Sheets returned ok=false:', data.message);
@@ -243,13 +243,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       } catch (webhookError: any) {
         console.error('❌ Google Sheets webhook error (non-blocking):', {
           name: webhookError.name,
-          message: webhookError.message
+          message: webhookError.message,
         });
       }
     } else {
       console.warn('⚠️ Google Sheets webhook not configured:', {
         hasUrl: !!sheetsWebhookUrl,
-        hasSecret: !!sheetsSecret
+        hasSecret: !!sheetsSecret,
       });
     }
 
