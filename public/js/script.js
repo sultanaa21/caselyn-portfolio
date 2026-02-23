@@ -356,4 +356,28 @@ window.addEventListener('DOMContentLoaded', () => {
       el.classList.add('visible');
     }
   });
+
+  // ============================================================================
+  // Language Selector
+  // ============================================================================
+
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const savedLang = localStorage.getItem('caselyn-lang') || 'es';
+
+  // Set initial active state from localStorage and apply translations
+  langButtons.forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.lang === savedLang);
+  });
+  applyTranslations(savedLang);
+
+  // Handle clicks
+  langButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      langButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang = btn.dataset.lang;
+      localStorage.setItem('caselyn-lang', lang);
+      applyTranslations(lang);
+    });
+  });
 });
