@@ -1,291 +1,267 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Política de Privacidad - Caselyn</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
 
-  <body>
-    <!-- Header -->
-    <header class="header-wrapper">
-      <glass-element
-        class="header-glass"
-        fluid
-        height="72"
-        radius="0"
-        depth="8"
-        blur="2"
-        strength="35"
-        chromatic-aberration="1"
-        background-color="rgba(255,255,255,0.65)"
-      >
-        <nav class="navbar" id="navbar">
-          <div class="navbar-container">
-            <a href="/" class="navbar-logo" aria-label="Caselyn - Inicio">
-              <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
-                <text
-                  x="0"
-                  y="110"
-                  font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
-                  font-size="100"
-                  font-weight="600"
-                  fill="#0A0A0A"
-                  letter-spacing="-2"
-                >
-                  CASELYN
-                </text>
-              </svg>
-            </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad - Caselyn</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/styles.css" />
 
-            <ul class="navbar-menu">
-              <li><a href="/">Inicio</a></li>
-              <li><a href="/#contacto" class="btn btn-liquid-glass">Contacto</a></li>
-            </ul>
-          </div>
-        </nav>
-      </glass-element>
-    </header>
+  <!-- Liquid Glass Web Component -->
+  <script src="js/displacement-utils.js"></script>
+  <script src="js/glass-element.js"></script>
+</head>
 
-    <!-- Legal Content -->
-    <section class="section" style="padding-top: 120px">
-      <div class="container container-narrow">
-        <h1 style="margin-bottom: var(--space-6)">Política de Privacidad</h1>
+<body>
+  <!-- Liquid Glass Header -->
+  <header class="header-wrapper">
+    <glass-element class="header-glass" fluid height="72" radius="0" depth="8" blur="2" strength="35"
+      chromatic-aberration="1" background-color="rgba(255,255,255,0.65)">
+      <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+          <a href="/" class="navbar-logo" aria-label="Caselyn - Inicio">
+            <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
+                font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
+                CASELYN
+              </text>
+            </svg>
+          </a>
 
-        <div style="line-height: 1.8; color: var(--color-text-secondary)">
-          <p style="margin-bottom: var(--space-4)">
-            <strong>Última actualización:</strong> 3 de febrero de 2026
-          </p>
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-          <h2
-            style="
-              margin-top: var(--space-6);
-              margin-bottom: var(--space-3);
-              font-size: var(--font-size-xl);
-              color: var(--color-text-primary);
-            "
-          >
-            1. Responsable del tratamiento
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            <strong>Identidad:</strong> Caselyn<br />
-            <strong>Email de contacto:</strong>
-            <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)"
-              >caselyncontact@gmail.com</a
-            >
-          </p>
-
-          <h2
-            style="
-              margin-top: var(--space-6);
-              margin-bottom: var(--space-3);
-              font-size: var(--font-size-xl);
-              color: var(--color-text-primary);
-            "
-          >
-            2. ¿Qué datos recogemos?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Cuando rellenas el formulario de contacto de esta web, recogemos únicamente:
-          </p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li><strong>Nombre:</strong> para saber cómo dirigirnos a ti</li>
-            <li><strong>Email o teléfono:</strong> para poder responderte</li>
-            <li><strong>Mensaje:</strong> para entender qué necesitas</li>
-            <li>
-              <strong>Dirección IP:</strong> dato técnico que se registra automáticamente para
-              seguridad
+          <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="/" data-i18n="nav.inicio">Inicio</a></li>
+            <li class="lang-selector" aria-label="Selector de idioma">
+              <button class="lang-btn active" data-lang="es">ES</button>
+              <span class="lang-divider">|</span>
+              <button class="lang-btn" data-lang="ca">CA</button>
+              <span class="lang-divider">|</span>
+              <button class="lang-btn" data-lang="en">EN</button>
             </li>
+            <li><a href="/#contacto" class="btn btn-liquid-glass" data-i18n="nav.contacto">Contacto</a></li>
           </ul>
-          <p style="margin-bottom: var(--space-4)">
-            No recogemos ningún otro dato. No usamos cookies de seguimiento ni herramientas de
-            análisis de comportamiento.
-          </p>
+        </div>
+      </nav>
+    </glass-element>
+  </header>
 
-          <h2
-            style="
+  <!-- Legal Content -->
+  <section class="section" style="padding-top: 120px">
+    <div class="container container-narrow">
+      <h1 style="margin-bottom: var(--space-6)" data-i18n="privacy.title">Política de Privacidad</h1>
+
+      <div style="line-height: 1.8; color: var(--color-text-secondary)">
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="privacy.updated">
+          <strong>Última actualización:</strong> 3 de febrero de 2026
+        </p>
+
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            3. ¿Para qué usamos tus datos?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">Utilizamos tus datos exclusivamente para:</p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li>Responder a tu solicitud de información</li>
-            <li>Enviarte presupuesto o información sobre nuestros servicios si nos lo pides</li>
-          </ul>
-          <p style="margin-bottom: var(--space-4)">
-            <strong>Base legal:</strong> Tu consentimiento al rellenar y enviar el formulario.
-          </p>
+            " data-i18n="privacy.s1.title">
+          1. Responsable del tratamiento
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="privacy.s1.p1">
+          <strong>Identidad:</strong> Caselyn<br />
+          <strong>Email de contacto:</strong>
+          <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)">caselyncontact@gmail.com</a>
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            4. ¿Dónde se almacenan tus datos?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">Los datos del formulario se almacenan en:</p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li>
-              <strong>Supabase:</strong> servicio de base de datos cloud que cumple con RGPD y tiene
-              servidores en la UE
-            </li>
-            <li>
-              <strong>Resend:</strong> servicio de email que nos notifica cuando recibes un mensaje
-              (encargado del tratamiento)
-            </li>
-          </ul>
-          <p style="margin-bottom: var(--space-4)">
-            Ambos proveedores actúan como encargados del tratamiento bajo contrato y cumplen con la
-            normativa europea de protección de datos.
-          </p>
+            " data-i18n="privacy.s2.title">
+          2. ¿Qué datos recogemos?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s2.p1">
+          Cuando rellenas el formulario de contacto de esta web, recogemos únicamente:
+        </p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n-html="privacy.s2.li1"><strong>Nombre:</strong> para saber cómo dirigirnos a ti</li>
+          <li data-i18n-html="privacy.s2.li2"><strong>Email o teléfono:</strong> para poder responderte</li>
+          <li data-i18n-html="privacy.s2.li3"><strong>Mensaje:</strong> para entender qué necesitas</li>
+          <li data-i18n-html="privacy.s2.li4">
+            <strong>Dirección IP:</strong> dato técnico que se registra automáticamente para
+            seguridad
+          </li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s2.p2">
+          No recogemos ningún otro dato. No usamos cookies de seguimiento ni herramientas de
+          análisis de comportamiento.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            5. ¿Cuánto tiempo conservamos tus datos?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">Conservamos tus datos:</p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li>Hasta que atendemos tu solicitud</li>
-            <li>
-              Si hay un proyecto en curso, hasta que finalice y se resuelvan las gestiones
-              administrativas necesarias
-            </li>
-            <li>
-              Si ejerces tu derecho de supresión, los eliminaremos de forma inmediata (salvo
-              obligaciones legales)
-            </li>
-          </ul>
+            " data-i18n="privacy.s3.title">
+          3. ¿Para qué usamos tus datos?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s3.p1">Utilizamos tus datos exclusivamente para:</p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n="privacy.s3.li1">Responder a tu solicitud de información</li>
+          <li data-i18n="privacy.s3.li2">Enviarte presupuesto o información sobre nuestros servicios si nos lo pides
+          </li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="privacy.s3.p2">
+          <strong>Base legal:</strong> Tu consentimiento al rellenar y enviar el formulario.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            6. ¿Compartimos tus datos con terceros?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            No vendemos ni compartimos tus datos con terceros para fines comerciales o
-            publicitarios.
-          </p>
-          <p style="margin-bottom: var(--space-4)">
-            Los únicos terceros que tienen acceso a tus datos son los proveedores técnicos
-            mencionados (Supabase y Resend), que actúan bajo nuestras instrucciones para el
-            funcionamiento de la web.
-          </p>
+            " data-i18n="privacy.s4.title">
+          4. ¿Dónde se almacenan tus datos?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s4.p1">Los datos del formulario se almacenan en:</p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n-html="privacy.s4.li1">
+            <strong>Supabase:</strong> servicio de base de datos cloud que cumple con RGPD y tiene
+            servidores en la UE
+          </li>
+          <li data-i18n-html="privacy.s4.li2">
+            <strong>Resend:</strong> servicio de email que nos notifica cuando recibes un mensaje
+            (encargado del tratamiento)
+          </li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s4.p2">
+          Ambos proveedores actúan como encargados del tratamiento bajo contrato y cumplen con la
+          normativa europea de protección de datos.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            7. Tus derechos
-          </h2>
-          <p style="margin-bottom: var(--space-4)">Según el RGPD, tienes derecho a:</p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li><strong>Acceso:</strong> saber qué datos tenemos sobre ti</li>
-            <li><strong>Rectificación:</strong> corregir datos incorrectos</li>
-            <li><strong>Supresión:</strong> pedirnos que eliminemos tus datos</li>
-            <li><strong>Limitación:</strong> restringir el uso de tus datos</li>
-            <li><strong>Portabilidad:</strong> recibir tus datos en formato legible</li>
-            <li><strong>Oposición:</strong> oponerte al tratamiento de tus datos</li>
-          </ul>
-          <p style="margin-bottom: var(--space-4)">
-            Para ejercer cualquiera de estos derechos, escríbenos a
-            <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)"
-              >caselyncontact@gmail.com</a
-            >
-          </p>
-          <p style="margin-bottom: var(--space-4)">
-            También tienes derecho a presentar una reclamación ante la Agencia Española de
-            Protección de Datos (AEPD) si crees que no cumplimos con la normativa.
-          </p>
+            " data-i18n="privacy.s5.title">
+          5. ¿Cuánto tiempo conservamos tus datos?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s5.p1">Conservamos tus datos:</p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n="privacy.s5.li1">Hasta que atendemos tu solicitud</li>
+          <li data-i18n="privacy.s5.li2">
+            Si hay un proyecto en curso, hasta que finalice y se resuelvan las gestiones
+            administrativas necesarias
+          </li>
+          <li data-i18n="privacy.s5.li3">
+            Si ejerces tu derecho de supresión, los eliminaremos de forma inmediata (salvo
+            obligaciones legales)
+          </li>
+        </ul>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            8. Seguridad
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Aplicamos medidas técnicas y organizativas para proteger tus datos frente a accesos no
-            autorizados, pérdida o alteración. Esto incluye conexiones HTTPS cifradas y
-            almacenamiento en servidores seguros.
-          </p>
+            " data-i18n="privacy.s6.title">
+          6. ¿Compartimos tus datos con terceros?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s6.p1">
+          No vendemos ni compartimos tus datos con terceros para fines comerciales o
+          publicitarios.
+        </p>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s6.p2">
+          Los únicos terceros que tienen acceso a tus datos son los proveedores técnicos
+          mencionados (Supabase y Resend), que actúan bajo nuestras instrucciones para el
+          funcionamiento de la web.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            9. Cambios en esta política
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Nos reservamos el derecho de actualizar esta política. Si hay cambios importantes, los
-            comunicaremos en esta misma página indicando la fecha de la última actualización.
-          </p>
+            " data-i18n="privacy.s7.title">
+          7. Tus derechos
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s7.p1">Según el RGPD, tienes derecho a:</p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n-html="privacy.s7.li1"><strong>Acceso:</strong> saber qué datos tenemos sobre ti</li>
+          <li data-i18n-html="privacy.s7.li2"><strong>Rectificación:</strong> corregir datos incorrectos</li>
+          <li data-i18n-html="privacy.s7.li3"><strong>Supresión:</strong> pedirnos que eliminemos tus datos</li>
+          <li data-i18n-html="privacy.s7.li4"><strong>Limitación:</strong> restringir el uso de tus datos</li>
+          <li data-i18n-html="privacy.s7.li5"><strong>Portabilidad:</strong> recibir tus datos en formato legible</li>
+          <li data-i18n-html="privacy.s7.li6"><strong>Oposición:</strong> oponerte al tratamiento de tus datos</li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="privacy.s7.p2">
+          Para ejercer cualquiera de estos derechos, escríbenos a
+          <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)">caselyncontact@gmail.com</a>
+        </p>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s7.p3">
+          También tienes derecho a presentar una reclamación ante la Agencia Española de
+          Protección de Datos (AEPD) si crees que no cumplimos con la normativa.
+        </p>
 
-          <p
-            style="
+        <h2 style="
+              margin-top: var(--space-6);
+              margin-bottom: var(--space-3);
+              font-size: var(--font-size-xl);
+              color: var(--color-text-primary);
+            " data-i18n="privacy.s8.title">
+          8. Seguridad
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s8.p1">
+          Aplicamos medidas técnicas y organizativas para proteger tus datos frente a accesos no
+          autorizados, pérdida o alteración. Esto incluye conexiones HTTPS cifradas y
+          almacenamiento en servidores seguros.
+        </p>
+
+        <h2 style="
+              margin-top: var(--space-6);
+              margin-bottom: var(--space-3);
+              font-size: var(--font-size-xl);
+              color: var(--color-text-primary);
+            " data-i18n="privacy.s9.title">
+          9. Cambios en esta política
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="privacy.s9.p1">
+          Nos reservamos el derecho de actualizar esta política. Si hay cambios importantes, los
+          comunicaremos en esta misma página indicando la fecha de la última actualización.
+        </p>
+
+        <p style="
               margin-top: var(--space-8);
               padding-top: var(--space-6);
               border-top: 1px solid var(--color-border);
-            "
-          >
-            <a href="/" style="color: var(--color-accent); text-decoration: underline"
-              >← Volver al inicio</a
-            >
-          </p>
-        </div>
+            ">
+          <a href="/" style="color: var(--color-accent); text-decoration: underline" data-i18n="legal.back">← Volver al
+            inicio</a>
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <p>&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
-          <p style="margin-top: var(--space-2); font-size: var(--font-size-xs)">
-            <a
-              href="/privacidad.html"
-              style="color: var(--color-text-tertiary); margin-right: var(--space-3)"
-              >Privacidad</a
-            >
-            <a href="/cookies.html" style="color: var(--color-text-tertiary)">Cookies</a>
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p data-i18n="footer.copyright">&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
+        <p style="margin-top: var(--space-2); font-size: var(--font-size-xs)">
+          <a href="/privacidad.html" style="color: var(--color-text-tertiary); margin-right: var(--space-3)"
+            data-i18n="footer.privacy">Privacidad</a>
+          <a href="/cookies.html" style="color: var(--color-text-tertiary)" data-i18n="footer.cookies">Cookies</a>
+        </p>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="js/displacement-utils.js"></script>
-    <script src="js/glass-element.js"></script>
-  </body>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

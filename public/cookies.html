@@ -1,239 +1,220 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Política de Cookies - Caselyn</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
 
-  <body>
-    <!-- Header -->
-    <header class="header-wrapper">
-      <glass-element
-        class="header-glass"
-        fluid
-        height="72"
-        radius="0"
-        depth="8"
-        blur="2"
-        strength="35"
-        chromatic-aberration="1"
-        background-color="rgba(255,255,255,0.65)"
-      >
-        <nav class="navbar" id="navbar">
-          <div class="navbar-container">
-            <a href="/" class="navbar-logo" aria-label="Caselyn - Inicio">
-              <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
-                <text
-                  x="0"
-                  y="110"
-                  font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
-                  font-size="100"
-                  font-weight="600"
-                  fill="#0A0A0A"
-                  letter-spacing="-2"
-                >
-                  CASELYN
-                </text>
-              </svg>
-            </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Cookies - Caselyn</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/styles.css" />
 
-            <ul class="navbar-menu">
-              <li><a href="/">Inicio</a></li>
-              <li><a href="/#contacto" class="btn btn-liquid-glass">Contacto</a></li>
-            </ul>
-          </div>
-        </nav>
-      </glass-element>
-    </header>
+  <!-- Liquid Glass Web Component -->
+  <script src="js/displacement-utils.js"></script>
+  <script src="js/glass-element.js"></script>
+</head>
 
-    <!-- Legal Content -->
-    <section class="section" style="padding-top: 120px">
-      <div class="container container-narrow">
-        <h1 style="margin-bottom: var(--space-6)">Política de Cookies</h1>
+<body>
+  <!-- Liquid Glass Header -->
+  <header class="header-wrapper">
+    <glass-element class="header-glass" fluid height="72" radius="0" depth="8" blur="2" strength="35"
+      chromatic-aberration="1" background-color="rgba(255,255,255,0.65)">
+      <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+          <a href="/" class="navbar-logo" aria-label="Caselyn - Inicio">
+            <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
+                font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
+                CASELYN
+              </text>
+            </svg>
+          </a>
 
-        <div style="line-height: 1.8; color: var(--color-text-secondary)">
-          <p style="margin-bottom: var(--space-4)">
-            <strong>Última actualización:</strong> 3 de febrero de 2026
-          </p>
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-          <h2
-            style="
-              margin-top: var(--space-6);
-              margin-bottom: var(--space-3);
-              font-size: var(--font-size-xl);
-              color: var(--color-text-primary);
-            "
-          >
-            1. ¿Qué son las cookies?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Las cookies son pequeños archivos de texto que las páginas web guardan en tu navegador
-            para recordar información sobre tu visita.
-          </p>
-
-          <h2
-            style="
-              margin-top: var(--space-6);
-              margin-bottom: var(--space-3);
-              font-size: var(--font-size-xl);
-              color: var(--color-text-primary);
-            "
-          >
-            2. ¿Qué cookies usamos?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            <strong
-              >Esta web NO utiliza cookies de terceros, cookies de seguimiento ni cookies
-              publicitarias.</strong
-            >
-          </p>
-          <p style="margin-bottom: var(--space-4)">
-            Solo utilizamos cookies técnicas estrictamente necesarias para el funcionamiento básico
-            de la web, como:
-          </p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li>Cookies de sesión del navegador</li>
-            <li>Preferencias técnicas básicas (si las hubiera)</li>
-          </ul>
-          <p style="margin-bottom: var(--space-4)">
-            Estas cookies son imprescindibles para que la web funcione correctamente y
-            <strong>no requieren tu consentimiento</strong> según la normativa vigente.
-          </p>
-
-          <h2
-            style="
-              margin-top: var(--space-6);
-              margin-bottom: var(--space-3);
-              font-size: var(--font-size-xl);
-              color: var(--color-text-primary);
-            "
-          >
-            3. Lo que NO hacemos
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            En Caselyn valoramos tu privacidad. Por eso, esta web:
-          </p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li>
-              ❌ <strong>No usa Google Analytics</strong> ni ninguna otra herramienta de análisis
+          <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="/" data-i18n="nav.inicio">Inicio</a></li>
+            <li class="lang-selector" aria-label="Selector de idioma">
+              <button class="lang-btn active" data-lang="es">ES</button>
+              <span class="lang-divider">|</span>
+              <button class="lang-btn" data-lang="ca">CA</button>
+              <span class="lang-divider">|</span>
+              <button class="lang-btn" data-lang="en">EN</button>
             </li>
-            <li>❌ <strong>No rastrea tu comportamiento</strong> en la web</li>
-            <li>❌ <strong>No muestra publicidad</strong> personalizada</li>
-            <li>❌ <strong>No comparte tus datos</strong> con terceros para marketing</li>
-            <li>❌ <strong>No instala cookies</strong> de redes sociales o servicios externos</li>
+            <li><a href="/#contacto" class="btn btn-liquid-glass" data-i18n="nav.contacto">Contacto</a></li>
           </ul>
+        </div>
+      </nav>
+    </glass-element>
+  </header>
 
-          <h2
-            style="
+  <!-- Legal Content -->
+  <section class="section" style="padding-top: 120px">
+    <div class="container container-narrow">
+      <h1 style="margin-bottom: var(--space-6)" data-i18n="cookies.title">Política de Cookies</h1>
+
+      <div style="line-height: 1.8; color: var(--color-text-secondary)">
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="cookies.updated">
+          <strong>Última actualización:</strong> 3 de febrero de 2026
+        </p>
+
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            4. ¿Necesitas aceptar cookies?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            <strong>No.</strong> Como esta web solo usa cookies técnicas necesarias, no estamos
-            obligados a mostrarte un banner de cookies ni pedirte consentimiento.
-          </p>
-          <p style="margin-bottom: var(--space-4)">
-            Puedes navegar libremente sin preocuparte por rastreadores ni seguimiento publicitario.
-          </p>
+            " data-i18n="cookies.s1.title">
+          1. ¿Qué son las cookies?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s1.p1">
+          Las cookies son pequeños archivos de texto que las páginas web guardan en tu navegador
+          para recordar información sobre tu visita.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            5. ¿Cómo puedes gestionar las cookies?
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Si aún así quieres deshabilitar todas las cookies (incluidas las técnicas), puedes
-            hacerlo desde la configuración de tu navegador:
-          </p>
-          <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
-            <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
-            <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
-            <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
-            <li><strong>Edge:</strong> Configuración → Privacidad → Cookies</li>
-          </ul>
-          <p style="margin-bottom: var(--space-4)">
-            Ten en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento
-            básico de la web.
-          </p>
+            " data-i18n="cookies.s2.title">
+          2. ¿Qué cookies usamos?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="cookies.s2.p1">
+          <strong>Esta web NO utiliza cookies de terceros, cookies de seguimiento ni cookies
+            publicitarias.</strong>
+        </p>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s2.p2">
+          Solo utilizamos cookies técnicas estrictamente necesarias para el funcionamiento básico
+          de la web, como:
+        </p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n="cookies.s2.li1">Cookies de sesión del navegador</li>
+          <li data-i18n="cookies.s2.li2">Preferencias técnicas básicas (si las hubiera)</li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="cookies.s2.p3">
+          Estas cookies son imprescindibles para que la web funcione correctamente y
+          <strong>no requieren tu consentimiento</strong> según la normativa vigente.
+        </p>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            6. Cambios en esta política
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Si en el futuro incorporamos nuevas funcionalidades que requieran cookies,
-            actualizaremos esta política y te informaremos adecuadamente.
-          </p>
+            " data-i18n="cookies.s3.title">
+          3. Lo que NO hacemos
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s3.p1">
+          En Caselyn valoramos tu privacidad. Por eso, esta web:
+        </p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n-html="cookies.s3.li1">
+            ❌ <strong>No usa Google Analytics</strong> ni ninguna otra herramienta de análisis
+          </li>
+          <li data-i18n-html="cookies.s3.li2">❌ <strong>No rastrea tu comportamiento</strong> en la web</li>
+          <li data-i18n-html="cookies.s3.li3">❌ <strong>No muestra publicidad</strong> personalizada</li>
+          <li data-i18n-html="cookies.s3.li4">❌ <strong>No comparte tus datos</strong> con terceros para marketing</li>
+          <li data-i18n-html="cookies.s3.li5">❌ <strong>No instala cookies</strong> de redes sociales o servicios
+            externos</li>
+        </ul>
 
-          <h2
-            style="
+        <h2 style="
               margin-top: var(--space-6);
               margin-bottom: var(--space-3);
               font-size: var(--font-size-xl);
               color: var(--color-text-primary);
-            "
-          >
-            7. Contacto
-          </h2>
-          <p style="margin-bottom: var(--space-4)">
-            Si tienes dudas sobre nuestra política de cookies, puedes escribirnos a
-            <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)"
-              >caselyncontact@gmail.com</a
-            >
-          </p>
+            " data-i18n="cookies.s4.title">
+          4. ¿Necesitas aceptar cookies?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="cookies.s4.p1">
+          <strong>No.</strong> Como esta web solo usa cookies técnicas necesarias, no estamos
+          obligados a mostrarte un banner de cookies ni pedirte consentimiento.
+        </p>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s4.p2">
+          Puedes navegar libremente sin preocuparte por rastreadores ni seguimiento publicitario.
+        </p>
 
-          <p
-            style="
+        <h2 style="
+              margin-top: var(--space-6);
+              margin-bottom: var(--space-3);
+              font-size: var(--font-size-xl);
+              color: var(--color-text-primary);
+            " data-i18n="cookies.s5.title">
+          5. ¿Cómo puedes gestionar las cookies?
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s5.p1">
+          Si aún así quieres deshabilitar todas las cookies (incluidas las técnicas), puedes
+          hacerlo desde la configuración de tu navegador:
+        </p>
+        <ul style="margin-left: var(--space-4); margin-bottom: var(--space-4)">
+          <li data-i18n-html="cookies.s5.li1"><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies
+          </li>
+          <li data-i18n-html="cookies.s5.li2"><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
+          <li data-i18n-html="cookies.s5.li3"><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
+          <li data-i18n-html="cookies.s5.li4"><strong>Edge:</strong> Configuración → Privacidad → Cookies</li>
+        </ul>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s5.p2">
+          Ten en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento
+          básico de la web.
+        </p>
+
+        <h2 style="
+              margin-top: var(--space-6);
+              margin-bottom: var(--space-3);
+              font-size: var(--font-size-xl);
+              color: var(--color-text-primary);
+            " data-i18n="cookies.s6.title">
+          6. Cambios en esta política
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n="cookies.s6.p1">
+          Si en el futuro incorporamos nuevas funcionalidades que requieran cookies,
+          actualizaremos esta política y te informaremos adecuadamente.
+        </p>
+
+        <h2 style="
+              margin-top: var(--space-6);
+              margin-bottom: var(--space-3);
+              font-size: var(--font-size-xl);
+              color: var(--color-text-primary);
+            " data-i18n="cookies.s7.title">
+          7. Contacto
+        </h2>
+        <p style="margin-bottom: var(--space-4)" data-i18n-html="cookies.s7.p1">
+          Si tienes dudas sobre nuestra política de cookies, puedes escribirnos a
+          <a href="mailto:caselyncontact@gmail.com" style="color: var(--color-accent)">caselyncontact@gmail.com</a>
+        </p>
+
+        <p style="
               margin-top: var(--space-8);
               padding-top: var(--space-6);
               border-top: 1px solid var(--color-border);
-            "
-          >
-            <a href="/" style="color: var(--color-accent); text-decoration: underline"
-              >← Volver al inicio</a
-            >
-          </p>
-        </div>
+            ">
+          <a href="/" style="color: var(--color-accent); text-decoration: underline" data-i18n="legal.back">← Volver al
+            inicio</a>
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <p>&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
-          <p style="margin-top: var(--space-2); font-size: var(--font-size-xs)">
-            <a
-              href="/privacidad.html"
-              style="color: var(--color-text-tertiary); margin-right: var(--space-3)"
-              >Privacidad</a
-            >
-            <a href="/cookies.html" style="color: var(--color-text-tertiary)">Cookies</a>
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p data-i18n="footer.copyright">&copy; 2026 Caselyn. Diseño web profesional para negocios locales.</p>
+        <p style="margin-top: var(--space-2); font-size: var(--font-size-xs)">
+          <a href="/privacidad.html" style="color: var(--color-text-tertiary); margin-right: var(--space-3)"
+            data-i18n="footer.privacy">Privacidad</a>
+          <a href="/cookies.html" style="color: var(--color-text-tertiary)" data-i18n="footer.cookies">Cookies</a>
+        </p>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="js/displacement-utils.js"></script>
-    <script src="js/glass-element.js"></script>
-  </body>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

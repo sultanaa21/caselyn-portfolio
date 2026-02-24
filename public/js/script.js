@@ -25,51 +25,55 @@ window.addEventListener('scroll', () => {
 });
 
 // Mobile menu toggle
-navbarToggle.addEventListener('click', () => {
-  navbarMenu.classList.toggle('active');
+if (navbarToggle && navbarMenu) {
+  navbarToggle.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
 
-  // Update aria-expanded
-  const isExpanded = navbarMenu.classList.contains('active');
-  navbarToggle.setAttribute('aria-expanded', isExpanded);
+    // Update aria-expanded
+    const isExpanded = navbarMenu.classList.contains('active');
+    navbarToggle.setAttribute('aria-expanded', isExpanded);
 
-  // Animate hamburger icon
-  const spans = navbarToggle.querySelectorAll('span');
-  if (isExpanded) {
-    spans[0].style.transform = 'rotate(45deg) translateY(7px)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
-  } else {
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-  }
-});
-
-// Close mobile menu when clicking a link
-navbarMenu.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navbarMenu.classList.remove('active');
-    navbarToggle.setAttribute('aria-expanded', 'false');
-
+    // Animate hamburger icon
     const spans = navbarToggle.querySelectorAll('span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
+    if (isExpanded) {
+      spans[0].style.transform = 'rotate(45deg) translateY(7px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
   });
-});
+
+  // Close mobile menu when clicking a link
+  navbarMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navbarMenu.classList.remove('active');
+      navbarToggle.setAttribute('aria-expanded', 'false');
+
+      const spans = navbarToggle.querySelectorAll('span');
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    });
+  });
+}
 
 // Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!navbar.contains(e.target) && navbarMenu.classList.contains('active')) {
-    navbarMenu.classList.remove('active');
-    navbarToggle.setAttribute('aria-expanded', 'false');
+if (navbar && navbarMenu && navbarToggle) {
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && navbarMenu.classList.contains('active')) {
+      navbarMenu.classList.remove('active');
+      navbarToggle.setAttribute('aria-expanded', 'false');
 
-    const spans = navbarToggle.querySelectorAll('span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-  }
-});
+      const spans = navbarToggle.querySelectorAll('span');
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+  });
+}
 
 // ============================================================================
 // FAQ Accordion
@@ -77,30 +81,32 @@ document.addEventListener('click', (e) => {
 
 const faqItems = document.querySelectorAll('.faq-item');
 
-faqItems.forEach((item) => {
-  const question = item.querySelector('.faq-question');
+if (faqItems.length > 0) {
+  faqItems.forEach((item) => {
+    const question = item.querySelector('.faq-question');
 
-  question.addEventListener('click', () => {
-    const isActive = item.classList.contains('active');
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
 
-    // Close all other items
-    faqItems.forEach((otherItem) => {
-      if (otherItem !== item) {
-        otherItem.classList.remove('active');
-        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      // Close all other items
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current item
+      if (isActive) {
+        item.classList.remove('active');
+        question.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
       }
     });
-
-    // Toggle current item
-    if (isActive) {
-      item.classList.remove('active');
-      question.setAttribute('aria-expanded', 'false');
-    } else {
-      item.classList.add('active');
-      question.setAttribute('aria-expanded', 'true');
-    }
   });
-});
+}
 
 // ============================================================================
 // Scroll Animations
@@ -132,79 +138,98 @@ fadeElements.forEach((el) => observer.observe(el));
 
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const submitButton = contactForm.querySelector('button[type="submit"]');
-  const originalText = submitButton.textContent;
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
 
-  // Get form data
-  const formData = {
-    name: contactForm.name.value.trim(),
-    contact: contactForm.email.value.trim(), // "email" field name from HTML, sent as "contact" to API
-    message: contactForm.message.value.trim(),
-    website: contactForm.website ? contactForm.website.value : '', // Honeypot field
-  };
+    // Get form data
+    const formData = {
+      name: contactForm.name.value.trim(),
+      contact: contactForm.email.value.trim(), // "email" field name from HTML, sent as "contact" to API
+      message: contactForm.message.value.trim(),
+      website: contactForm.website ? contactForm.website.value : '', // Honeypot field
+    };
 
-  // Basic client-side validation
-  if (!formData.name || !formData.contact || !formData.message) {
-    showFormMessage(submitButton, 'Por favor, completa todos los campos', 'error');
-    return;
-  }
+    // Basic client-side validation
+    if (!formData.name || !formData.contact || !formData.message) {
+      showFormMessage(submitButton, 'Por favor, completa todos los campos', 'error');
+      return;
+    }
 
-  if (formData.message.length < 10) {
-    showFormMessage(submitButton, 'El mensaje debe tener al menos 10 caracteres', 'error');
-    return;
-  }
+    if (formData.message.length < 10) {
+      showFormMessage(submitButton, 'El mensaje debe tener al menos 10 caracteres', 'error');
+      return;
+    }
 
-  if (formData.message.length > 5000) {
-    showFormMessage(
-      submitButton,
-      'El mensaje es demasiado largo (máximo 5000 caracteres)',
-      'error'
-    );
-    return;
-  }
+    if (formData.message.length > 5000) {
+      showFormMessage(
+        submitButton,
+        'El mensaje es demasiado largo (máximo 5000 caracteres)',
+        'error'
+      );
+      return;
+    }
 
-  // Disable button and show loading state
-  submitButton.disabled = true;
-  submitButton.textContent = 'Enviando...';
-  submitButton.style.opacity = '0.7';
+    // Disable button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+    submitButton.style.opacity = '0.7';
 
-  try {
-    // Send to serverless function
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // Send to serverless function
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (result.ok) {
-      // Success! Show success message
-      submitButton.textContent = '✅ ¡Enviado!';
-      submitButton.style.backgroundColor = '#10B981';
-      submitButton.style.opacity = '1';
+      if (result.ok) {
+        // Success! Show success message
+        submitButton.textContent = '✅ ¡Enviado!';
+        submitButton.style.backgroundColor = '#10B981';
+        submitButton.style.opacity = '1';
 
-      // Show success notification
-      showSuccessNotification();
+        // Show success notification
+        showSuccessNotification();
 
-      // Reset form
-      contactForm.reset();
+        // Reset form
+        contactForm.reset();
 
-      // Reset button after 4 seconds
-      setTimeout(() => {
-        submitButton.textContent = originalText;
-        submitButton.style.backgroundColor = '';
-        submitButton.disabled = false;
-      }, 4000);
-    } else {
-      // Server returned error
-      const errorMessage = result.error || 'Error al enviar. Intenta de nuevo.';
-      showFormMessage(submitButton, errorMessage, 'error');
+        // Reset button after 4 seconds
+        setTimeout(() => {
+          submitButton.textContent = originalText;
+          submitButton.style.backgroundColor = '';
+          submitButton.disabled = false;
+        }, 4000);
+      } else {
+        // Server returned error
+        const errorMessage = result.error || 'Error al enviar. Intenta de nuevo.';
+        showFormMessage(submitButton, errorMessage, 'error');
+
+        // Reset button after 4 seconds
+        setTimeout(() => {
+          submitButton.textContent = originalText;
+          submitButton.style.backgroundColor = '';
+          submitButton.style.opacity = '';
+          submitButton.disabled = false;
+        }, 4000);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+
+      // Network or unexpected error
+      showFormMessage(
+        submitButton,
+        'Error de conexión. Por favor, intenta de nuevo o contacta por WhatsApp.',
+        'error'
+      );
 
       // Reset button after 4 seconds
       setTimeout(() => {
@@ -214,25 +239,8 @@ contactForm.addEventListener('submit', async (e) => {
         submitButton.disabled = false;
       }, 4000);
     }
-  } catch (error) {
-    console.error('Form submission error:', error);
-
-    // Network or unexpected error
-    showFormMessage(
-      submitButton,
-      'Error de conexión. Por favor, intenta de nuevo o contacta por WhatsApp.',
-      'error'
-    );
-
-    // Reset button after 4 seconds
-    setTimeout(() => {
-      submitButton.textContent = originalText;
-      submitButton.style.backgroundColor = '';
-      submitButton.style.opacity = '';
-      submitButton.disabled = false;
-    }, 4000);
-  }
-});
+  });
+} // end if (contactForm)
 
 /**
  * Show temporary message on submit button
