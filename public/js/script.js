@@ -366,26 +366,161 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================================================
-  // Language Selector
+  // Language Selector — Data-Driven Dropdown
   // ============================================================================
 
-  const langButtons = document.querySelectorAll('.lang-btn');
-  const savedLang = localStorage.getItem('caselyn-lang') || 'es';
+  /**
+   * Language options shown in the selector.
+   * Add new entries here to support more languages — the UI adapts automatically.
+   * CA (Catalan) translations remain in translations.js but are hidden from
+   * the visible selector per design decision.
+   */
+  const LANG_OPTIONS = [
+    { code: 'es', label: 'Español' },
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+  ];
 
-  // Set initial active state from localStorage and apply translations
-  langButtons.forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.lang === savedLang);
-  });
-  applyTranslations(savedLang);
+  const langSelector = document.getElementById('lang-selector');
+  const langTrigger = document.getElementById('lang-trigger');
+  const langTriggerLabel = document.getElementById('lang-trigger-label');
+  const langDropdown = document.getElementById('lang-dropdown');
 
-  // Handle clicks
-  langButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      langButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = btn.dataset.lang;
+  if (langSelector && langTrigger && langDropdown) {
+    const savedLang = localStorage.getItem('caselyn-lang') || 'es';
+    let currentLang = savedLang;
+
+    // --- Render dropdown items from config ---
+    const renderLangOptions = () => {
+      langDropdown.innerHTML = '';
+      LANG_OPTIONS.forEach(({ code, label }) => {
+        const btn = document.createElement('button');
+        btn.className = 'lang-option' + (code === currentLang ? ' active' : '');
+        btn.setAttribute('data-lang', code);
+        btn.setAttribute('type', 'button');
+        btn.textContent = label;
+        langDropdown.appendChild(btn);
+      });
+    };
+
+    // --- Update trigger label and dropdown active state ---
+    const setActiveLang = (lang) => {
+      currentLang = lang;
+      langTriggerLabel.textContent = lang.toUpperCase();
+      langDropdown.querySelectorAll('.lang-option').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    };
+
+    // --- Open / Close ---
+    const openDropdown = () => {
+      langSelector.classList.add('open');
+      langTrigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDropdown = () => {
+      langSelector.classList.remove('open');
+      langTrigger.setAttribute('aria-expanded', 'false');
+    };
+
+    const toggleDropdown = () => {
+      if (langSelector.classList.contains('open')) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    };
+
+    // --- Select a language ---
+    const selectLang = (lang) => {
+      if (lang === currentLang) {
+        closeDropdown();
+        return;
+      }
+      setActiveLang(lang);
       localStorage.setItem('caselyn-lang', lang);
-      applyTranslations(lang);
+      applyTranslations(lang);  // eslint-disable-line no-undef -- defined in translations.js
+      closeDropdown();
+    };
+
+    // --- Desktop hover intent (only on non-touch devices) ---
+    const isDesktop = () => window.matchMedia('(min-width: 769px)').matches;
+    let hoverTimeout = null;
+
+    langSelector.addEventListener('mouseenter', () => {
+      if (!isDesktop()) return;
+      clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(openDropdown, 80);
     });
-  });
+
+    langSelector.addEventListener('mouseleave', () => {
+      if (!isDesktop()) return;
+      clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(closeDropdown, 120);
+    });
+
+    // --- Click / tap toggle ---
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    // --- Delegate click on dropdown options ---
+    langDropdown.addEventListener('click', (e) => {
+      const option = e.target.closest('.lang-option');
+      if (option) {
+        e.stopPropagation();
+        selectLang(option.dataset.lang);
+      }
+    });
+
+    // --- Close on outside click ---
+    document.addEventListener('click', (e) => {
+      if (!langSelector.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    // --- Keyboard accessibility ---
+    langTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleDropdown();
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+        langTrigger.focus();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        openDropdown();
+        const first = langDropdown.querySelector('.lang-option');
+        if (first) first.focus();
+      }
+    });
+
+    langDropdown.addEventListener('keydown', (e) => {
+      const options = [...langDropdown.querySelectorAll('.lang-option')];
+      const idx = options.indexOf(document.activeElement);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = options[idx + 1] || options[0];
+        next.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = options[idx - 1] || options[options.length - 1];
+        prev.focus();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (options[idx]) selectLang(options[idx].dataset.lang);
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+        langTrigger.focus();
+      }
+    });
+
+    // --- Initialize ---
+    renderLangOptions();
+    setActiveLang(currentLang);
+    applyTranslations(currentLang);  // eslint-disable-line no-undef
+  }
 });

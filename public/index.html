@@ -68,12 +68,20 @@
             <li><a href="#portafolio" data-i18n="nav.portafolio">Portafolio</a></li>
             <li><a href="#proceso" data-i18n="nav.proceso">Proceso</a></li>
             <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-            <li class="lang-selector" aria-label="Selector de idioma">
-              <button class="lang-btn active" data-lang="es">ES</button>
-              <span class="lang-divider">|</span>
-              <button class="lang-btn" data-lang="ca">CA</button>
-              <span class="lang-divider">|</span>
-              <button class="lang-btn" data-lang="en">EN</button>
+            <!-- Language Selector — items rendered by JS from config -->
+            <li class="lang-selector-wrapper" id="lang-selector">
+              <button class="lang-trigger" id="lang-trigger" aria-expanded="false" aria-haspopup="true"
+                aria-label="Select language">
+                <span class="lang-trigger-label" id="lang-trigger-label">ES</span>
+                <svg class="lang-trigger-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"
+                  aria-hidden="true">
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="lang-dropdown" id="lang-dropdown" aria-label="Language options">
+                <!-- Populated dynamically by script.js -->
+              </div>
             </li>
             <li><a href="#contacto" class="btn btn-liquid-glass" data-i18n="nav.contacto">Contacto</a></li>
           </ul>
