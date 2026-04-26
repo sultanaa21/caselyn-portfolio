@@ -192,7 +192,7 @@ if (contactForm) {
 
       if (result.ok) {
         // Success! Show success message
-        submitButton.textContent = '✅ ¡Enviado!';
+        submitButton.textContent = 'Enviado correctamente';
         submitButton.style.backgroundColor = '#10B981';
         submitButton.style.opacity = '1';
 
@@ -247,10 +247,10 @@ if (contactForm) {
  */
 function showFormMessage(button, message, type = 'error') {
   if (type === 'error') {
-    button.textContent = `❌ ${message}`;
+    button.textContent = message;
     button.style.backgroundColor = '#EF4444';
   } else if (type === 'success') {
-    button.textContent = `✅ ${message}`;
+    button.textContent = message;
     button.style.backgroundColor = '#10B981';
   }
 

@@ -262,22 +262,31 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; }
-    .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
-    .field { margin-bottom: 20px; }
-    .label { font-weight: 600; color: #4b5563; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .value { margin-top: 5px; padding: 10px; background: white; border-radius: 4px; border-left: 3px solid #667eea; }
-    .meta { font-size: 12px; color: #6b7280; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif; line-height: 1.6; color: #0a0a0a; background-color: #fafaf9; margin: 0; padding: 40px 20px; }
+    .container { max-width: 560px; margin: 0 auto; background-color: #ffffff; }
+    .header { padding: 32px 40px 24px; text-align: left; }
+    .logo { font-size: 13px; font-weight: 700; letter-spacing: 0.15em; color: #0a0a0a; margin: 0; }
+    .divider { border-top: 1px solid #e5e5e5; margin: 0; }
+    .content { padding: 0 40px; }
+    .title { font-size: 22px; font-weight: 500; color: #0a0a0a; margin: 32px 0 8px 0; }
+    .subtitle { font-size: 14px; color: #525252; margin: 0 0 32px 0; }
+    .field { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #f5f5f5; }
+    .label { font-weight: 600; color: #a3a3a3; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .value { margin: 0; padding-left: 12px; border-left: 3px solid #3b82f6; font-size: 15px; color: #0a0a0a; }
+    .meta { font-size: 12px; color: #a3a3a3; padding-top: 24px; }
+    .footer { text-align: center; font-size: 12px; color: #a3a3a3; padding: 24px 40px 32px; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1 style="margin: 0; font-size: 24px;">🎯 Nuevo Lead desde Caselyn</h1>
+      <div class="logo">CASELYN</div>
     </div>
+    <div class="divider"></div>
     <div class="content">
+      <h1 class="title">Nuevo contacto</h1>
+      <p class="subtitle">${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(',', ' ·')}</p>
+      
       <div class="field">
         <div class="label">Nombre</div>
         <div class="value">${sanitizedName}</div>
@@ -288,18 +297,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <div class="value">${sanitizedContact}</div>
       </div>
       
-      <div class="field">
+      <div class="field" style="border-bottom: none;">
         <div class="label">Mensaje</div>
         <div class="value">${sanitizedMessage.replace(/\n/g, '<br>')}</div>
       </div>
       
+      <div class="divider"></div>
       <div class="meta">
-        <strong>Información técnica:</strong><br>
-        📅 Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}<br>
-        🌐 IP: ${ip}<br>
-        💻 User Agent: ${userAgent}<br>
-        🆔 Lead ID: ${leadData?.id || 'N/A'}
+        Información técnica:<br>
+        IP: ${ip}<br>
+        User Agent: ${userAgent}<br>
+        Lead ID: ${leadData?.id || 'N/A'}
       </div>
+    </div>
+    <div class="footer">
+      &copy; 2026 Caselyn
     </div>
   </div>
 </body>
@@ -307,17 +319,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `.trim();
 
     const emailText = `
-🎯 NUEVO LEAD DESDE CASELYN
+NUEVO CONTACTO — CASELYN
 
-NOMBRE: ${sanitizedName}
-CONTACTO: ${sanitizedContact}
+Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(',', ' ·')}
+
+NOMBRE:
+${sanitizedName}
+
+CONTACTO:
+${sanitizedContact}
 
 MENSAJE:
 ${sanitizedMessage}
 
 ---
 INFORMACIÓN TÉCNICA:
-Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}
 IP: ${ip}
 User Agent: ${userAgent}
 Lead ID: ${leadData?.id || 'N/A'}
@@ -326,7 +342,7 @@ Lead ID: ${leadData?.id || 'N/A'}
     const { data: emailData, error: resendError } = await resend.emails.send({
       from: CONTACT_FROM_EMAIL,
       to: CONTACT_TO_EMAIL,
-      subject: `🎯 Nuevo Lead: ${sanitizedName}`,
+      subject: `Nuevo contacto — ${sanitizedName}`,
       html: emailHtml,
       text: emailText, // Fallback for email clients that don't support HTML
     });
