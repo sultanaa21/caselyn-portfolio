@@ -15,7 +15,7 @@ const translations = {
         // Hero
         'hero.title': 'Diseño web profesional para negocios locales',
         'hero.subtitle': 'Ayudamos a restaurantes, comercios y servicios a destacar en el mundo digital. Webs rápidas, profesionales y orientadas a resultados, sin importar dónde estés.',
-        'hero.cta.whatsapp': 'Hablar por WhatsApp',
+        'hero.cta.primary': 'Solicitar presupuesto',
         'hero.cta.portfolio': 'Ver trabajos',
 
         // Social Proof
@@ -95,8 +95,7 @@ const translations = {
 
         // Contact
         'contact.title': 'Hablemos de tu proyecto',
-        'contact.description': 'Trabajamos con negocios de todo el mundo. Cuéntanos qué necesitas y te responderemos con una propuesta clara y sin compromiso.',
-        'contact.cta.whatsapp': 'Hablar por WhatsApp',
+        'contact.subtitle': 'Cuéntanos qué necesitas y te enviamos una propuesta en menos de 24h.',
         'contact.trust': 'Respuesta en menos de 24h',
         'contact.form.name': 'Nombre',
         'contact.form.name.placeholder': 'Tu nombre',
@@ -205,7 +204,7 @@ const translations = {
         // Hero
         'hero.title': 'Disseny web professional per a negocis locals',
         'hero.subtitle': "Ajudem a restaurants, comerços i serveis a destacar al món digital. Webs ràpides, professionals i orientades a resultats, siguis on siguis.",
-        'hero.cta.whatsapp': 'Parlar per WhatsApp',
+        'hero.cta.primary': 'Sol·licitar pressupost',
         'hero.cta.portfolio': 'Veure treballs',
 
         // Social Proof
@@ -285,8 +284,7 @@ const translations = {
 
         // Contact
         'contact.title': 'Parlem del teu projecte',
-        'contact.description': "Treballem amb negocis de tot el món. Explica'ns què necessites i et respondrem amb una proposta clara i sense compromís.",
-        'contact.cta.whatsapp': 'Parlar per WhatsApp',
+        'contact.subtitle': "Explica'ns què necessites i t'enviem una proposta en menys de 24h.",
         'contact.trust': 'Resposta en menys de 24h',
         'contact.form.name': 'Nom',
         'contact.form.name.placeholder': 'El teu nom',
@@ -395,7 +393,7 @@ const translations = {
         // Hero
         'hero.title': 'Professional web design for local businesses',
         'hero.subtitle': 'We help restaurants, shops, and services stand out in the digital world. Fast, professional websites focused on results, no matter where you are.',
-        'hero.cta.whatsapp': 'Chat on WhatsApp',
+        'hero.cta.primary': 'Get a quote',
         'hero.cta.portfolio': 'View our work',
 
         // Social Proof
@@ -475,8 +473,7 @@ const translations = {
 
         // Contact
         'contact.title': "Let's talk about your project",
-        'contact.description': "We work with businesses worldwide. Tell us what you need and we'll respond with a clear, no-commitment proposal.",
-        'contact.cta.whatsapp': 'Chat on WhatsApp',
+        'contact.subtitle': "Tell us what you need and we'll send you a proposal within 24 hours.",
         'contact.trust': 'Response within 24h',
         'contact.form.name': 'Name',
         'contact.form.name.placeholder': 'Your name',
@@ -585,7 +582,7 @@ const translations = {
         // Hero
         'hero.title': 'Conception web professionnelle pour les entreprises locales',
         'hero.subtitle': 'Nous aidons les restaurants, les commerces et les services à se démarquer dans le monde numérique. Des sites rapides, professionnels et orientés résultats, où que vous soyez.',
-        'hero.cta.whatsapp': 'Discuter sur WhatsApp',
+        'hero.cta.primary': 'Demander un devis',
         'hero.cta.portfolio': 'Voir nos réalisations',
 
         // Social Proof
@@ -665,8 +662,7 @@ const translations = {
 
         // Contact
         'contact.title': 'Parlons de votre projet',
-        'contact.description': 'Nous travaillons avec des entreprises du monde entier. Dites-nous ce dont vous avez besoin et nous vous répondrons avec une proposition claire, sans engagement.',
-        'contact.cta.whatsapp': 'Discuter sur WhatsApp',
+        'contact.subtitle': "Dites-nous ce dont vous avez besoin et nous vous enverrons une proposition en moins de 24h.",
         'contact.trust': 'Réponse sous 24h',
         'contact.form.name': 'Nom',
         'contact.form.name.placeholder': 'Votre nom',
