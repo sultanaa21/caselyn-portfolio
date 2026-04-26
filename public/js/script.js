@@ -382,9 +382,21 @@ window.addEventListener('DOMContentLoaded', () => {
    * the visible selector per design decision.
    */
   const LANG_OPTIONS = [
-    { code: 'es', label: 'Español' },
-    { code: 'en', label: 'English' },
-    { code: 'fr', label: 'Français' },
+    { 
+      code: 'es', 
+      label: 'Español',
+      flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" width="18" height="12" style="border-radius:3px"><rect width="18" height="12" fill="#AA151B"/><rect width="18" height="6" y="3" fill="#F1BF00"/></svg>`
+    },
+    { 
+      code: 'en', 
+      label: 'English',
+      flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" width="18" height="12" style="border-radius:3px"><rect width="18" height="12" fill="#012169"/><path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="2"/><path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1"/><path d="M9,0 v12 M0,6 h18" stroke="#fff" stroke-width="3"/><path d="M9,0 v12 M0,6 h18" stroke="#C8102E" stroke-width="2"/></svg>`
+    },
+    { 
+      code: 'fr', 
+      label: 'Français',
+      flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" width="18" height="12" style="border-radius:3px"><rect width="18" height="12" fill="#ED2939"/><rect width="12" height="12" fill="#fff"/><rect width="6" height="12" fill="#002395"/></svg>`
+    },
   ];
 
   const langSelector = document.getElementById('lang-selector');
@@ -404,7 +416,13 @@ window.addEventListener('DOMContentLoaded', () => {
         btn.className = 'lang-option' + (code === currentLang ? ' active' : '');
         btn.setAttribute('data-lang', code);
         btn.setAttribute('type', 'button');
-        btn.textContent = label;
+        const langConfig = LANG_OPTIONS.find(opt => opt.code === code);
+        btn.innerHTML = `
+          <span style="display:flex; align-items:center; gap:8px;">
+            ${langConfig.flag}
+            <span>${label}</span>
+          </span>
+        `;
         langDropdown.appendChild(btn);
       });
     };
@@ -412,7 +430,13 @@ window.addEventListener('DOMContentLoaded', () => {
     // --- Update trigger label and dropdown active state ---
     const setActiveLang = (lang) => {
       currentLang = lang;
-      langTriggerLabel.textContent = lang.toUpperCase();
+      const langConfig = LANG_OPTIONS.find((opt) => opt.code === lang) || LANG_OPTIONS[0];
+      langTriggerLabel.innerHTML = `
+        <span style="display:flex; align-items:center; gap:6px;">
+          ${langConfig.flag}
+          <span>${langConfig.code.toUpperCase()}</span>
+        </span>
+      `;
       langDropdown.querySelectorAll('.lang-option').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });

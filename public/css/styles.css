@@ -551,6 +551,13 @@ a {
   line-height: 1.4;
 }
 
+/* Ensure SVG flags maintain their own colors and don't shrink */
+.lang-selector-wrapper svg,
+.lang-option svg {
+  fill: unset;
+  flex-shrink: 0;
+}
+
 .lang-option:hover,
 .lang-option:focus-visible {
   background-color: rgba(0, 0, 0, 0.04);
