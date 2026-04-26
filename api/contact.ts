@@ -114,7 +114,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // 5. Parse and validate request body
-  const { name, contact, message, website } = req.body;
+  const { name, email, phone, message, website } = req.body;
 
   // Honeypot check: if "website" field is filled, reject silently
   if (website && website.trim() !== '') {
@@ -128,10 +128,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ ok: false, error: 'El nombre es obligatorio' });
   }
 
-  if (!contact || typeof contact !== 'string' || contact.trim() === '') {
+  if (!email || typeof email !== 'string' || email.trim() === '') {
     return res
       .status(400)
-      .json({ ok: false, error: 'El contacto (email o teléfono) es obligatorio' });
+      .json({ ok: false, error: 'El email es obligatorio' });
   }
 
   if (!message || typeof message !== 'string' || message.trim() === '') {
@@ -152,7 +152,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // Sanitize inputs
   const sanitizedName = name.trim();
-  const sanitizedContact = contact.trim();
+  const sanitizedEmail = email.trim();
+  const sanitizedPhone = phone ? phone.trim() : '';
   const sanitizedMessage = message.trim();
 
   try {
@@ -168,7 +169,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .from('leads')
       .insert({
         name: sanitizedName,
-        contact: sanitizedContact,
+        email: sanitizedEmail,
+        phone: sanitizedPhone,
         message: sanitizedMessage,
         ip,
         user_agent: userAgent,
@@ -195,7 +197,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         lead_id: leadData?.id || null,
         created_at: leadData?.created_at || new Date().toISOString(),
         name: sanitizedName,
-        contact: sanitizedContact,
+        email: sanitizedEmail,
+        phone: sanitizedPhone,
         message: sanitizedMessage,
         source: 'Formulario',
         priority: 'Media',
@@ -293,8 +296,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       </div>
       
       <div class="field">
-        <div class="label">Contacto</div>
-        <div class="value">${sanitizedContact}</div>
+        <div class="label">Email</div>
+        <div class="value">${sanitizedEmail}</div>
+      </div>
+      
+      <div class="field">
+        <div class="label">Teléfono</div>
+        <div class="value">${sanitizedPhone || '—'}</div>
       </div>
       
       <div class="field" style="border-bottom: none;">
@@ -326,8 +334,11 @@ Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid', year: '
 NOMBRE:
 ${sanitizedName}
 
-CONTACTO:
-${sanitizedContact}
+EMAIL:
+${sanitizedEmail}
+
+TELÉFONO:
+${sanitizedPhone || '—'}
 
 MENSAJE:
 ${sanitizedMessage}

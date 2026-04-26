@@ -148,14 +148,20 @@ if (contactForm) {
     // Get form data
     const formData = {
       name: contactForm.name.value.trim(),
-      contact: contactForm.email.value.trim(), // "email" field name from HTML, sent as "contact" to API
+      email: contactForm.email.value.trim(),
+      phone: contactForm.phone ? contactForm.phone.value.trim() : '',
       message: contactForm.message.value.trim(),
       website: contactForm.website ? contactForm.website.value : '', // Honeypot field
     };
 
     // Basic client-side validation
-    if (!formData.name || !formData.contact || !formData.message) {
-      showFormMessage(submitButton, 'Por favor, completa todos los campos', 'error');
+    if (!formData.name || !formData.message) {
+      showFormMessage(submitButton, 'Por favor, completa todos los campos obligatorios', 'error');
+      return;
+    }
+
+    if (!formData.email) {
+      showFormMessage(submitButton, 'Introduce tu email', 'error');
       return;
     }
 
