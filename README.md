@@ -1,323 +1,121 @@
 # Caselyn Portfolio
 
-> Premium, minimalist portfolio website for a professional web agency
+Landing page corporativa y portafolio para agencia de diseño y desarrollo web, orientada a negocios locales.
 
-A static, enterprise-grade landing page built with clean HTML, CSS, and JavaScript. Designed with Apple/Stripe-level aesthetics to position Caselyn as a serious, established web agency serving local businesses.
+## Descripción General
 
-[![CI](https://github.com/sultanaa21/caselyn-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/sultanaa21/caselyn-portfolio/actions/workflows/ci.yml)
+Caselyn Portfolio es una página web estática de alto rendimiento construida con tecnologías web nativas (HTML5, CSS3, JavaScript Vanilla) y desplegada en la infraestructura de Vercel. El proyecto destaca por su diseño premium minimalista, animaciones de alto rendimiento (GPU-accelerated) y un sistema robusto de captura de leads mediante funciones serverless (Vercel Functions).
 
-[Live Demo](https://your-domain.vercel.app) • [Report Bug](https://github.com/sultanaa21/caselyn-portfolio/issues)
+## Características Principales
 
----
+- **Arquitectura Serverless:** Backend implementado a través de funciones serverless de Vercel (`/api/contact.ts`) para el procesamiento seguro de formularios de contacto.
+- **Efecto Liquid Glass (Web Component):** Implementación nativa de un Web Component (`<glass-element>`) que utiliza filtros SVG avanzados (`feDisplacementMap`) generados en tiempo de ejecución para crear un efecto visual de cristal líquido altamente optimizado, con *graceful degradation* para navegadores sin soporte.
+- **Sistema i18n Nativo:** Internacionalización desarrollada 100% en Vanilla JS, soportando Español, Inglés, Francés (y Catalán), con almacenamiento persistente de preferencias sin dependencias externas.
+- **Flujo de Captura de Leads Robusto:**
+  - Validación doble (cliente y servidor).
+  - Rate limiting en memoria (protección contra abusos).
+  - Honeypot anti-spam.
+  - Persistencia en base de datos PostgreSQL (Supabase).
+  - Integración opcional con Webhooks (Google Sheets).
+  - Envío de notificaciones transaccionales vía Resend.
+- **Rendimiento y SEO:** Arquitectura libre de frameworks pesados que bloqueen el renderizado. Meta etiquetas completas y schema.org JSON-LD para SEO local.
 
-## ✨ Features
+## Stack Tecnológico
 
-- **Premium Design** - Apple/Stripe-inspired minimalist aesthetic with restrained glass effects
-- **7 Complete Sections** - Hero, Social Proof, Services, Portfolio, Process, FAQ, Contact
-- **Mobile-First** - Fully responsive design optimized for all devices
-- **Zero Dependencies** - Pure HTML/CSS/JS, no frameworks or build process
-- **SEO Optimized** - Complete meta tags, Open Graph, Twitter Cards, sitemap
-- **Performance** - Instant load times, GPU-accelerated animations
-- **Accessible** - WCAG AA compliant, semantic HTML, keyboard navigation
-- **Professional Tooling** - ESLint, Prettier, Stylelint with CI/CD
+| Capa | Tecnologías |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3 (Custom Properties), JavaScript ES2021 (Vanilla) |
+| **Backend (Serverless)** | Node.js, TypeScript (`@vercel/node`) |
+| **Base de Datos** | Supabase (PostgreSQL) |
+| **Emails Transaccionales** | Resend |
+| **Hosting y Despliegue** | Vercel |
+| **Integración Continua (CI)** | GitHub Actions |
+| **Calidad de Código** | ESLint, Prettier, Stylelint, Husky |
 
----
+## Estructura del Proyecto
 
-## 🚀 Quick Start
-
-### Local Development
-
-**Option 1: Direct File Access**
-
-```bash
-# Clone the repository
-git clone https://github.com/sultanaa21/caselyn-portfolio.git
-cd caselyn-portfolio
-
-# Open in browser
-open index.html  # macOS
-start index.html # Windows
-```
-
-**Option 2: Local Server** (recommended)
-
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx serve
-
-# Using PHP
-php -S localhost:8000
-```
-
-Then open [http://localhost:8000](http://localhost:8000)
-
-### Install Development Tools
-
-```bash
-npm install
-```
-
----
-
-## 🛠️ Development
-
-### Quality Commands
-
-```bash
-# Format code
-npm run format
-
-# Check formatting
-npm run format:check
-
-# Run linters
-npm run lint
-```
-
-### Dev Workflow
-
-This repository has **auto-formatting on commit** via Husky + lint-staged:
-
-1. **Make changes** to any file
-2. **Stage files**: `git add .`
-3. **Commit**: `git commit -m "your message"`
-4. **Auto-fix runs**: Prettier + ESLint + Stylelint auto-fix staged files
-5. **If fails**: Fix errors, then commit again
-
-**Manual commands:**
-
-```bash
-npm run lint:fix  # Auto-fix all linting issues
-npm run format    # Format all files
-```
-
-All checks run automatically via GitHub Actions on push/PR.
-
----
-
-## 📁 Project Structure
-
-```
+```text
 caselyn-portfolio/
-├── index.html              # Main landing page
-├── css/
-│   └── styles.css         # Complete design system
-├── js/
-│   └── script.js          # Interactive features
-├── assets/
-│   ├── img/               # Portfolio screenshots (add yours here)
-│   └── icons/             # SVG icons (optional)
-├── public/
-│   ├── favicon.ico        # Browser favicon
-│   ├── og.png            # Social sharing image
-│   ├── robots.txt        # SEO crawler rules
-│   └── sitemap.xml       # Site structure
-├── .github/
-│   └── workflows/
-│       └── ci.yml        # GitHub Actions CI
-└── [config files]        # .prettierrc, .eslintrc, etc.
+├── .github/workflows/   # Pipelines de CI/CD
+├── api/                 # Funciones Serverless de Vercel
+│   └── contact.ts       # Endpoint POST /api/contact
+├── public/              # Archivos estáticos (Directorio raíz del servidor web)
+│   ├── index.html       # Landing page principal
+│   ├── privacidad.html  # Política de privacidad
+│   ├── cookies.html     # Política de cookies
+│   ├── css/
+│   │   └── styles.css   # Sistema de diseño y utilidades CSS
+│   └── js/
+│       ├── script.js             # Lógica de interfaz y cliente de API
+│       ├── translations.js       # Diccionario y motor del sistema i18n
+│       ├── glass-element.js      # Web Component custom para el header
+│       └── displacement-utils.js # Utilidades matemáticas para filtros SVG
+├── vercel.json          # Configuración de despliegue y cabeceras de seguridad
+└── tsconfig.json        # Configuración de TypeScript (exclusivo para /api)
 ```
 
----
+## Configuración y Desarrollo Local
 
-## ✏️ Customization
+### Requisitos Previos
 
-### 1. Update WhatsApp Number
+- [Node.js](https://nodejs.org/) (versión 20 o superior recomendada).
+- Cuenta en [Supabase](https://supabase.com/) (para persistencia de leads).
+- Cuenta en [Resend](https://resend.com/) (para envío de emails).
 
-Find and replace in `index.html`:
+### Instalación
 
-```html
-<!-- Search for -->
-34622838676
+1.  **Clonar el repositorio:**
 
-<!-- Replace with your WhatsApp number (include country code) -->
+    ```bash
+    git clone https://github.com/sultanaa21/caselyn-portfolio.git
+    cd caselyn-portfolio
+    ```
+
+2.  **Instalar dependencias de desarrollo:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Configurar Variables de Entorno:**
+    El proyecto requiere variables de entorno para el funcionamiento de la API de contacto. Al usar Vercel, estas deben configurarse en el panel de control del proyecto, pero para desarrollo local con Vercel CLI (opcional), las variables necesarias son:
+
+    | Variable | Descripción | Requerida |
+    | :--- | :--- | :--- |
+    | `SUPABASE_URL` | URL de tu proyecto Supabase | Sí |
+    | `SUPABASE_SERVICE_ROLE_KEY` | Clave de servicio para escritura directa a la BD | Sí |
+    | `RESEND_API_KEY` | Clave de API para el servicio de envío de correos | Sí |
+    | `CONTACT_TO_EMAIL` | Dirección de destino para los leads (ej. `tu@email.com`) | Sí |
+    | `CONTACT_FROM_EMAIL` | Dirección de remitente validada en Resend | Sí |
+    | `GOOGLE_SHEETS_WEBHOOK_URL` | URL para integración con Google Sheets | No |
+    | `SHEETS_WEBHOOK_SECRET` | Token de seguridad para el webhook | No |
+
+### Ejecución Local
+
+Para visualizar el Frontend, puedes utilizar cualquier servidor HTTP estático en la carpeta `public`:
+
+```bash
+# Usando npx y el paquete 'serve'
+npx serve public
 ```
 
-Locations:
+*Nota: Para probar la función serverless (`/api/contact`) de manera íntegra en desarrollo, se recomienda utilizar la herramienta CLI oficial de Vercel (`vercel dev`).*
 
-- Hero section CTAs
-- Navigation button
-- Contact section
+### Comandos de Calidad de Código
 
-### 2. Replace Portfolio Projects
+El proyecto incluye herramientas para mantener la consistencia del código, las cuales se ejecutan automáticamente antes de cada commit mediante *husky*.
 
-In `index.html`, find the `.portfolio-card` sections and update:
-
-```html
-<article class="portfolio-card fade-in">
-  <div class="portfolio-image">
-    <!-- Replace SVG with actual screenshot -->
-    <img src="assets/img/project-name.png" alt="Project Name" />
-  </div>
-  <div class="portfolio-content">
-    <span class="portfolio-tag">YOUR CATEGORY</span>
-    <h3 class="portfolio-title">Client Name</h3>
-    <p class="portfolio-description">Brief description of the project and results achieved.</p>
-  </div>
-</article>
+```bash
+npm run lint       # Ejecuta ESLint y Stylelint
+npm run lint:fix   # Corrige automáticamente errores de linting
+npm run format     # Formatea el código con Prettier
 ```
 
-### 3. Update Service Descriptions
+## Despliegue
 
-Modify the three service cards in the `#servicios` section to match your specific offerings.
+El proyecto está diseñado y configurado para un despliegue nativo y sin fricciones en **Vercel**.
 
-### 4. Customize FAQ
-
-Update questions in the `#faq` section with real questions your clients ask.
-
-### 5. Replace Domain URLs
-
-After deploying to Vercel, update these placeholders in `index.html`:
-
-```html
-<!-- Replace all instances of -->
-https://your-domain.vercel.app/
-
-<!-- With your actual Vercel URL or custom domain -->
-```
-
-Also update in:
-
-- `public/robots.txt`
-- `public/sitemap.xml`
-
-### 6. Update Social Sharing Image
-
-Replace `public/og.png` with a custom 1200x630px image featuring your branding.
-
----
-
-## 🚢 Deployment
-
-### Deploy to Vercel (Recommended)
-
-1. **Import Repository**
-   - Go to [vercel.com/new](https://vercel.com/new)
-   - Import your GitHub repository
-
-2. **Configure Project**
-   - Framework Preset: **Other**
-   - Build Command: _(leave empty)_
-   - Output Directory: _(leave empty)_
-   - Install Command: `npm install` (for CI only)
-
-3. **Deploy**
-   - Click "Deploy"
-   - Your site will be live at `https://your-project.vercel.app`
-
-4. **Post-Deployment**
-   - Update all `https://your-domain.vercel.app/` URLs in the code
-   - Add custom domain (optional)
-   - Update canonical URLs and OG tags
-
-### Deploy to GitHub Pages
-
-1. Go to **Settings** → **Pages**
-2. Source: **Deploy from a branch**
-3. Branch: **main** / **(root)**
-4. Save
-
-Your site will be live at `https://sultanaa21.github.io/caselyn-portfolio/`
-
-### Other Static Hosts
-
-Works with any static hosting:
-
-- Netlify
-- Cloudflare Pages
-- Firebase Hosting
-- AWS S3 + CloudFront
-
-**No build process required** - just upload the files.
-
----
-
-## 🎨 Design System
-
-### Colors
-
-```css
---color-background: #fafaf9 /* Off-white */ --color-surface: #ffffff /* Pure white */
-  --color-text-primary: #0a0a0a /* Near-black */ --color-accent: #3b82f6
-  /* Professional blue (CTAs only) */;
-```
-
-### Typography
-
-- **Font Stack**: SF Pro Display / Inter / System fonts
-- **Scale**: 14px - 56px (responsive with clamp)
-- **Weights**: 400 (regular), 500 (medium), 600 (semibold)
-
-### Spacing
-
-8px-based scale: `8, 16, 24, 32, 48, 64, 96, 128px`
-
-### Glass Morphism
-
-Applied only to:
-
-- Navigation bar (on scroll)
-- Select card hover states
-
-Parameters:
-
-- Backdrop blur: 24px
-- Background: rgba(255, 255, 255, 0.8)
-- Very subtle borders
-
----
-
-## 🧪 Browser Support
-
-- Chrome/Edge (modern)
-- Firefox (modern)
-- Safari (modern)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-Graceful degradation for older browsers.
-
----
-
-## 📄 License
-
-[MIT License](LICENSE) - feel free to use this code for your projects.
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Run linters (`npm run lint`)
-4. Format code (`npm run format`)
-5. Commit changes (`git commit -m 'Add amazing feature'`)
-6. Push to branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
----
-
-## 📞 Support
-
-For questions or issues:
-
-- Open an [issue](https://github.com/sultanaa21/caselyn-portfolio/issues)
-- Contact via WhatsApp (update link in code)
-
----
-
-## 📚 Tech Stack
-
-- **HTML5** - Semantic markup
-- **CSS3** - Modern features (custom properties, grid, flexbox)
-- **JavaScript ES2021** - Vanilla JS, no frameworks
-- **GitHub Actions** - CI/CD pipeline
-- **Vercel** - Hosting platform
-
----
-
-Built with care for the modern web. ✨
+1. Conecta tu repositorio de GitHub a tu cuenta de Vercel.
+2. Vercel detectará automáticamente que es un proyecto estático con funciones serverless (no requiere `Build Command`).
+3. Asegúrate de configurar las **Variables de Entorno** requeridas en la configuración del proyecto en Vercel.
+4. Las cabeceras de seguridad y las políticas de enrutamiento ya se encuentran definidas en `vercel.json`.
