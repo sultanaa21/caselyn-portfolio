@@ -128,64 +128,9 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="section" id="servicios">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2 class="section-title" data-i18n="services.title">Diseño Web Profesional para Restaurantes y Comercios</h2>
-        <p class="section-description" data-i18n="services.description">
-          Tres servicios diseñados para que tu negocio crezca en internet
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-              </path>
-            </svg>
-          </div>
-          <h3 class="card-title" data-i18n="services.card1.title">Diseño Web</h3>
-          <p class="card-description" data-i18n="services.card1.description">
-            Tu negocio en internet, listo para vender. Diseños profesionales que transmiten
-            confianza y facilitan el contacto con tus clientes.
-          </p>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-            </svg>
-          </div>
-          <h3 class="card-title" data-i18n="services.card2.title">Desarrollo Web</h3>
-          <p class="card-description" data-i18n="services.card2.description">
-            Rápida, profesional y fácil de actualizar. Tu web funcionará perfectamente en
-            cualquier dispositivo y será fácil de encontrar en Google.
-          </p>
-        </div>
-
-        <div class="card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6">
-              </path>
-            </svg>
-          </div>
-          <h3 class="card-title" data-i18n="services.card3.title">Estrategia Digital</h3>
-          <p class="card-description" data-i18n="services.card3.description">
-            Te ayudamos a llegar a más clientes. Desde Google Maps hasta redes sociales, te
-            acompañamos para que tu negocio sea visible donde tus clientes te buscan.
-          </p>
-        </div>
-      </div>
-    </div>
+  <!-- Services Section — content injected by services-renderer.js -->
+  <section class="section section--services" id="servicios" aria-label="Servicios">
+    <!-- Renderer injects: section header + audit entry + services grid -->
   </section>
 
   <!-- Portfolio Section -->
@@ -532,6 +477,9 @@
       }
     </script>
 
+  <script src="js/services-data.js"></script>
+  <script src="js/services-i18n.js"></script>
+  <script src="js/services-renderer.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/script.js"></script>
 </body>

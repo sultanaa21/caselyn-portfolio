@@ -364,6 +364,14 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 // ============================================================================
 
 window.addEventListener('DOMContentLoaded', () => {
+  // ── Services Section — render on init ───────────────────────────────────
+  // renderServicesSection is defined in services-renderer.js
+  // getServicesUiStrings and getServiceStrings are defined in services-i18n.js
+  if (typeof renderServicesSection === 'function') {
+    const initLang = localStorage.getItem('caselyn-lang') || 'es';
+    renderServicesSection(initLang);
+  }
+
   fadeElements.forEach((el) => {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -470,6 +478,10 @@ window.addEventListener('DOMContentLoaded', () => {
       setActiveLang(lang);
       localStorage.setItem('caselyn-lang', lang);
       applyTranslations(lang);  // eslint-disable-line no-undef -- defined in translations.js
+      // Re-render dynamic services section
+      if (typeof rerenderServicesSection === 'function') {
+        rerenderServicesSection(lang);
+      }
       closeDropdown();
     };
 
