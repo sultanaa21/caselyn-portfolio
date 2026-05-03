@@ -386,14 +386,17 @@ window.addEventListener('DOMContentLoaded', () => {
   /**
    * Language options shown in the selector.
    * Add new entries here to support more languages — the UI adapts automatically.
-   * CA (Catalan) translations remain in translations.js but are hidden from
-   * the visible selector per design decision.
    */
   const LANG_OPTIONS = [
     { 
       code: 'es', 
       label: 'Español',
       flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" width="18" height="12" style="border-radius:3px"><rect width="18" height="12" fill="#AA151B"/><rect width="18" height="6" y="3" fill="#F1BF00"/></svg>`
+    },
+    { 
+      code: 'ca', 
+      label: 'Català',
+      flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" width="18" height="12" style="border-radius:3px"><rect width="18" height="12" fill="#ffff00"/><rect width="18" height="1.33" y="1.33" fill="#d40000"/><rect width="18" height="1.33" y="4" fill="#d40000"/><rect width="18" height="1.33" y="6.66" fill="#d40000"/><rect width="18" height="1.33" y="9.33" fill="#d40000"/></svg>`
     },
     { 
       code: 'en', 

@@ -86,12 +86,13 @@ export function renderPortfolioGrid() {
 
       // Stack pills
       const stackPills = project.stack
-        .map(t => `<span class="portfolio-card__tech-pill">${t}</span>`)
+        .map((t, i) => `<span class="portfolio-card__tech-pill" data-i18n="portfolio.${project.slug}.stack.${i}">${t}</span>`)
         .join('');
 
       // CTA label — only "Ver proyecto" for real links
       const hasLiveUrl = project.liveUrl && project.liveUrl !== '#';
       const ctaLabel = hasLiveUrl ? 'Ver proyecto' : 'Próximamente';
+      const ctaI18n = hasLiveUrl ? 'portfolio.cta.live' : 'portfolio.cta.soon';
       const ctaTag = hasLiveUrl
         ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="portfolio-card__link-wrapper">`
         : `<div class="portfolio-card__link-wrapper portfolio-card__link-wrapper--disabled">`;
@@ -106,14 +107,14 @@ export function renderPortfolioGrid() {
 
             <div class="portfolio-card__body">
               <div class="portfolio-card__header">
-                <h3 class="portfolio-card__title">${project.title}</h3>
-                ${project.featured ? '<span class="portfolio-card__badge">Destacado</span>' : ''}
+                <h3 class="portfolio-card__title" data-i18n="portfolio.${project.slug}.title">${project.title}</h3>
+                ${project.featured ? `<span class="portfolio-card__badge" data-i18n="portfolio.badge.featured">Destacado</span>` : ''}
               </div>
 
-              <p class="portfolio-card__tagline">${project.tagline || project.shortDescription}</p>
+              <p class="portfolio-card__tagline" data-i18n="portfolio.${project.slug}.tagline">${project.tagline || project.shortDescription}</p>
 
               <div class="portfolio-card__meta">
-                <span class="portfolio-card__category">${project.category}</span>
+                <span class="portfolio-card__category" data-i18n="portfolio.${project.slug}.category">${project.category}</span>
                 <span class="portfolio-card__dot">·</span>
                 <span class="portfolio-card__year">${project.year}</span>
               </div>
@@ -123,7 +124,7 @@ export function renderPortfolioGrid() {
               </div>
 
               <div class="portfolio-card__cta">
-                <span class="portfolio-card__cta-label">${ctaLabel}</span>
+                <span class="portfolio-card__cta-label" data-i18n="${ctaI18n}">${ctaLabel}</span>
                 <svg class="portfolio-card__cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
@@ -134,6 +135,13 @@ export function renderPortfolioGrid() {
         </article>
       `;
     }).join('');
+
+  // Re-apply translations if the i18n system is already loaded
+  const applyTrans = window.applyTranslations || (typeof applyTranslations === 'function' ? applyTranslations : null);
+  if (applyTrans) {
+    const savedLang = localStorage.getItem('caselyn-lang') || document.documentElement.lang || 'es';
+    applyTrans(savedLang);
+  }
 }
 
 // Expose for external triggers
