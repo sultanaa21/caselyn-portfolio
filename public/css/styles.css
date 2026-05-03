@@ -196,10 +196,12 @@ a {
 
 .section {
   padding: var(--space-12) 0;
+  scroll-margin-top: 80px;
 }
 
 .section-lg {
   padding: var(--space-16) 0;
+  scroll-margin-top: 80px;
 }
 
 @media (max-width: 768px) {
@@ -1617,137 +1619,256 @@ a {
 /* Portfolio Section
    ========================================================================== */
 
-.portfolio-grid {
+.portfolio-grid-v2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
+
+@media (min-width: 768px) {
+  .portfolio-grid-v2 {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+/* --- Card Shell --- */
 
 .portfolio-card {
   background-color: var(--color-surface);
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--color-border);
-  transition: all var(--motion-duration-lg) var(--motion-easing);
+  transition:
+    box-shadow var(--motion-duration-lg) var(--motion-easing),
+    transform var(--motion-duration-lg) var(--motion-easing),
+    border-color var(--motion-duration-lg) var(--motion-easing);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.portfolio-card:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-10px);
-  border-color: rgba(0, 0, 0, 0.1);
+@media (hover: hover) {
+  .portfolio-card:hover {
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--project-accent, var(--color-accent)) 30%, var(--color-border));
+  }
 }
 
-.portfolio-image {
+/* --- Link Wrapper --- */
+
+.portfolio-card__link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  cursor: pointer;
+}
+
+.portfolio-card__link-wrapper--disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* --- Image Container (Mandatory 16:10) --- */
+
+.portfolio-card__image {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, #f9fafb 0%, var(--color-background) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-4);
-  position: relative;
+  flex-shrink: 0;
+  background-color: var(--color-background);
   overflow: hidden;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-/* Device Mockup Frame */
-.portfolio-image svg {
-  max-width: 90%;
-  max-height: 90%;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
-  transition: transform var(--motion-duration-lg) var(--motion-easing);
-}
-
-.portfolio-card:hover .portfolio-image svg {
-  transform: scale(1.02);
-}
-
-.portfolio-image img {
+.portfolio-card__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.portfolio-content {
-  padding: var(--space-6);
+.portfolio-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portfolio-card__mock-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .portfolio-card:hover .portfolio-card__img,
+  .portfolio-card:hover .portfolio-card__mock-svg {
+    transform: scale(1.03);
+  }
+}
+
+/* --- Card Body --- */
+
+.portfolio-card__body {
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  flex: 1;
 }
 
-.portfolio-tag {
-  display: inline-block;
-  font-size: var(--font-size-xs);
+@media (min-width: 600px) {
+  .portfolio-card__body {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+}
+
+/* Header: title + badge */
+.portfolio-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.portfolio-card__title {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 600px) {
+  .portfolio-card__title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.portfolio-card__badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background-color: color-mix(in srgb, var(--project-accent, var(--color-accent)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--project-accent, var(--color-accent)) 20%, transparent);
+  border-radius: 100px;
+  font-size: 10px;
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
+  color: var(--project-accent, var(--color-accent));
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
-.portfolio-title {
-  font-size: var(--font-size-xl);
-}
-
-.portfolio-description {
+/* Tagline */
+.portfolio-card__tagline {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-2);
+  line-height: 1.5;
 }
 
-/* Case Study Features */
-.portfolio-result {
+/* Meta row */
+.portfolio-card__meta {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  padding: var(--space-3) 0;
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.portfolio-result-label {
-  font-size: var(--font-size-xs);
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  font-size: 11px;
   color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.portfolio-card__category {
   font-weight: var(--font-weight-medium);
 }
 
-.portfolio-result-value {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
+.portfolio-card__dot {
+  opacity: 0.4;
 }
 
-/* Tech Stack Pills */
-.portfolio-stack {
+.portfolio-card__year {
+  font-weight: var(--font-weight-normal);
+}
+
+/* Tech stack pills */
+.portfolio-card__stack {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: 4px;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
-.portfolio-badge {
+.portfolio-card__tech-pill {
   display: inline-flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 2px 8px;
   background-color: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-size: 12px;
+  border-radius: 100px;
+  font-size: 10px;
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
-  transition: all var(--motion-duration-sm) var(--motion-easing);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
-.portfolio-badge:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-text-tertiary);
-  transform: translateY(-1px);
+/* CTA — always pushed to bottom */
+.portfolio-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  transition: color var(--motion-duration-sm) var(--motion-easing);
 }
 
-@media (max-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
+.portfolio-card__cta-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--motion-duration-base) var(--motion-easing);
+}
+
+@media (hover: hover) {
+  .portfolio-card:hover .portfolio-card__cta {
+    color: var(--project-accent, var(--color-accent));
   }
+
+  .portfolio-card:hover .portfolio-card__cta-arrow {
+    transform: translateX(4px);
+  }
+}
+
+/* Disabled card muted CTA */
+.portfolio-card__link-wrapper--disabled .portfolio-card__cta {
+  color: var(--color-text-tertiary);
+}
+
+.portfolio-card__link-wrapper--disabled .portfolio-card__cta-arrow {
+  opacity: 0.3;
 }
 
 /* Process Section
