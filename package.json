@@ -7,7 +7,8 @@
     "lint": "eslint public/js/**/*.js && stylelint public/css/**/*.css",
     "lint:fix": "eslint --fix public/js/**/*.js && stylelint --fix public/css/**/*.css",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "sync-domain": "node scripts/sync-domain.js"
   },
   "lint-staged": {
     "*.{js,jsx}": [
