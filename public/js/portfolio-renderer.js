@@ -70,12 +70,23 @@ export function renderPortfolioGrid() {
       // Image: real thumbnail or premium SVG mock
       let imageContent = '';
       if (project.thumbnail) {
+        const desktopAvif = project.thumbnail.desktop.replace('.png', '.avif');
+        const desktopWebp = project.thumbnail.desktop.replace('.png', '.webp');
+        const mobileAvif = project.thumbnail.mobile.replace('.png', '.avif');
+        const mobileWebp = project.thumbnail.mobile.replace('.png', '.webp');
+
         imageContent = `
           <picture>
-            <source media="(max-width: 600px)" srcset="${project.thumbnail.mobile}">
+            <source media="(max-width: 600px)" srcset="${mobileAvif}" type="image/avif">
+            <source srcset="${desktopAvif}" type="image/avif">
+            <source media="(max-width: 600px)" srcset="${mobileWebp}" type="image/webp">
+            <source srcset="${desktopWebp}" type="image/webp">
             <img src="${project.thumbnail.desktop}"
                  alt="${project.thumbnail.alt}"
                  loading="lazy"
+                 decoding="async"
+                 width="800"
+                 height="500"
                  class="portfolio-card__img">
           </picture>
           <div class="portfolio-card__overlay"></div>
