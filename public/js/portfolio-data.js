@@ -36,27 +36,31 @@ export const PORTFOLIO_PROJECTS = [
     servicesUsed: ['Web Design', 'Development', 'CRO']
   },
   {
-    id: 'project-studio-belle',
-    slug: 'studio-belle',
-    title: 'Studio Belle',
-    category: 'Salón de Belleza',
+    id: 'project-juicy-brava',
+    slug: 'juicy-brava',
+    title: 'Juicy Brava',
+    category: 'Batidos & Smoothies',
     year: '2024',
     status: 'published',
     featured: false,
     featuredOrder: 2,
-    accentColor: '#ec4899',
+    accentColor: '#2d4a3e',
     layoutType: 'standard',
-    thumbnail: null,
+    thumbnail: {
+      desktop: '/images/portfolio/juicy-brava-desktop.png',
+      mobile: '/images/portfolio/juicy-brava-mobile.png',
+      alt: 'Juicy Brava — batidos frescos en la Costa Brava, diseño verde elegante'
+    },
     gallery: [],
-    stack: ['Galería visual', 'Citas online', 'Mobile-first'],
-    tagline: 'Sitio elegante con galería de servicios y reservas.',
-    shortDescription: 'Captación de clientes nuevos desde el primer día. Diseño limpio, femenino y orientado a la conversión.',
-    outcome: '8–12 citas / semana',
-    liveUrl: '#',
+    stack: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
+    tagline: 'Fruta fresca, sabor brutal, frente al mar.',
+    shortDescription: 'Diseño que transmite frescura y naturaleza. Experiencia inmersiva para un negocio real en la Costa Brava.',
+    outcome: 'Presencia digital sólida',
+    liveUrl: 'https://juicy-brava.vercel.app/',
     githubUrl: null,
     metrics: [],
     testimonial: null,
-    servicesUsed: ['Presence', 'Local SEO']
+    servicesUsed: ['Web Design', 'Development', 'Local SEO']
   },
   {
     id: 'project-fixnow',
