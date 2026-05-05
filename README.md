@@ -25,7 +25,7 @@ Caselyn Portfolio es una página web estática de alto rendimiento construida co
 | Capa | Tecnologías |
 | :--- | :--- |
 | **Frontend** | HTML5, CSS3 (Custom Properties), JavaScript ES2021 (Vanilla) |
-| **Backend (Serverless)** | Node.js, TypeScript (`@vercel/node`) |
+| **Backend (Serverless)** | Node.js, TypeScript (Vercel Functions) |
 | **Base de Datos** | Supabase (PostgreSQL) |
 | **Emails Transaccionales** | Resend |
 | **Hosting y Despliegue** | Vercel |

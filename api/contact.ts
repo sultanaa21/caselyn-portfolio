@@ -1,6 +1,25 @@
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { IncomingMessage, ServerResponse } from 'http';
+
+/**
+ * Minimal type shim for Vercel serverless request/response.
+ * Replaces @vercel/node to eliminate a large transitive dependency tree
+ * with known security vulnerabilities.
+ */
+interface VercelRequest extends IncomingMessage {
+  body?: any;
+  cookies: Record<string, string>;
+  query: Record<string, string | string[]>;
+  method?: string;
+  headers: IncomingMessage['headers'];
+}
+
+interface VercelResponse extends ServerResponse {
+  json(body: any): VercelResponse;
+  status(code: number): VercelResponse;
+  send(body: string): VercelResponse;
+}
 
 // ============================================================================
 // CONFIGURATION
