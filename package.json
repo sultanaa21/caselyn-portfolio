@@ -8,6 +8,7 @@
     "lint:fix": "eslint --fix public/js/**/*.js && stylelint --fix public/css/**/*.css",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "build": "node scripts/build.js",
     "sync-domain": "node scripts/sync-domain.js"
   },
   "lint-staged": {
