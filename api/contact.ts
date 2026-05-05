@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+import { Redis } from '@upstash/redis';
 import type { IncomingMessage, ServerResponse } from 'http';
 
 /**
@@ -31,18 +32,159 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || 'caselyncontact@gmail.com';
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Caselyn <onboarding@resend.dev>';
 
-// Simple in-memory rate limiter (resets on cold starts in serverless)
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+// Upstash Redis configuration for persistent rate limiting in serverless
+const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL || '';
+const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
+
+// CORS: restrict to own domain + local development
+const ALLOWED_ORIGINS = [
+  'https://caselyn-portfolio.vercel.app',
+  'https://caselyn.com',
+  'https://www.caselyn.com',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5500',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5500',
+];
+
+// Rate limiting
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 const RATE_LIMIT_MAX_REQUESTS = 10;
+
+// ============================================================================
+// REDIS CLIENT (lazy init)
+// ============================================================================
+
+let redis: Redis | null = null;
+
+function getRedis(): Redis | null {
+  if (redis) return redis;
+  if (UPSTASH_REDIS_REST_URL && UPSTASH_REDIS_REST_TOKEN) {
+    redis = new Redis({
+      url: UPSTASH_REDIS_REST_URL,
+      token: UPSTASH_REDIS_REST_TOKEN,
+    });
+    console.log('[RateLimiter] Using Upstash Redis');
+    return redis;
+  }
+  console.warn('[RateLimiter] Upstash Redis not configured. Falling back to in-memory rate limiter (resets on cold starts).');
+  return null;
+}
+
+// ============================================================================
+// IN-MEMORY FALLBACK (for dev / when Redis is not configured)
+// ============================================================================
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimitMemory(ip: string): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now > record.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1 };
+  }
+
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return { allowed: false, remaining: 0 };
+  }
+
+  record.count += 1;
+  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - record.count };
+}
+
+// ============================================================================
+// PERSISTENT RATE LIMITER (Redis)
+// ============================================================================
+
+async function checkRateLimit(ip: string): Promise<{ allowed: boolean; remaining: number }> {
+  const client = getRedis();
+
+  if (!client) {
+    return checkRateLimitMemory(ip);
+  }
+
+  const key = `rate_limit:contact:${ip}`;
+  const windowSeconds = Math.ceil(RATE_LIMIT_WINDOW_MS / 1000);
+
+  try {
+    const current = await client.incr(key);
+
+    // Set expiry on first request in window
+    if (current === 1) {
+      await client.expire(key, windowSeconds);
+    }
+
+    const allowed = current <= RATE_LIMIT_MAX_REQUESTS;
+    const remaining = Math.max(0, RATE_LIMIT_MAX_REQUESTS - current);
+
+    return { allowed, remaining };
+  } catch (err) {
+    console.error('[RateLimiter] Redis error, falling back to memory:', err);
+    return checkRateLimitMemory(ip);
+  }
+}
+
+// ============================================================================
+// CORS
+// ============================================================================
+
+function getOrigin(req: VercelRequest): string | undefined {
+  const origin = req.headers.origin;
+  if (typeof origin === 'string') return origin;
+  const referer = req.headers.referer;
+  if (typeof referer === 'string') {
+    try {
+      return new URL(referer).origin;
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined;
+}
+
+function isAllowedOrigin(origin: string | undefined): boolean {
+  if (!origin) return false;
+  return ALLOWED_ORIGINS.includes(origin);
+}
+
+function setCorsHeaders(req: VercelRequest, res: VercelResponse): boolean {
+  const origin = getOrigin(req);
+
+  if (!origin || !isAllowedOrigin(origin)) {
+    return false;
+  }
+
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Max-Age', '86400');
+  res.setHeader('Vary', 'Origin');
+  return true;
+}
+
+// ============================================================================
+// VALIDATION
+// ============================================================================
+
+/**
+ * RFC 5322 simplified email regex.
+ * Allows standard characters, plus signs, dots, and hyphens.
+ */
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+function isValidEmail(email: string): boolean {
+  if (!email || email.length > 254) return false;
+  return EMAIL_REGEX.test(email);
+}
 
 // ============================================================================
 // UTILITIES
 // ============================================================================
 
-/**
- * Get client IP from Vercel headers
- */
 function getClientIP(req: VercelRequest): string {
   const forwarded = req.headers['x-forwarded-for'];
   const realIp = req.headers['x-real-ip'];
@@ -56,40 +198,10 @@ function getClientIP(req: VercelRequest): string {
   return 'unknown';
 }
 
-/**
- * Get User-Agent from headers
- */
 function getUserAgent(req: VercelRequest): string {
   return (req.headers['user-agent'] as string) || 'unknown';
 }
 
-/**
- * Simple rate limiter by IP
- * NOTE: In serverless, this resets on cold starts. For production,
- * consider using Upstash Redis: https://upstash.com/docs/redis/features/ratelimiting
- */
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-
-  if (!record || now > record.resetAt) {
-    // New IP or expired window
-    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return true;
-  }
-
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return false; // Rate limit exceeded
-  }
-
-  // Increment count
-  record.count += 1;
-  return true;
-}
-
-/**
- * Validate environment variables
- */
 function validateEnv(): { ok: boolean; error?: string } {
   if (!SUPABASE_URL) {
     return { ok: false, error: 'SUPABASE_URL no configurado' };
@@ -108,37 +220,54 @@ function validateEnv(): { ok: boolean; error?: string } {
 // ============================================================================
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // 1. Only accept POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, error: 'Método no permitido' });
+  // ── 0. CORS preflight ───────────────────────────────────────────────────
+  const originAllowed = setCorsHeaders(req, res);
+
+  if (req.method === 'OPTIONS') {
+    if (originAllowed) {
+      return res.status(204).send('');
+    }
+    return res.status(403).json({ ok: false, error: 'Origen no permitido' });
   }
 
-  // 2. Validate environment variables
+  // ── 1. Only accept POST requests ────────────────────────────────────────
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, error: 'Metodo no permitido' });
+  }
+
+  // Block requests from unknown origins after OPTIONS
+  if (!originAllowed) {
+    console.warn(`CORS blocked request from origin: ${getOrigin(req) || 'unknown'}`);
+    return res.status(403).json({ ok: false, error: 'Origen no permitido' });
+  }
+
+  // ── 2. Validate environment variables ───────────────────────────────────
   const envCheck = validateEnv();
   if (!envCheck.ok) {
     console.error('Environment validation failed:', envCheck.error);
-    return res.status(500).json({ ok: false, error: 'Error de configuración del servidor' });
+    return res.status(500).json({ ok: false, error: 'Error de configuracion del servidor' });
   }
 
-  // 3. Get client info
+  // ── 3. Get client info ──────────────────────────────────────────────────
   const ip = getClientIP(req);
   const userAgent = getUserAgent(req);
 
-  // 4. Check rate limit
-  if (!checkRateLimit(ip)) {
+  // ── 4. Check rate limit (persistent Redis + fallback) ───────────────────
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
     console.warn(`Rate limit exceeded for IP: ${ip}`);
+    res.setHeader('Retry-After', String(Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)));
     return res
       .status(429)
-      .json({ ok: false, error: 'Demasiadas solicitudes. Intenta de nuevo más tarde.' });
+      .json({ ok: false, error: 'Demasiadas solicitudes. Intenta de nuevo mas tarde.' });
   }
 
-  // 5. Parse and validate request body
+  // ── 5. Parse and validate request body ──────────────────────────────────
   const { name, email, phone, message, website } = req.body;
 
   // Honeypot check: if "website" field is filled, reject silently
   if (website && website.trim() !== '') {
     console.warn(`Honeypot triggered for IP: ${ip}`);
-    // Return success to confuse bots, but don't save anything
     return res.status(200).json({ ok: true, message: 'Mensaje enviado' });
   }
 
@@ -148,9 +277,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (!email || typeof email !== 'string' || email.trim() === '') {
-    return res
-      .status(400)
-      .json({ ok: false, error: 'El email es obligatorio' });
+    return res.status(400).json({ ok: false, error: 'El email es obligatorio' });
+  }
+
+  // Email format validation
+  if (!isValidEmail(email.trim())) {
+    return res.status(400).json({ ok: false, error: 'El formato del email no es valido' });
   }
 
   if (!message || typeof message !== 'string' || message.trim() === '') {
@@ -158,25 +290,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (message.trim().length < 10) {
-    return res
-      .status(400)
-      .json({ ok: false, error: 'El mensaje debe tener al menos 10 caracteres' });
+    return res.status(400).json({ ok: false, error: 'El mensaje debe tener al menos 10 caracteres' });
   }
 
   if (message.trim().length > 5000) {
-    return res
-      .status(400)
-      .json({ ok: false, error: 'El mensaje es demasiado largo (máximo 5000 caracteres)' });
+    return res.status(400).json({ ok: false, error: 'El mensaje es demasiado largo (maximo 5000 caracteres)' });
   }
 
   // Sanitize inputs
   const sanitizedName = name.trim();
-  const sanitizedEmail = email.trim();
+  const sanitizedEmail = email.trim().toLowerCase();
   const sanitizedPhone = phone ? phone.trim() : '';
   const sanitizedMessage = message.trim();
 
   try {
-    // 6. Save to Supabase
+    // ── 6. Save to Supabase ───────────────────────────────────────────────
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
       auth: {
         autoRefreshToken: false,
@@ -206,7 +334,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     console.log('Lead saved to Supabase:', leadData?.id);
 
-    // 6.5 Send to Google Sheets via webhook (non-blocking, resilient)
+    // ── 6.5 Send to Google Sheets via webhook (non-blocking, resilient) ───
     const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
     const sheetsSecret = process.env.SHEETS_WEBHOOK_SECRET;
 
@@ -225,9 +353,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ip: ip,
       };
 
-      // Fire-and-forget controlado (se ejecuta ANTES del return)
       try {
-        console.log('📞 Calling Google Sheets webhook...', {
+        console.log('Calling Google Sheets webhook...', {
           lead_id: leadData?.id,
           url: sheetsWebhookUrl.substring(0, 50) + '...',
         });
@@ -241,41 +368,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         const responseText = await webhookResponse.text();
 
-        console.log('📬 Sheets webhook response:', {
+        console.log('Sheets webhook response:', {
           status: webhookResponse.status,
           ok: webhookResponse.ok,
           bodyPreview: responseText.substring(0, 500),
         });
 
-        // Parsear JSON
         try {
           const data = JSON.parse(responseText);
           if (data.ok === true) {
-            console.log('✅ Google Sheets webhook success:', {
+            console.log('Google Sheets webhook success:', {
               lead_id: data.lead_id,
               action: data.action,
               row: data.row,
             });
           } else {
-            console.error('❌ Google Sheets returned ok=false:', data.message);
+            console.error('Google Sheets returned ok=false:', data.message);
           }
         } catch (parseError) {
-          console.error('❌ Sheets response not valid JSON:', responseText.substring(0, 200));
+          console.error('Sheets response not valid JSON:', responseText.substring(0, 200));
         }
       } catch (webhookError: any) {
-        console.error('❌ Google Sheets webhook error (non-blocking):', {
+        console.error('Google Sheets webhook error (non-blocking):', {
           name: webhookError.name,
           message: webhookError.message,
         });
       }
     } else {
-      console.warn('⚠️ Google Sheets webhook not configured:', {
+      console.warn('Google Sheets webhook not configured:', {
         hasUrl: !!sheetsWebhookUrl,
         hasSecret: !!sheetsSecret,
       });
     }
 
-    // 7. Send email via Resend
+    // ── 7. Send email via Resend ──────────────────────────────────────────
     const resend = new Resend(RESEND_API_KEY);
 
     const emailHtml = `
@@ -320,7 +446,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       </div>
       
       <div class="field">
-        <div class="label">Teléfono</div>
+        <div class="label">Telefono</div>
         <div class="value">${sanitizedPhone || '—'}</div>
       </div>
       
@@ -331,7 +457,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       
       <div class="divider"></div>
       <div class="meta">
-        Información técnica:<br>
+        Informacion tecnica:<br>
         IP: ${ip}<br>
         User Agent: ${userAgent}<br>
         Lead ID: ${leadData?.id || 'N/A'}
@@ -356,36 +482,36 @@ ${sanitizedName}
 EMAIL:
 ${sanitizedEmail}
 
-TELÉFONO:
+TELEFONO:
 ${sanitizedPhone || '—'}
 
 MENSAJE:
 ${sanitizedMessage}
 
 ---
-INFORMACIÓN TÉCNICA:
+INFORMACION TECNICA:
 IP: ${ip}
 User Agent: ${userAgent}
 Lead ID: ${leadData?.id || 'N/A'}
-        `.trim();
+    `.trim();
 
     const { data: emailData, error: resendError } = await resend.emails.send({
       from: CONTACT_FROM_EMAIL,
       to: CONTACT_TO_EMAIL,
       subject: `Nuevo contacto — ${sanitizedName}`,
       html: emailHtml,
-      text: emailText, // Fallback for email clients that don't support HTML
+      text: emailText,
     });
 
     if (resendError) {
       console.error('Resend error:', resendError);
-      // Don't fail the request if email fails - lead is already saved
       console.warn('Email failed but lead was saved successfully');
     } else {
       console.log('Email sent via Resend:', emailData?.id);
     }
 
-    // 8. Return success
+    // ── 8. Return success ─────────────────────────────────────────────────
+    res.setHeader('X-RateLimit-Remaining', String(rateLimitResult.remaining));
     return res.status(200).json({
       ok: true,
       message: 'Mensaje enviado correctamente. Responderemos en menos de 24h.',
