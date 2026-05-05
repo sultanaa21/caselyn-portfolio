@@ -2184,3 +2184,87 @@ a {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   Security: CSP-friendly utility classes (replaces inline styles)
+   ========================================================================== */
+
+.contact-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-label-optional {
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+.btn-submit-full {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.footer-links {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.footer-link {
+  color: var(--color-text-tertiary);
+}
+
+.footer-link--spaced {
+  margin-right: var(--space-3);
+}
+
+/* Legal pages (privacy, cookies) */
+.legal-container {
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+.legal-h2 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+}
+
+.legal-p {
+  margin-bottom: var(--space-4);
+}
+
+.legal-list {
+  margin-left: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.legal-back-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.legal-page-section {
+  padding-top: 120px;
+}
+
+.legal-h1 {
+  margin-bottom: var(--space-6);
+}
+
+.legal-link {
+  color: var(--color-accent);
+}
+
+.legal-divider {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
