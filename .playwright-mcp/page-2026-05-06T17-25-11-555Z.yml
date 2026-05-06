@@ -1,0 +1,225 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic:
+        - img "UGC IA Logo"
+      - button [ref=e6]:
+        - img [ref=e7]
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - heading "PERSONAJES VIRTUALES PARA TU MARCA" [level=1] [ref=e12]:
+        - text: PERSONAJES
+        - text: VIRTUALES
+        - text: PARA TU MARCA
+      - paragraph [ref=e13]: Escala tu producción de contenido digital sin límites. Humanos generados por IA listos para tus campañas de Reels, TikTok y Ads.
+      - generic [ref=e14]:
+        - button "SOLICITAR CONTENIDO" [ref=e15]
+        - button "VER EJEMPLOS" [ref=e16]
+    - generic [ref=e17]:
+      - img [ref=e19]
+      - img [ref=e21]
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - img "Partner Logo"
+    - generic [ref=e26]:
+      - img "Partner Logo"
+    - generic [ref=e27]:
+      - img "Partner Logo"
+    - generic [ref=e28]:
+      - img "Partner Logo"
+    - generic [ref=e29]:
+      - img "Partner Logo"
+    - generic [ref=e30]:
+      - img "Partner Logo"
+    - generic [ref=e31]:
+      - img "Partner Logo"
+    - generic [ref=e32]:
+      - img "Partner Logo"
+  - generic [ref=e34]:
+    - heading "EL IMPACTO DE LA IA REALISTA" [level=2] [ref=e35]
+    - paragraph [ref=e36]: Contenido diseñado para conectar emocionalmente, con una estética impecable y resultados medibles.
+  - generic [ref=e41]:
+    - heading "NUESTRO PROCESO DIGITAL" [level=2] [ref=e43]
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - img [ref=e47]
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: "01"
+            - heading "IDENTIDAD IA" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Diseñamos un personaje único con la personalidad que tu marca necesita.
+      - generic [ref=e53]:
+        - img [ref=e55]
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - generic [ref=e58]: "02"
+            - heading "ESTRATEGIA" [level=3] [ref=e59]
+          - paragraph [ref=e60]: Creamos guiones optimizados para retención y conversión en redes sociales.
+      - generic [ref=e61]:
+        - img [ref=e63]
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]: "03"
+            - heading "GENERACIÓN" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Nuestros motores de IA renderizan el contenido en alta definición.
+      - generic [ref=e69]:
+        - img [ref=e71]
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]: "04"
+            - heading "EDICIÓN" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Añadimos música, subtítulos dinámicos y efectos visuales.
+      - generic [ref=e77]:
+        - img [ref=e79]
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: "05"
+            - heading "ENTREGA" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Recibes tu pack de vídeos listo para dominar el mercado.
+  - generic [ref=e85]:
+    - generic [ref=e86]:
+      - heading "PACKS DE VÍDEOS UGC IA" [level=2] [ref=e87]
+      - paragraph [ref=e88]: Elige la escala de contenido que mejor se adapte al crecimiento de tu marca.
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "Pack Esencial" [level=3] [ref=e92]
+          - generic [ref=e93]:
+            - generic [ref=e94]: "6"
+            - generic [ref=e95]: vídeos
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - img [ref=e99]
+            - generic [ref=e101]: Diseño de 1 Personaje IA
+          - generic [ref=e102]:
+            - img [ref=e104]
+            - generic [ref=e106]: Guiones con ganchos virales
+          - generic [ref=e107]:
+            - img [ref=e109]
+            - generic [ref=e111]: Edición dinámica estilo TikTok
+          - generic [ref=e112]:
+            - img [ref=e114]
+            - generic [ref=e116]: Música en tendencia
+          - generic [ref=e117]:
+            - img [ref=e119]
+            - generic [ref=e121]: Derechos de uso
+        - button "¡Lo quiero!" [ref=e122]
+      - generic [ref=e123]:
+        - generic [ref=e124]: MÁS POPULAR
+        - generic [ref=e125]:
+          - heading "Pack Impacto" [level=3] [ref=e126]
+          - generic [ref=e127]:
+            - generic [ref=e128]: "12"
+            - generic [ref=e129]: vídeos
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - img [ref=e133]
+            - generic [ref=e135]: Diseño de 2 Personajes IA
+          - generic [ref=e136]:
+            - img [ref=e138]
+            - generic [ref=e140]: Estrategia mensual
+          - generic [ref=e141]:
+            - img [ref=e143]
+            - generic [ref=e145]: Variaciones de 'Hooks'
+          - generic [ref=e146]:
+            - img [ref=e148]
+            - generic [ref=e150]: Optimización para Ads
+          - generic [ref=e151]:
+            - img [ref=e153]
+            - generic [ref=e155]: Soporte prioritario
+        - button "¡Lo quiero!" [ref=e156]
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - heading "Pack Éxito" [level=3] [ref=e159]
+          - generic [ref=e160]:
+            - generic [ref=e161]: "24"
+            - generic [ref=e162]: vídeos
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - img [ref=e166]
+            - generic [ref=e168]: 3 Personajes IA Exclusivos
+          - generic [ref=e169]:
+            - img [ref=e171]
+            - generic [ref=e173]: Guiones ilimitados
+          - generic [ref=e174]:
+            - img [ref=e176]
+            - generic [ref=e178]: Gestión integral
+          - generic [ref=e179]:
+            - img [ref=e181]
+            - generic [ref=e183]: Múltiples idiomas
+          - generic [ref=e184]:
+            - img [ref=e186]
+            - generic [ref=e188]: Análisis de rendimiento
+        - button "¡Lo quiero!" [ref=e189]
+  - generic [ref=e192]:
+    - generic [ref=e193]:
+      - heading "IMPULSA TU MARCA CON NOSOTROS" [level=2] [ref=e194]:
+        - text: IMPULSA TU
+        - text: MARCA CON NOSOTROS
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - img [ref=e198]
+          - generic [ref=e201]:
+            - paragraph [ref=e202]: Email
+            - paragraph [ref=e203]: hola@ugc-ia.com
+        - generic [ref=e204]:
+          - img [ref=e206]
+          - generic [ref=e208]:
+            - paragraph [ref=e209]: WhatsApp
+            - paragraph [ref=e210]: +34 600 000 000
+    - generic [ref=e211]:
+      - generic [ref=e212]:
+        - textbox "Nombre *" [ref=e213]
+        - textbox "Email *" [ref=e214]
+      - generic [ref=e215]:
+        - textbox "Teléfono" [ref=e216]
+        - combobox [ref=e217]:
+          - option "Pack Elegido" [selected]
+          - option "Pack Esencial"
+          - option "Pack Impacto"
+          - option "Pack Éxito"
+      - textbox "Mensaje *" [ref=e218]
+      - button "Enviar Solicitud" [ref=e219]:
+        - text: Enviar Solicitud
+        - img [ref=e220]
+  - generic [ref=e224]:
+    - heading "PREGUNTAS FRECUENTES" [level=2] [ref=e226]
+    - generic [ref=e227]:
+      - button "¿Qué es exactamente un creador de contenido IA?" [ref=e229]:
+        - generic [ref=e230]: ¿Qué es exactamente un creador de contenido IA?
+        - img [ref=e231]
+      - button "¿Se nota que no es una persona real?" [ref=e234]:
+        - generic [ref=e235]: ¿Se nota que no es una persona real?
+        - img [ref=e236]
+      - button "¿Cómo es el proceso de entrega?" [ref=e239]:
+        - generic [ref=e240]: ¿Cómo es el proceso de entrega?
+        - img [ref=e241]
+      - button "¿Tengo los derechos de uso de los vídeos?" [ref=e244]:
+        - generic [ref=e245]: ¿Tengo los derechos de uso de los vídeos?
+        - img [ref=e246]
+      - button "¿Puedo pedir cambios una vez entregado?" [ref=e249]:
+        - generic [ref=e250]: ¿Puedo pedir cambios una vez entregado?
+        - img [ref=e251]
+  - contentinfo [ref=e253]:
+    - generic [ref=e254]:
+      - generic [ref=e255]:
+        - img "UGC IA Logo"
+        - paragraph [ref=e256]: Revolucionando el marketing digital con humanos virtuales hiperrealistas.
+      - generic [ref=e257]:
+        - heading "Explorar" [level=4] [ref=e258]
+        - list [ref=e259]:
+          - listitem [ref=e260]:
+            - button "Ejemplos" [ref=e261]
+          - listitem [ref=e262]:
+            - button "Proceso" [ref=e263]
+          - listitem [ref=e264]:
+            - button "Tarifas" [ref=e265]
+      - generic [ref=e266]:
+        - heading "Legal" [level=4] [ref=e267]
+        - list [ref=e268]:
+          - listitem [ref=e269]: Privacidad
+          - listitem [ref=e270]: Cookies
+      - generic [ref=e271]:
+        - img [ref=e272] [cursor=pointer]
+        - img [ref=e275] [cursor=pointer]
+    - paragraph [ref=e278]: © 2026 UGC IA AGENCY. ALL RIGHTS RESERVED.
