@@ -108,8 +108,8 @@ const SERVICES = [
     ctaAction: 'diagnostico',
     ctaParams: { service: 'marketing' },
 
-    pageReady: false,
-    seo: { metaTitle: '', metaDescription: '', ogImage: '' },
+    pageReady: true,
+    seo: { metaTitle: 'Marketing | Caselyn', metaDescription: 'Campañas, contenido y landings conectadas a la identidad de tu negocio. Marketing coherente entre web, redes, anuncios y contacto.', ogImage: '' },
     heroImage: '',
     gallery: [],
     processSteps: [],

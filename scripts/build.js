@@ -87,6 +87,10 @@ const pages = [
     input: 'servicios/webs-y-landings.html',
     output: 'servicios/webs-y-landings.html',
   },
+  {
+    input: 'servicios/marketing.html',
+    output: 'servicios/marketing.html',
+  },
   // diagnostico.html is a static redirect in public/ — not compiled by build
 ];
 

@@ -48,6 +48,7 @@ function renderServiceCard(service, strings) {
   // Map service id to its detail page (add more as pages are created)
   const SERVICE_PAGES = {
     'webs-landings': '/servicios/webs-y-landings',
+    'marketing': '/servicios/marketing',
   };
   const pageUrl = SERVICE_PAGES[service.id] || null;
 
