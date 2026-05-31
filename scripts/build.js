@@ -82,6 +82,11 @@ const pages = [
       SLUG: 'cookies.html',
     },
   },
+  // Service pages
+  {
+    input: 'servicios/webs-y-landings.html',
+    output: 'servicios/webs-y-landings.html',
+  },
   // diagnostico.html is a static redirect in public/ — not compiled by build
 ];
 
@@ -101,6 +106,12 @@ pages.forEach(({ input, output, vars = {} }) => {
   }
 
   const compiled = compileTemplate(templatePath, vars);
+
+  // Ensure output subdirectory exists
+  const outputSubdir = path.dirname(outputPath);
+  if (!fs.existsSync(outputSubdir)) {
+    fs.mkdirSync(outputSubdir, { recursive: true });
+  }
 
   // Only write if changed (prevents unnecessary git noise)
   const existing = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : null;

@@ -1224,6 +1224,27 @@ a {
   margin: 0;
 }
 
+/* Linked card variant */
+.service-card--link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.service-card__arrow {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-top: auto;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: block;
+}
+
+@media (hover: hover) {
+  .service-card--link:hover .service-card__arrow {
+    color: var(--pl-color, var(--color-accent));
+    transform: translateX(3px);
+  }
+}
+
 /* Legacy class — not used in renderer, kept for backwards compat */
 .services-grid {
   display: grid;
@@ -2281,4 +2302,254 @@ a {
   .phone-country-panel {
     width: 260px;
   }
+}
+
+/* ==========================================================================
+   Service Pages — /servicios/*
+   ========================================================================== */
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.sv-hero {
+  padding-top: 120px;
+  padding-bottom: var(--space-12);
+}
+
+.sv-hero__content {
+  max-width: 680px;
+}
+
+.sv-hero__eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.sv-hero__title {
+  font-size: clamp(2.5rem, 5vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.sv-hero__lead {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-medium);
+}
+
+.sv-hero__body {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.sv-hero__cta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .sv-hero {
+    padding-top: 100px;
+    padding-bottom: var(--space-8);
+  }
+
+  .sv-hero__lead {
+    font-size: var(--font-size-lg);
+  }
+
+  .sv-hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ── Landing vs Web Completa ─────────────────────────────────────────────── */
+
+.sv-compare {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sv-compare__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.sv-compare__col {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+}
+
+.sv-compare__col-header {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.sv-compare__col-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.sv-compare__col-claim {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.sv-compare__col-body {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.sv-compare__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sv-compare__list li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+
+.sv-compare__list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-text-tertiary);
+}
+
+.sv-compare__note {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .sv-compare__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .sv-compare__col {
+    padding: var(--space-4);
+  }
+}
+
+/* ── Qué podemos crear ───────────────────────────────────────────────────── */
+
+.sv-what__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.sv-what__card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition:
+    box-shadow var(--motion-duration-base) var(--motion-easing),
+    border-color var(--motion-duration-base) var(--motion-easing);
+}
+
+@media (hover: hover) {
+  .sv-what__card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.sv-what__card-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.sv-what__card-body {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .sv-what__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sv-what__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+/* ── Qué cuidamos ─────────────────────────────────────────────────────────── */
+
+.sv-care {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.sv-care__chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.sv-care__chip {
+  padding: 8px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background: var(--color-background);
+}
+
+/* ── Examples section ─────────────────────────────────────────────────────── */
+
+.sv-examples {
+  background: var(--color-background);
+}
+
+/* ── Process ─────────────────────────────────────────────────────────────── */
+
+.sv-process {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }

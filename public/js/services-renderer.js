@@ -45,14 +45,38 @@ function esc(str) {
 function renderServiceCard(service, strings) {
   const pl = PRODUCT_LINES[service.productLine] || PRODUCT_LINES.web;
 
+  // Map service id to its detail page (add more as pages are created)
+  const SERVICE_PAGES = {
+    'webs-landings': '/servicios/webs-y-landings',
+  };
+  const pageUrl = SERVICE_PAGES[service.id] || null;
+
+  const inner = `
+    <h3 class="service-card__title">${esc(strings.title)}</h3>
+    <p class="service-card__tagline">${esc(strings.tagline)}</p>
+    ${pageUrl ? `<span class="service-card__arrow" aria-hidden="true">→</span>` : ''}
+  `;
+
+  if (pageUrl) {
+    return `
+      <a
+        href="${pageUrl}"
+        class="service-card service-card--${esc(service.productLine)} service-card--link"
+        id="service-${esc(service.id)}"
+        style="--pl-color: ${pl.color}; --pl-bg: ${pl.bg};"
+      >
+        ${inner}
+      </a>
+    `;
+  }
+
   return `
     <article
       class="service-card service-card--${esc(service.productLine)}"
       id="service-${esc(service.id)}"
       style="--pl-color: ${pl.color}; --pl-bg: ${pl.bg};"
     >
-      <h3 class="service-card__title">${esc(strings.title)}</h3>
-      <p class="service-card__tagline">${esc(strings.tagline)}</p>
+      ${inner}
     </article>
   `;
 }
