@@ -42,7 +42,7 @@ function esc(str) {
  * @param {object} ui       - getServicesUiStrings(lang)
  * @returns {string} HTML
  */
-function renderServiceCard(service, strings) {
+function renderServiceCard(service, strings, ui) {
   const pl = PRODUCT_LINES[service.productLine] || PRODUCT_LINES.web;
 
   // Map service id to its detail page (add more as pages are created)
@@ -116,7 +116,7 @@ function renderServicesSection(lang) {
   const cardsHtml = sortedServices
     .map((service) => {
       const strings = getServiceStrings(service.i18nKey, lang);
-      return renderServiceCard(service, strings);
+      return renderServiceCard(service, strings, ui);
     })
     .join('');
 
