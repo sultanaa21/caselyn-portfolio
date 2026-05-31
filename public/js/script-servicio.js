@@ -64,40 +64,6 @@ const SV_PROJECTS = [
     tagline: 'Web para panadería artesanal con carta, ubicación y pedidos.',
     liveUrl: 'https://web-4-topaz.vercel.app',
   },
-  {
-    id: 'project-frankburger',
-    slug: 'frankburger',
-    title: 'FrankBurger',
-    category: 'Restauración',
-    type: 'Concepto',
-    accentColor: '#DC2626',
-    thumbnail: {
-      desktop: '/images/portfolio/frankburger-desktop.avif',
-      desktopFallback: '/images/portfolio/frankburger-desktop.png',
-      mobile: '/images/portfolio/frankburger-mobile.avif',
-      mobileFallback: '/images/portfolio/frankburger-mobile.png',
-      alt: 'FrankBurger — hamburguesería',
-    },
-    tagline: 'Web para hamburguesería con menú, historia y contacto directo.',
-    liveUrl: 'https://web3-72gl.vercel.app/',
-  },
-  {
-    id: 'project-personajes-virtuales-ia',
-    slug: 'personajes-virtuales-ia',
-    title: 'Personajes Virtuales IA',
-    category: 'IA & Contenido Digital',
-    type: 'Concepto',
-    accentColor: '#8B5CF6',
-    thumbnail: {
-      desktop: '/images/portfolio/personajes-virtuales-ia-desktop.avif',
-      desktopFallback: '/images/portfolio/personajes-virtuales-ia-desktop.png',
-      mobile: '/images/portfolio/personajes-virtuales-ia-mobile.avif',
-      mobileFallback: '/images/portfolio/personajes-virtuales-ia-mobile.png',
-      alt: 'Personajes Virtuales IA — contenido digital',
-    },
-    tagline: 'Landing para servicio de creación de contenido digital con IA.',
-    liveUrl: 'https://web2-ugc.vercel.app/',
-  },
 ];
 
 // ============================================================================

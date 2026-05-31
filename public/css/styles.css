@@ -2473,6 +2473,25 @@ a {
   margin-top: var(--space-6);
 }
 
+.sv-what__grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+  .sv-what__grid,
+  .sv-what__grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sv-what__grid,
+  .sv-what__grid--4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
 .sv-what__card {
   padding: var(--space-4);
   border: 1px solid var(--color-border);
