@@ -50,6 +50,7 @@ function renderServiceCard(service, strings) {
     'webs-landings': '/servicios/webs-y-landings',
     'marketing': '/servicios/marketing',
     'automatizacion': '/servicios/automatizacion',
+    'mantenimiento': '/servicios/mantenimiento',
   };
   const pageUrl = SERVICE_PAGES[service.id] || null;
 

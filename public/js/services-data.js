@@ -194,8 +194,8 @@ const SERVICES = [
     ctaAction: 'diagnostico',
     ctaParams: { service: 'mantenimiento' },
 
-    pageReady: false,
-    seo: { metaTitle: '', metaDescription: '', ogImage: '' },
+    pageReady: true,
+    seo: { metaTitle: 'Mantenimiento | Caselyn', metaDescription: 'Cambios, soporte y revisión técnica mensual para mantener tu web actualizada, revisada y funcionando correctamente.', ogImage: '' },
     heroImage: '',
     gallery: [],
     processSteps: [],
