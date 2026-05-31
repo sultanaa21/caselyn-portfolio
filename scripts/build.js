@@ -63,6 +63,10 @@ const pages = [
     output: 'index.html',
   },
   {
+    input: 'contacto.html',
+    output: 'contacto.html',
+  },
+  {
     input: 'privacidad.html',
     output: 'privacidad.html',
     vars: {
@@ -78,6 +82,7 @@ const pages = [
       SLUG: 'cookies.html',
     },
   },
+  // diagnostico.html is a static redirect in public/ — not compiled by build
 ];
 
 // ─── Build ──────────────────────────────────────────────────────────────────

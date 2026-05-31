@@ -2,6 +2,8 @@
  * Caselyn Portfolio - Interactive Features
  */
 
+/* global renderServicesSection, rerenderServicesSection, applyTranslations */
+
 // ============================================================================
 // Navigation Functionality
 // ============================================================================

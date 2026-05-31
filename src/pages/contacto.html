@@ -1,0 +1,187 @@
+{{HEAD_CONTACTO}}
+{{HEADER_CONTACTO}}
+
+  <!-- Diagnostico Hero -->
+  <section class="diag-hero">
+    <div class="container">
+      <div class="diag-hero__content fade-in">
+        <h1 data-i18n="diag.title">Cuéntanos tu proyecto</h1>
+        <p class="diag-hero__subtitle" data-i18n="diag.subtitle">
+          Dinos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostico Form -->
+  <section class="diag-form-section">
+    <div class="container">
+      <div class="diag-form-card fade-in">
+        <form class="diag-form" id="diag-form" novalidate>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="diag-name" class="form-label" data-i18n="diag.form.name">Nombre</label>
+              <input
+                type="text"
+                id="diag-name"
+                name="name"
+                class="form-input"
+                required
+                autocomplete="name"
+                data-i18n-placeholder="diag.form.name.placeholder"
+                placeholder="Nombre y apellido"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="diag-email" class="form-label" data-i18n="diag.form.email">Email</label>
+              <input
+                type="email"
+                id="diag-email"
+                name="email"
+                class="form-input"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label class="form-label" id="phone-label">
+                <span data-i18n="diag.form.phone">Teléfono</span>
+                <span class="form-label-optional" data-i18n="diag.form.phone.optional">(opcional)</span>
+              </label>
+              <!-- Custom phone field: country picker + number input -->
+              <div class="phone-field" role="group" aria-labelledby="phone-label">
+                <!-- Hidden input that stores the final combined value -->
+                <input type="hidden" name="phone" id="diag-phone-combined" />
+
+                <!-- Country picker trigger -->
+                <div
+                  class="phone-prefix-picker"
+                  id="phone-prefix-picker"
+                  role="combobox"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="phone-country-list"
+                  aria-label="País y prefijo"
+                  tabindex="0"
+                >
+                  <span class="phone-prefix-flag" id="phone-prefix-flag" aria-hidden="true">🇪🇸</span>
+                  <span class="phone-prefix-code" id="phone-prefix-code">+34</span>
+                  <svg class="phone-prefix-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <!-- Dropdown panel -->
+                <div class="phone-country-panel" id="phone-country-panel" role="listbox" aria-label="Selecciona país" hidden>
+                  <div class="phone-country-search-wrap">
+                    <input
+                      type="text"
+                      class="phone-country-search"
+                      id="phone-country-search"
+                      placeholder="Buscar país..."
+                      autocomplete="off"
+                      aria-label="Buscar país"
+                      role="searchbox"
+                    />
+                  </div>
+                  <ul class="phone-country-list" id="phone-country-list" role="listbox">
+                    <!-- Populated by JS -->
+                  </ul>
+                </div>
+
+                <!-- Number input -->
+                <input
+                  type="tel"
+                  id="diag-phone-number"
+                  name="phone_number"
+                  class="form-input phone-number"
+                  autocomplete="tel-national"
+                  aria-label="Número de teléfono"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="diag-business" class="form-label" data-i18n="diag.form.business">Negocio o marca</label>
+              <input
+                type="text"
+                id="diag-business"
+                name="business"
+                class="form-input"
+                required
+                autocomplete="organization"
+                data-i18n-placeholder="diag.form.business.placeholder"
+                placeholder="Nombre del negocio o marca"
+              />
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="diag-website" class="form-label">
+                <span data-i18n="diag.form.website">Web actual</span>
+                <span class="form-label-optional" data-i18n="diag.form.website.optional">(si tienes)</span>
+              </label>
+              <input
+                type="url"
+                id="diag-website"
+                name="website_current"
+                class="form-input"
+                autocomplete="url"
+                placeholder="https://"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="diag-service" class="form-label" data-i18n="diag.form.service">¿Qué quieres crear o mejorar?</label>
+              <select id="diag-service" name="service" class="form-input form-select" required>
+                <option value="" data-i18n="diag.form.service.default">Selecciona una opción</option>
+                <option value="web-nueva" data-i18n="diag.form.service.opt1">Web nueva</option>
+                <option value="landing" data-i18n="diag.form.service.opt2">Landing</option>
+                <option value="rediseno-web" data-i18n="diag.form.service.opt3">Rediseño web</option>
+                <option value="marketing-campanas" data-i18n="diag.form.service.opt4">Marketing / campañas</option>
+                <option value="automatizacion" data-i18n="diag.form.service.opt5">Automatización</option>
+                <option value="mantenimiento" data-i18n="diag.form.service.opt6">Mantenimiento</option>
+                <option value="no-lo-tengo-claro" data-i18n="diag.form.service.opt7">No lo tengo claro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="diag-message" class="form-label" data-i18n="diag.form.message">Mensaje</label>
+            <textarea
+              id="diag-message"
+              name="message"
+              class="form-textarea"
+              rows="5"
+              required
+              data-i18n-placeholder="diag.form.message.placeholder"
+              placeholder="Cuéntanos qué tienes en mente."
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="hp_field" id="hp_field" autocomplete="off" tabindex="-1"
+            class="honeypot-field" aria-hidden="true" />
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary btn-lg btn-submit-full" id="diag-submit">
+              <span class="btn-label" data-i18n="diag.form.submit">Enviar solicitud</span>
+            </button>
+          </div>
+
+          <!-- Status message -->
+          <div class="form-status" id="diag-status" aria-live="polite"></div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+{{FOOTER}}
+{{SCRIPTS_CONTACTO}}

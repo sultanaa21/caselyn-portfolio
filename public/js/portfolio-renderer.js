@@ -127,7 +127,7 @@ export function renderPortfolioGrid() {
               <div class="portfolio-card__meta">
                 <span class="portfolio-card__category" data-i18n="portfolio.${project.slug}.category">${project.category}</span>
                 <span class="portfolio-card__dot">·</span>
-                <span class="portfolio-card__year">${project.year}</span>
+                <span class="portfolio-card__year">${project.type || project.year}</span>
               </div>
 
               <div class="portfolio-card__stack">
@@ -148,7 +148,7 @@ export function renderPortfolioGrid() {
     }).join('');
 
   // Re-apply translations if the i18n system is already loaded
-  const applyTrans = window.applyTranslations || (typeof applyTranslations === 'function' ? applyTranslations : null);
+  const applyTrans = window.applyTranslations || null;
   if (applyTrans) {
     const savedLang = localStorage.getItem('caselyn-lang') || document.documentElement.lang || 'es';
     applyTrans(savedLang);

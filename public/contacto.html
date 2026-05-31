@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>Contacto | Caselyn</title>
+  <meta name="description"
+    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://caselyn-portfolio.vercel.app/contacto" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://caselyn-portfolio.vercel.app/contacto" />
+  <meta property="og:title" content="Contacto | Caselyn" />
+  <meta property="og:description"
+    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
+  <meta property="og:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://caselyn-portfolio.vercel.app/contacto" />
+  <meta property="twitter:title" content="Contacto | Caselyn" />
+  <meta property="twitter:description"
+    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
+  <meta property="twitter:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="stylesheet" href="/css/styles.css?v=5" />
+
+  <script type="module" src="/js/analytics.js"></script>
+
+  <!-- Liquid Glass Web Component -->
+  <script src="/js/displacement-utils.js"></script>
+  <script src="/js/glass-element.js"></script>
+</head>
+
+<body>
+  <!-- Liquid Glass Header -->
+  <header class="header-wrapper">
+    <glass-element class="header-glass" fluid height="72" radius="0" depth="8" blur="2" strength="35"
+      chromatic-aberration="1" background-color="rgba(255,255,255,0.65)">
+      <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+          <a href="/" class="navbar-logo" aria-label="Caselyn - Inicio">
+            <svg width="140" height="40" viewBox="0 0 512 146" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="110" font-family="-apple-system, BlinkMacSystemFont, SF Pro Display, Inter, sans-serif"
+                font-size="100" font-weight="600" fill="#0A0A0A" letter-spacing="-2">
+                CASELYN
+              </text>
+            </svg>
+          </a>
+
+          <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="/#servicios" data-i18n="nav.servicios">Servicios</a></li>
+            <li><a href="/#ejemplos" data-i18n="nav.portafolio">Ejemplos</a></li>
+            <li><a href="/#proceso" data-i18n="nav.proceso">Proceso</a></li>
+            <li><a href="/#faq" data-i18n="nav.faq">FAQ</a></li>
+            <!-- Language Selector — items rendered by JS from config -->
+            <li class="lang-selector-wrapper" id="lang-selector">
+              <button class="lang-trigger" id="lang-trigger" aria-expanded="false" aria-haspopup="true"
+                aria-label="Select language">
+                <span class="lang-trigger-label" id="lang-trigger-label">ES</span>
+                <svg class="lang-trigger-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"
+                  aria-hidden="true">
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="lang-dropdown" id="lang-dropdown" aria-label="Language options">
+                <!-- Populated dynamically by script.js -->
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </glass-element>
+  </header>
+
+
+  <!-- Diagnostico Hero -->
+  <section class="diag-hero">
+    <div class="container">
+      <div class="diag-hero__content fade-in">
+        <h1 data-i18n="diag.title">Cuéntanos tu proyecto</h1>
+        <p class="diag-hero__subtitle" data-i18n="diag.subtitle">
+          Dinos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostico Form -->
+  <section class="diag-form-section">
+    <div class="container">
+      <div class="diag-form-card fade-in">
+        <form class="diag-form" id="diag-form" novalidate>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="diag-name" class="form-label" data-i18n="diag.form.name">Nombre</label>
+              <input
+                type="text"
+                id="diag-name"
+                name="name"
+                class="form-input"
+                required
+                autocomplete="name"
+                data-i18n-placeholder="diag.form.name.placeholder"
+                placeholder="Nombre y apellido"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="diag-email" class="form-label" data-i18n="diag.form.email">Email</label>
+              <input
+                type="email"
+                id="diag-email"
+                name="email"
+                class="form-input"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label class="form-label" id="phone-label">
+                <span data-i18n="diag.form.phone">Teléfono</span>
+                <span class="form-label-optional" data-i18n="diag.form.phone.optional">(opcional)</span>
+              </label>
+              <!-- Custom phone field: country picker + number input -->
+              <div class="phone-field" role="group" aria-labelledby="phone-label">
+                <!-- Hidden input that stores the final combined value -->
+                <input type="hidden" name="phone" id="diag-phone-combined" />
+
+                <!-- Country picker trigger -->
+                <div
+                  class="phone-prefix-picker"
+                  id="phone-prefix-picker"
+                  role="combobox"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="phone-country-list"
+                  aria-label="País y prefijo"
+                  tabindex="0"
+                >
+                  <span class="phone-prefix-flag" id="phone-prefix-flag" aria-hidden="true">🇪🇸</span>
+                  <span class="phone-prefix-code" id="phone-prefix-code">+34</span>
+                  <svg class="phone-prefix-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <!-- Dropdown panel -->
+                <div class="phone-country-panel" id="phone-country-panel" role="listbox" aria-label="Selecciona país" hidden>
+                  <div class="phone-country-search-wrap">
+                    <input
+                      type="text"
+                      class="phone-country-search"
+                      id="phone-country-search"
+                      placeholder="Buscar país..."
+                      autocomplete="off"
+                      aria-label="Buscar país"
+                      role="searchbox"
+                    />
+                  </div>
+                  <ul class="phone-country-list" id="phone-country-list" role="listbox">
+                    <!-- Populated by JS -->
+                  </ul>
+                </div>
+
+                <!-- Number input -->
+                <input
+                  type="tel"
+                  id="diag-phone-number"
+                  name="phone_number"
+                  class="form-input phone-number"
+                  autocomplete="tel-national"
+                  aria-label="Número de teléfono"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="diag-business" class="form-label" data-i18n="diag.form.business">Negocio o marca</label>
+              <input
+                type="text"
+                id="diag-business"
+                name="business"
+                class="form-input"
+                required
+                autocomplete="organization"
+                data-i18n-placeholder="diag.form.business.placeholder"
+                placeholder="Nombre del negocio o marca"
+              />
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="diag-website" class="form-label">
+                <span data-i18n="diag.form.website">Web actual</span>
+                <span class="form-label-optional" data-i18n="diag.form.website.optional">(si tienes)</span>
+              </label>
+              <input
+                type="url"
+                id="diag-website"
+                name="website_current"
+                class="form-input"
+                autocomplete="url"
+                placeholder="https://"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="diag-service" class="form-label" data-i18n="diag.form.service">¿Qué quieres crear o mejorar?</label>
+              <select id="diag-service" name="service" class="form-input form-select" required>
+                <option value="" data-i18n="diag.form.service.default">Selecciona una opción</option>
+                <option value="web-nueva" data-i18n="diag.form.service.opt1">Web nueva</option>
+                <option value="landing" data-i18n="diag.form.service.opt2">Landing</option>
+                <option value="rediseno-web" data-i18n="diag.form.service.opt3">Rediseño web</option>
+                <option value="marketing-campanas" data-i18n="diag.form.service.opt4">Marketing / campañas</option>
+                <option value="automatizacion" data-i18n="diag.form.service.opt5">Automatización</option>
+                <option value="mantenimiento" data-i18n="diag.form.service.opt6">Mantenimiento</option>
+                <option value="no-lo-tengo-claro" data-i18n="diag.form.service.opt7">No lo tengo claro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="diag-message" class="form-label" data-i18n="diag.form.message">Mensaje</label>
+            <textarea
+              id="diag-message"
+              name="message"
+              class="form-textarea"
+              rows="5"
+              required
+              data-i18n-placeholder="diag.form.message.placeholder"
+              placeholder="Cuéntanos qué tienes en mente."
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="hp_field" id="hp_field" autocomplete="off" tabindex="-1"
+            class="honeypot-field" aria-hidden="true" />
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary btn-lg btn-submit-full" id="diag-submit">
+              <span class="btn-label" data-i18n="diag.form.submit">Enviar solicitud</span>
+            </button>
+          </div>
+
+          <!-- Status message -->
+          <div class="form-status" id="diag-status" aria-live="polite"></div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p data-i18n="footer.copyright">&copy; 2026 Caselyn.</p>
+        <p class="footer-links">
+          <a href="/privacidad.html" class="footer-link footer-link--spaced"
+            data-i18n="footer.privacy">Privacidad</a>
+          <a href="/cookies.html" class="footer-link" data-i18n="footer.cookies">Cookies</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Caselyn",
+      "description": "Webs, marketing y automatización para negocios que quieren crecer",
+      "url": "https://caselyn-portfolio.vercel.app",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "ES"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["es", "ca", "en", "fr"]
+      },
+      "serviceType": ["Diseño Web", "Marketing Digital", "Automatización"]
+    }
+  </script>
+
+  <script src="/js/translations.js?v=5"></script>
+  <script src="/js/glass-element.js?v=5"></script>
+  <script src="/js/displacement-utils.js?v=5"></script>
+  <script src="/js/script-diagnostico.js?v=5"></script>
+</body>
+
+</html>
+
