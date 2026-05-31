@@ -280,6 +280,8 @@ a {
 .btn-header {
   padding: 0.5rem 1.125rem;
   font-size: var(--font-size-sm);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: white;
 }
 
 /* Navigation
