@@ -42,58 +42,17 @@ function esc(str) {
  * @param {object} ui       - getServicesUiStrings(lang)
  * @returns {string} HTML
  */
-function renderServiceCard(service, strings, ui) {
+function renderServiceCard(service, strings) {
   const pl = PRODUCT_LINES[service.productLine] || PRODUCT_LINES.web;
-
-  // Includes list
-  const includesHtml = (strings.includes || [])
-    .map((item) => `
-      <li class="service-card__include-item">
-        <svg class="service-card__include-icon" width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2.5 7L5.5 10L11.5 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>${esc(item)}</span>
-      </li>`)
-    .join('');
 
   return `
     <article
       class="service-card service-card--${esc(service.productLine)}"
       id="service-${esc(service.id)}"
-      data-service-id="${esc(service.id)}"
-      data-product-line="${esc(service.productLine)}"
       style="--pl-color: ${pl.color}; --pl-bg: ${pl.bg};"
-      aria-label="${esc(strings.title)}"
     >
-      <!-- Title -->
       <h3 class="service-card__title">${esc(strings.title)}</h3>
-
-      <!-- Tagline -->
       <p class="service-card__tagline">${esc(strings.tagline)}</p>
-
-      <!-- Divider -->
-      <hr class="service-card__divider" />
-
-      <!-- Includes -->
-      <ul class="service-card__includes" aria-label="${esc(ui.includesLabel)}">
-        ${includesHtml}
-      </ul>
-
-      <!-- Outcome -->
-      <p class="service-card__outcome">${esc(strings.outcome)}</p>
-
-      <!-- CTA -->
-      <a
-        href="/contacto"
-        class="btn service-card__cta"
-        id="cta-${esc(service.id)}"
-        data-service-id="${esc(service.id)}"
-      >
-        ${esc(strings.ctaLabel)}
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </article>
   `;
 }
@@ -131,7 +90,7 @@ function renderServicesSection(lang) {
   const cardsHtml = sortedServices
     .map((service) => {
       const strings = getServiceStrings(service.i18nKey, lang);
-      return renderServiceCard(service, strings, ui);
+      return renderServiceCard(service, strings);
     })
     .join('');
 
