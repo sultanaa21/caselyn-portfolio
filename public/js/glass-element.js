@@ -298,7 +298,15 @@ class GlassElement extends HTMLElement {
     } else if (this.fluid) {
       // Fluid mode: takes 100% of parent
       element.style.width = '100%';
-      element.style.height = this.hasAttribute('height') ? `${this.height}px` : '100%';
+
+      // Header mode: use min-height so box-shadows and content are never clipped.
+      // Normal fluid: use exact height for the glass filter calculation.
+      if (this.hasAttribute('data-header')) {
+        element.style.height = 'auto';
+        element.style.minHeight = this.hasAttribute('height') ? `${this.height}px` : '72px';
+      } else {
+        element.style.height = this.hasAttribute('height') ? `${this.height}px` : '100%';
+      }
 
       // Measure actual size for filter generation
       const rect = this.getBoundingClientRect();
@@ -396,6 +404,7 @@ class GlassElement extends HTMLElement {
           cursor: pointer;
           transition: transform 0.1s ease;
           position: relative;
+          overflow: visible;
           ${
             this.autoSize
               ? `display: inline-block;
@@ -411,7 +420,7 @@ class GlassElement extends HTMLElement {
         }
 
         .content {
-          ${this.autoSize ? '' : 'width: 100%; height: 100%;'}
+          ${this.autoSize ? '' : `width: 100%; ${this.hasAttribute('data-header') ? 'min-height: 72px;' : 'height: 100%;'}`}
           display: flex;
           align-items: center;
           /* justify-content: center; REMOVED to fix alignment issues */
@@ -419,6 +428,7 @@ class GlassElement extends HTMLElement {
           text-align: center;
           font-family: sans-serif;
           ${this.autoSize ? 'padding: var(--glass-padding, 16px 24px);' : ''}
+          overflow: visible;
         }
       </style>
       <div class="glass-box">
