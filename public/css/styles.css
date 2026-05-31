@@ -1238,6 +1238,11 @@ a {
   display: block;
 }
 
+.service-card__btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
 @media (hover: hover) {
   .service-card--link:hover .service-card__arrow {
     color: var(--pl-color, var(--color-accent));

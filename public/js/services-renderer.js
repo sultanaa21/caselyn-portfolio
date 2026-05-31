@@ -54,19 +54,18 @@ function renderServiceCard(service, strings) {
   const inner = `
     <h3 class="service-card__title">${esc(strings.title)}</h3>
     <p class="service-card__tagline">${esc(strings.tagline)}</p>
-    ${pageUrl ? `<span class="service-card__arrow" aria-hidden="true">→</span>` : ''}
+    ${pageUrl ? `<a href="${pageUrl}" class="btn btn-primary service-card__btn">Ver servicio</a>` : ''}
   `;
 
   if (pageUrl) {
     return `
-      <a
-        href="${pageUrl}"
+      <article
         class="service-card service-card--${esc(service.productLine)} service-card--link"
         id="service-${esc(service.id)}"
         style="--pl-color: ${pl.color}; --pl-bg: ${pl.bg};"
       >
         ${inner}
-      </a>
+      </article>
     `;
   }
 
