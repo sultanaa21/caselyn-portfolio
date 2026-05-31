@@ -57,7 +57,7 @@ function renderServiceCard(service, strings) {
   const inner = `
     <h3 class="service-card__title">${esc(strings.title)}</h3>
     <p class="service-card__tagline">${esc(strings.tagline)}</p>
-    ${pageUrl ? `<a href="${pageUrl}" class="btn btn-primary service-card__btn">Ver servicio</a>` : ''}
+    ${pageUrl ? `<a href="${pageUrl}" class="btn btn-primary service-card__btn">${esc(ui.viewServiceLabel || 'Ver servicio')}</a>` : ''}
   `;
 
   if (pageUrl) {

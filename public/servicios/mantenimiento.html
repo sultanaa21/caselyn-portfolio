@@ -64,11 +64,26 @@
           </button>
 
           <ul class="navbar-menu" id="navbar-menu">
-            <li><a href="/#servicios">Servicios</a></li>
-            <li><a href="/#ejemplos">Ejemplos</a></li>
-            <li><a href="/#proceso">Proceso</a></li>
-            <li><a href="/#faq">FAQ</a></li>
-            <li><a href="/contacto" class="btn btn-liquid-glass">Contactar</a></li>
+            <li><a href="/#servicios" data-i18n="nav.servicios">Servicios</a></li>
+            <li><a href="/#ejemplos" data-i18n="nav.portafolio">Ejemplos</a></li>
+            <li><a href="/#proceso" data-i18n="nav.proceso">Proceso</a></li>
+            <li><a href="/#faq" data-i18n="nav.faq">FAQ</a></li>
+            <!-- Language Selector — items rendered by JS from config -->
+            <li class="lang-selector-wrapper" id="lang-selector">
+              <button class="lang-trigger" id="lang-trigger" aria-expanded="false" aria-haspopup="true"
+                aria-label="Select language">
+                <span class="lang-trigger-label" id="lang-trigger-label">ES</span>
+                <svg class="lang-trigger-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"
+                  aria-hidden="true">
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="lang-dropdown" id="lang-dropdown" aria-label="Language options">
+                <!-- Populated dynamically by script.js -->
+              </div>
+            </li>
+            <li><a href="/contacto" class="btn btn-liquid-glass" data-i18n="nav.contacto">Contactar</a></li>
           </ul>
         </div>
       </nav>

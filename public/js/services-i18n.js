@@ -28,6 +28,7 @@ const SERVICES_UI_STRINGS = {
     deliveryLabel: 'Entrega',
     deliveryOngoing: 'Soporte continuo',
     comingSoonLabel: 'Próximamente',
+    viewServiceLabel: 'Ver servicio',
     productLines: {
       launch: 'Launch',
       presence: 'Presence',
@@ -66,6 +67,7 @@ const SERVICES_UI_STRINGS = {
     deliveryLabel: 'Lliurament',
     deliveryOngoing: 'Suport continuat',
     comingSoonLabel: 'Properament',
+    viewServiceLabel: 'Veure servei',
     productLines: {
       launch: 'Launch',
       presence: 'Presence',
@@ -104,6 +106,7 @@ const SERVICES_UI_STRINGS = {
     deliveryLabel: 'Delivery',
     deliveryOngoing: 'Ongoing support',
     comingSoonLabel: 'Coming soon',
+    viewServiceLabel: 'View service',
     productLines: {
       launch: 'Launch',
       presence: 'Presence',
@@ -142,6 +145,7 @@ const SERVICES_UI_STRINGS = {
     deliveryLabel: 'Délai',
     deliveryOngoing: 'Support continu',
     comingSoonLabel: 'Bientôt disponible',
+    viewServiceLabel: 'Voir le service',
     productLines: {
       launch: 'Launch',
       presence: 'Presence',
