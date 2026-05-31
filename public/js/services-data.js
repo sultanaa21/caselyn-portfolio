@@ -151,8 +151,8 @@ const SERVICES = [
     ctaAction: 'diagnostico',
     ctaParams: { service: 'automatizacion' },
 
-    pageReady: false,
-    seo: { metaTitle: '', metaDescription: '', ogImage: '' },
+    pageReady: true,
+    seo: { metaTitle: 'Automatización | Caselyn', metaDescription: 'Conectamos formularios, contactos y herramientas para ordenar procesos, avisos y seguimiento en negocios que quieren trabajar mejor.', ogImage: '' },
     heroImage: '',
     gallery: [],
     processSteps: [],

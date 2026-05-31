@@ -91,6 +91,10 @@ const pages = [
     input: 'servicios/marketing.html',
     output: 'servicios/marketing.html',
   },
+  {
+    input: 'servicios/automatizacion.html',
+    output: 'servicios/automatizacion.html',
+  },
   // diagnostico.html is a static redirect in public/ — not compiled by build
 ];
 
