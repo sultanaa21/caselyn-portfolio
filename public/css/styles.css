@@ -277,7 +277,7 @@ a {
   font-size: var(--font-size-base);
 }
 
-.btn-header {
+.navbar-menu .btn-header {
   padding: 0.5rem 1.125rem;
   font-size: var(--font-size-sm);
   font-family: 'Inter', system-ui, sans-serif;
