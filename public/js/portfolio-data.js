@@ -82,7 +82,7 @@ export const PORTFOLIO_PROJECTS = [
     tagline: 'Web visual para presentar estancia, habitaciones, experiencias y reservas.',
     shortDescription: 'Web visual para presentar estancia, habitaciones, experiencias y reservas.',
     outcome: '',
-    liveUrl: '#',
+    liveUrl: 'https://sa-gavina-mar.vercel.app/',
     githubUrl: null,
     metrics: [],
     testimonial: null,
