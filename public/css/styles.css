@@ -284,6 +284,13 @@ a {
   color: white;
 }
 
+.navbar-menu .btn-header:visited,
+.navbar-menu .btn-header:hover,
+.navbar-menu .btn-header:focus,
+.navbar-menu .btn-header:active {
+  color: white;
+}
+
 /* Navigation
    ========================================================================== */
 
