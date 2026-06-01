@@ -65,10 +65,10 @@ export const PORTFOLIO_PROJECTS = [
     servicesUsed: ['Web Design', 'Development', 'Local SEO']
   },
   {
-    id: 'project-fixnow',
-    slug: 'fixnow',
-    title: 'FixNow',
-    category: 'Servicios Profesionales',
+    id: 'project-sa-gavina-mar',
+    slug: 'sa-gavina-mar',
+    title: 'Sa Gavina Mar',
+    category: 'Hotel boutique',
     type: 'Concepto',
     year: '2024',
     status: 'published',
@@ -78,15 +78,15 @@ export const PORTFOLIO_PROJECTS = [
     layoutType: 'standard',
     thumbnail: null,
     gallery: [],
-    stack: ['Landing page', 'Formulario', 'SEO optimizado'],
-    tagline: 'Landing para servicios profesionales a domicilio.',
-    shortDescription: 'Landing para servicios profesionales a domicilio.',
+    stack: ['Visual web', 'Reservas', 'Concepto'],
+    tagline: 'Web visual para presentar estancia, habitaciones, experiencias y reservas.',
+    shortDescription: 'Web visual para presentar estancia, habitaciones, experiencias y reservas.',
     outcome: '',
     liveUrl: '#',
     githubUrl: null,
     metrics: [],
     testimonial: null,
-    servicesUsed: ['Launch', 'CRO']
+    servicesUsed: ['Web Design', 'Launch']
   },
   {
     id: 'project-personajes-virtuales-ia',
