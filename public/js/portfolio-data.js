@@ -76,7 +76,11 @@ export const PORTFOLIO_PROJECTS = [
     featuredOrder: 3,
     accentColor: '#3b82f6',
     layoutType: 'standard',
-    thumbnail: null,
+    thumbnail: {
+      desktop: '/images/portfolio/sa-gavina-mar-desktop.png',
+      mobile: '/images/portfolio/sa-gavina-mar-mobile.png',
+      alt: 'Sa Gavina Mar — Hotel boutique frente al mar'
+    },
     gallery: [],
     stack: ['Visual web', 'Reservas', 'Concepto'],
     tagline: 'Web visual para presentar estancia, habitaciones, experiencias y reservas.',
