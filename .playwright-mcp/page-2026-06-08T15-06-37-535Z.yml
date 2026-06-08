@@ -1,0 +1,310 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e6] [cursor=pointer]:
+      - generic [ref=e7]:
+        - link "Caselyn - Inicio" [ref=e8]:
+          - /url: "#"
+          - img [ref=e9]:
+            - generic [ref=e10]: CASELYN
+        - button "Abrir menú" [ref=e11]
+        - generic "Language options":
+          - button "Español" [ref=e15]:
+            - generic [ref=e16]:
+              - img [ref=e17]
+              - generic [ref=e20]: Español
+          - button "Català" [ref=e21]:
+            - generic [ref=e22]:
+              - img [ref=e23]
+              - generic [ref=e29]: Català
+          - button "English" [ref=e30]:
+            - generic [ref=e31]:
+              - img [ref=e32]
+              - generic [ref=e38]: English
+          - button "Français" [ref=e39]:
+            - generic [ref=e40]:
+              - img [ref=e41]
+              - generic [ref=e45]: Français
+  - generic [ref=e48]:
+    - heading "Webs, marketing y automatización para negocios que quieren crecer." [level=1] [ref=e49]
+    - paragraph [ref=e50]: Diseñamos webs, lanzamos campañas y automatizamos procesos simples para que tu negocio consiga más contactos, reservas y ventas sin complicarse con la tecnología.
+    - generic [ref=e51]:
+      - link "Contactar" [ref=e52] [cursor=pointer]:
+        - /url: /contacto
+      - link "Ver ejemplos" [ref=e53] [cursor=pointer]:
+        - /url: "#ejemplos"
+  - generic [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]: Web clara
+      - generic [ref=e59]: Tu negocio explicado de forma simple y profesional.
+    - generic [ref=e60]:
+      - generic [ref=e61]: Contacto fácil
+      - generic [ref=e62]: Canales de contacto visibles y bien integrados.
+    - generic [ref=e63]:
+      - generic [ref=e64]: Preparada para crecer
+      - generic [ref=e65]: Estructura lista para campañas, reservas y nuevas herramientas.
+  - region "Servicios" [ref=e66]:
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - heading "Servicios" [level=2] [ref=e69]
+        - paragraph [ref=e70]: Webs, marketing y automatización para mejorar cómo tu negocio se muestra, capta clientes y trabaja.
+      - list "Servicios" [ref=e71]:
+        - article [ref=e72] [cursor=pointer]:
+          - heading "Webs y landings" [level=3] [ref=e73]
+          - paragraph [ref=e74]: Páginas claras, rápidas y adaptadas a cada negocio.
+          - link "Ver servicio" [ref=e75]:
+            - /url: /servicios/webs-y-landings
+        - article [ref=e76] [cursor=pointer]:
+          - heading "Marketing" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Campañas, landings y mejoras para atraer clientes.
+          - link "Ver servicio" [ref=e79]:
+            - /url: /servicios/marketing
+        - article [ref=e80] [cursor=pointer]:
+          - heading "Automatización" [level=3] [ref=e81]
+          - paragraph [ref=e82]: Conexión de formularios, contactos y herramientas.
+          - link "Ver servicio" [ref=e83]:
+            - /url: /servicios/automatizacion
+        - article [ref=e84] [cursor=pointer]:
+          - heading "Mantenimiento" [level=3] [ref=e85]
+          - paragraph [ref=e86]: Cambios, soporte y revisión técnica mensual.
+          - link "Ver servicio" [ref=e87]:
+            - /url: /servicios/mantenimiento
+  - generic [ref=e89]:
+    - generic [ref=e90]:
+      - heading "Ejemplos" [level=2] [ref=e91]
+      - paragraph [ref=e92]: Conceptos y proyectos visuales de webs para distintos tipos de negocio.
+    - generic [ref=e93]:
+      - article [ref=e94]:
+        - link "Landing premium de MELT Hamburguesería — diseño oscuro con acento ámbar MELT Destacado Web visual para presentar marca, producto y contacto de forma clara. Hamburguesería · Concepto Next.js Framer Motion Tailwind CSS Ver proyecto" [ref=e95] [cursor=pointer]:
+          - /url: https://web-hambu.vercel.app/
+          - img "Landing premium de MELT Hamburguesería — diseño oscuro con acento ámbar" [ref=e98]
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - heading "MELT" [level=3] [ref=e101]
+              - generic [ref=e102]: Destacado
+            - paragraph [ref=e103]: Web visual para presentar marca, producto y contacto de forma clara.
+            - generic [ref=e104]:
+              - generic [ref=e105]: Hamburguesería
+              - generic [ref=e106]: ·
+              - generic [ref=e107]: Concepto
+            - generic [ref=e108]:
+              - generic [ref=e109]: Next.js
+              - generic [ref=e110]: Framer Motion
+              - generic [ref=e111]: Tailwind CSS
+            - generic [ref=e112]:
+              - generic [ref=e113]: Ver proyecto
+              - img [ref=e114]
+      - article [ref=e116]:
+        - link "Juicy Brava — batidos frescos en la Costa Brava, diseño verde elegante Juicy Brava Landing para negocio de batidos frescos en la Costa Brava. Batidos & Smoothies · Concepto Next.js Framer Motion Tailwind CSS Ver proyecto" [ref=e117] [cursor=pointer]:
+          - /url: https://juicy-brava.vercel.app/
+          - img "Juicy Brava — batidos frescos en la Costa Brava, diseño verde elegante" [ref=e120]
+          - generic [ref=e121]:
+            - heading "Juicy Brava" [level=3] [ref=e123]
+            - paragraph [ref=e124]: Landing para negocio de batidos frescos en la Costa Brava.
+            - generic [ref=e125]:
+              - generic [ref=e126]: Batidos & Smoothies
+              - generic [ref=e127]: ·
+              - generic [ref=e128]: Concepto
+            - generic [ref=e129]:
+              - generic [ref=e130]: Next.js
+              - generic [ref=e131]: Framer Motion
+              - generic [ref=e132]: Tailwind CSS
+            - generic [ref=e133]:
+              - generic [ref=e134]: Ver proyecto
+              - img [ref=e135]
+      - article [ref=e137]:
+        - link "Sa Gavina Mar — Hotel boutique frente al mar Sa Gavina Mar Web visual para presentar estancia, habitaciones, experiencias y reservas. Hotel boutique · Concepto Visual web Reservas Concepto Ver proyecto" [ref=e138] [cursor=pointer]:
+          - /url: https://sa-gavina-mar.vercel.app/
+          - img "Sa Gavina Mar — Hotel boutique frente al mar" [ref=e141]
+          - generic [ref=e142]:
+            - heading "Sa Gavina Mar" [level=3] [ref=e144]
+            - paragraph [ref=e145]: Web visual para presentar estancia, habitaciones, experiencias y reservas.
+            - generic [ref=e146]:
+              - generic [ref=e147]: Hotel boutique
+              - generic [ref=e148]: ·
+              - generic [ref=e149]: Concepto
+            - generic [ref=e150]:
+              - generic [ref=e151]: Visual web
+              - generic [ref=e152]: Reservas
+              - generic [ref=e153]: Concepto
+            - generic [ref=e154]:
+              - generic [ref=e155]: Ver proyecto
+              - img [ref=e156]
+      - article [ref=e158]:
+        - link "Personajes Virtuales IA — humanos generados por IA para contenido digital Personajes Virtuales IA Landing para servicio de creación de contenido digital con IA. IA & Contenido Digital · Concepto Next.js Framer Motion Tailwind CSS Ver proyecto" [ref=e159] [cursor=pointer]:
+          - /url: https://web2-ugc.vercel.app/
+          - img "Personajes Virtuales IA — humanos generados por IA para contenido digital" [ref=e162]
+          - generic [ref=e163]:
+            - heading "Personajes Virtuales IA" [level=3] [ref=e165]
+            - paragraph [ref=e166]: Landing para servicio de creación de contenido digital con IA.
+            - generic [ref=e167]:
+              - generic [ref=e168]: IA & Contenido Digital
+              - generic [ref=e169]: ·
+              - generic [ref=e170]: Concepto
+            - generic [ref=e171]:
+              - generic [ref=e172]: Next.js
+              - generic [ref=e173]: Framer Motion
+              - generic [ref=e174]: Tailwind CSS
+            - generic [ref=e175]:
+              - generic [ref=e176]: Ver proyecto
+              - img [ref=e177]
+      - article [ref=e179]:
+        - link "FrankBurger — Landing premium para hamburguesería FrankBurger Web para hamburguesería con menú, historia y contacto directo. Restauración · Concepto Next.js Tailwind CSS Ver proyecto" [ref=e180] [cursor=pointer]:
+          - /url: https://web3-72gl.vercel.app/
+          - img "FrankBurger — Landing premium para hamburguesería" [ref=e183]
+          - generic [ref=e184]:
+            - heading "FrankBurger" [level=3] [ref=e186]
+            - paragraph [ref=e187]: Web para hamburguesería con menú, historia y contacto directo.
+            - generic [ref=e188]:
+              - generic [ref=e189]: Restauración
+              - generic [ref=e190]: ·
+              - generic [ref=e191]: Concepto
+            - generic [ref=e192]:
+              - generic [ref=e193]: Next.js
+              - generic [ref=e194]: Tailwind CSS
+            - generic [ref=e195]:
+              - generic [ref=e196]: Ver proyecto
+              - img [ref=e197]
+      - article [ref=e199]:
+        - link "Azul Croissant — Panadería artesanal con croissants y café Azul Croissant Web para panadería artesanal con carta, ubicación y pedidos. Panadería & Café · Concepto Next.js Tailwind CSS Ver proyecto" [ref=e200] [cursor=pointer]:
+          - /url: https://web-4-topaz.vercel.app
+          - img "Azul Croissant — Panadería artesanal con croissants y café" [ref=e203]
+          - generic [ref=e204]:
+            - heading "Azul Croissant" [level=3] [ref=e206]
+            - paragraph [ref=e207]: Web para panadería artesanal con carta, ubicación y pedidos.
+            - generic [ref=e208]:
+              - generic [ref=e209]: Panadería & Café
+              - generic [ref=e210]: ·
+              - generic [ref=e211]: Concepto
+            - generic [ref=e212]:
+              - generic [ref=e213]: Next.js
+              - generic [ref=e214]: Tailwind CSS
+            - generic [ref=e215]:
+              - generic [ref=e216]: Ver proyecto
+              - img [ref=e217]
+  - generic [ref=e220]:
+    - generic [ref=e221]:
+      - heading "Proceso" [level=2] [ref=e222]
+      - paragraph [ref=e223]: De la primera idea al lanzamiento, con pasos claros.
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - generic [ref=e226]: "1"
+        - generic [ref=e227]:
+          - heading "Diagnóstico" [level=3] [ref=e228]
+          - paragraph [ref=e229]: Revisamos tu negocio, tu web actual y lo que quieres mejorar.
+      - generic [ref=e230]:
+        - generic [ref=e231]: "2"
+        - generic [ref=e232]:
+          - heading "Propuesta" [level=3] [ref=e233]
+          - paragraph [ref=e234]: "Definimos qué tiene sentido hacer: web, marketing, automatización o mantenimiento."
+      - generic [ref=e235]:
+        - generic [ref=e236]: "3"
+        - generic [ref=e237]:
+          - heading "Diseño y desarrollo" [level=3] [ref=e238]
+          - paragraph [ref=e239]: Creamos la solución con una estructura clara y adaptada al negocio.
+      - generic [ref=e240]:
+        - generic [ref=e241]: "4"
+        - generic [ref=e242]:
+          - heading "Lanzamiento" [level=3] [ref=e243]
+          - paragraph [ref=e244]: Publicamos, revisamos y dejamos todo listo para empezar a usarlo.
+  - generic [ref=e246]:
+    - generic [ref=e247]:
+      - heading "Preguntas frecuentes" [level=2] [ref=e248]
+      - paragraph [ref=e249]: Respuestas directas a las dudas más comunes.
+    - generic [ref=e250]:
+      - generic [ref=e251]:
+        - button "¿Solo hacéis páginas web? +" [ref=e252] [cursor=pointer]:
+          - generic [ref=e253]: ¿Solo hacéis páginas web?
+          - generic [ref=e254]: +
+        - generic [ref=e255]: No. También trabajamos campañas, automatizaciones y mantenimiento según lo que necesite el proyecto.
+      - generic [ref=e256]:
+        - button "¿Cómo empezamos? +" [ref=e257] [cursor=pointer]:
+          - generic [ref=e258]: ¿Cómo empezamos?
+          - generic [ref=e259]: +
+        - generic [ref=e260]: Revisamos tu situación actual y te decimos qué tendría más sentido mejorar primero.
+      - generic [ref=e261]:
+        - button "¿Puedo pedir solo una landing o web? +" [ref=e262] [cursor=pointer]:
+          - generic [ref=e263]: ¿Puedo pedir solo una landing o web?
+          - generic [ref=e264]: +
+        - generic [ref=e265]: Sí. Podemos trabajar una landing, una web completa o una mejora concreta.
+      - generic [ref=e266]:
+        - button "¿También lleváis campañas? +" [ref=e267] [cursor=pointer]:
+          - generic [ref=e268]: ¿También lleváis campañas?
+          - generic [ref=e269]: +
+        - generic [ref=e270]: Sí. Podemos ayudarte con campañas y landings preparadas para captar clientes.
+      - generic [ref=e271]:
+        - button "¿Ofrecéis mantenimiento? +" [ref=e272] [cursor=pointer]:
+          - generic [ref=e273]: ¿Ofrecéis mantenimiento?
+          - generic [ref=e274]: +
+        - generic [ref=e275]: Sí. Podemos encargarnos de cambios, soporte y revisión técnica mensual.
+      - generic [ref=e276]:
+        - button "¿Tenéis precios cerrados? +" [ref=e277] [cursor=pointer]:
+          - generic [ref=e278]: ¿Tenéis precios cerrados?
+          - generic [ref=e279]: +
+        - generic [ref=e280]: Depende del proyecto. Primero revisamos qué necesitas y después preparamos una propuesta clara.
+      - generic [ref=e281]:
+        - button "¿Cómo empezamos? +" [ref=e282] [cursor=pointer]:
+          - generic [ref=e283]: ¿Cómo empezamos?
+          - generic [ref=e284]: +
+        - generic [ref=e285]: Contáctanos y revisamos qué necesita tu negocio antes de proponerte nada.
+  - generic [ref=e288]:
+    - heading "¿Tienes algo en mente?" [level=2] [ref=e289]
+    - paragraph [ref=e290]: Cuéntanos qué quieres crear o mejorar y vemos cómo podemos ayudarte.
+    - link "Contactar" [ref=e291] [cursor=pointer]:
+      - /url: /contacto
+  - contentinfo [ref=e292]:
+    - generic [ref=e293]:
+      - generic [ref=e294]:
+        - generic [ref=e295]:
+          - generic [ref=e296]: Caselyn
+          - paragraph [ref=e297]: Webs, marketing y automatización para negocios que quieren crecer.
+        - generic [ref=e298]:
+          - paragraph [ref=e299]: Servicios
+          - list [ref=e300]:
+            - listitem [ref=e301]:
+              - link "Webs y landings" [ref=e302] [cursor=pointer]:
+                - /url: /servicios/webs-y-landings.html
+            - listitem [ref=e303]:
+              - link "Marketing" [ref=e304] [cursor=pointer]:
+                - /url: /servicios/marketing.html
+            - listitem [ref=e305]:
+              - link "Automatización" [ref=e306] [cursor=pointer]:
+                - /url: /servicios/automatizacion.html
+            - listitem [ref=e307]:
+              - link "Mantenimiento" [ref=e308] [cursor=pointer]:
+                - /url: /servicios/mantenimiento.html
+        - generic [ref=e309]:
+          - paragraph [ref=e310]: Explorar
+          - list [ref=e311]:
+            - listitem [ref=e312]:
+              - link "Ejemplos" [ref=e313] [cursor=pointer]:
+                - /url: /#ejemplos
+            - listitem [ref=e314]:
+              - link "Proceso" [ref=e315] [cursor=pointer]:
+                - /url: /#proceso
+            - listitem [ref=e316]:
+              - link "FAQ" [ref=e317] [cursor=pointer]:
+                - /url: /#faq
+            - listitem [ref=e318]:
+              - link "Contacto" [ref=e319] [cursor=pointer]:
+                - /url: /contacto.html
+        - generic [ref=e320]:
+          - paragraph [ref=e321]: Social
+          - list [ref=e322]:
+            - listitem [ref=e323]:
+              - link "Instagram" [ref=e324] [cursor=pointer]:
+                - /url: https://www.instagram.com/caselyn.digital/
+            - listitem [ref=e325]:
+              - link "TikTok" [ref=e326] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@caselyn.digital
+            - listitem [ref=e327]:
+              - link "YouTube" [ref=e328] [cursor=pointer]:
+                - /url: https://www.youtube.com/@caselyn.digital
+      - generic [ref=e329]:
+        - paragraph [ref=e330]:
+          - generic [ref=e331]: © 2026 Caselyn.
+          - generic [ref=e332]: Todos los derechos reservados.
+        - paragraph [ref=e333]:
+          - link "Privacidad" [ref=e334] [cursor=pointer]:
+            - /url: /privacidad.html
+          - link "Cookies" [ref=e335] [cursor=pointer]:
+            - /url: /cookies.html

@@ -1,0 +1,132 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e6] [cursor=pointer]:
+      - generic [ref=e7]:
+        - link "Caselyn - Inicio" [ref=e8]:
+          - /url: /
+          - img [ref=e9]:
+            - generic [ref=e10]: CASELYN
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "Servicios" [ref=e13]:
+              - /url: /#servicios
+          - listitem [ref=e14]:
+            - link "Ejemplos" [ref=e15]:
+              - /url: /#ejemplos
+          - listitem [ref=e16]:
+            - link "Proceso" [ref=e17]:
+              - /url: /#proceso
+          - listitem [ref=e18]:
+            - link "FAQ" [ref=e19]:
+              - /url: /#faq
+          - listitem [ref=e20]:
+            - button "Select language" [ref=e21]:
+              - generic [ref=e23]:
+                - img [ref=e24]
+                - generic [ref=e27]: ES
+              - img [ref=e28]
+  - generic [ref=e32]:
+    - heading "Cuéntanos tu proyecto" [level=1] [ref=e33]
+    - paragraph [ref=e34]: Dinos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte.
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]: Nombre
+        - textbox "Nombre" [ref=e42]:
+          - /placeholder: Nombre y apellido
+      - generic [ref=e43]:
+        - generic [ref=e44]: Email
+        - textbox "Email" [ref=e45]
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]: Teléfono (opcional)
+        - group "Teléfono (opcional)" [ref=e49]:
+          - combobox "País y prefijo" [ref=e50] [cursor=pointer]:
+            - generic [ref=e51]: 🇪🇸
+            - generic [ref=e52]: "+34"
+            - img [ref=e53]
+          - textbox "Número de teléfono" [ref=e55]
+      - generic [ref=e56]:
+        - generic [ref=e57]: Negocio o marca
+        - textbox "Negocio o marca" [ref=e58]:
+          - /placeholder: Nombre del negocio o marca
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]: Web actual (si tienes)
+        - textbox "Web actual (si tienes)" [ref=e62]:
+          - /placeholder: https://
+      - generic [ref=e63]:
+        - generic [ref=e64]: ¿Qué quieres crear o mejorar?
+        - combobox "¿Qué quieres crear o mejorar?" [ref=e65] [cursor=pointer]:
+          - option "Selecciona una opción" [selected]
+          - option "Web nueva"
+          - option "Landing"
+          - option "Rediseño web"
+          - option "Marketing / campañas"
+          - option "Automatización"
+          - option "Mantenimiento"
+          - option "No lo tengo claro"
+    - generic [ref=e66]:
+      - generic [ref=e67]: Mensaje
+      - textbox "Mensaje" [ref=e68]:
+        - /placeholder: Cuéntanos qué tienes en mente.
+    - textbox [ref=e69]
+    - button "Enviar solicitud" [ref=e71] [cursor=pointer]:
+      - generic [ref=e72]: Enviar solicitud
+  - contentinfo [ref=e74]:
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]: Caselyn
+          - paragraph [ref=e79]: Webs, marketing y automatización para negocios que quieren crecer.
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: Servicios
+          - list [ref=e82]:
+            - listitem [ref=e83]:
+              - link "Webs y landings" [ref=e84] [cursor=pointer]:
+                - /url: /servicios/webs-y-landings.html
+            - listitem [ref=e85]:
+              - link "Marketing" [ref=e86] [cursor=pointer]:
+                - /url: /servicios/marketing.html
+            - listitem [ref=e87]:
+              - link "Automatización" [ref=e88] [cursor=pointer]:
+                - /url: /servicios/automatizacion.html
+            - listitem [ref=e89]:
+              - link "Mantenimiento" [ref=e90] [cursor=pointer]:
+                - /url: /servicios/mantenimiento.html
+        - generic [ref=e91]:
+          - paragraph [ref=e92]: Explorar
+          - list [ref=e93]:
+            - listitem [ref=e94]:
+              - link "Ejemplos" [ref=e95] [cursor=pointer]:
+                - /url: /#ejemplos
+            - listitem [ref=e96]:
+              - link "Proceso" [ref=e97] [cursor=pointer]:
+                - /url: /#proceso
+            - listitem [ref=e98]:
+              - link "FAQ" [ref=e99] [cursor=pointer]:
+                - /url: /#faq
+            - listitem [ref=e100]:
+              - link "Contacto" [ref=e101] [cursor=pointer]:
+                - /url: /contacto.html
+        - generic [ref=e102]:
+          - paragraph [ref=e103]: Social
+          - list [ref=e104]:
+            - listitem [ref=e105]:
+              - link "Instagram" [ref=e106] [cursor=pointer]:
+                - /url: https://www.instagram.com/caselyn.digital/
+            - listitem [ref=e107]:
+              - link "TikTok" [ref=e108] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@caselyn.digital
+            - listitem [ref=e109]:
+              - link "YouTube" [ref=e110] [cursor=pointer]:
+                - /url: https://www.youtube.com/@caselyn.digital
+      - generic [ref=e111]:
+        - paragraph [ref=e112]:
+          - generic [ref=e113]: © 2026 Caselyn.
+          - generic [ref=e114]: Todos los derechos reservados.
+        - paragraph [ref=e115]:
+          - link "Privacidad" [ref=e116] [cursor=pointer]:
+            - /url: /privacidad.html
+          - link "Cookies" [ref=e117] [cursor=pointer]:
+            - /url: /cookies.html

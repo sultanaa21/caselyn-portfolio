@@ -1,0 +1,226 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e6] [cursor=pointer]:
+      - generic [ref=e7]:
+        - link "Caselyn - Inicio" [ref=e8]:
+          - /url: /
+          - img [ref=e9]:
+            - generic [ref=e10]: CASELYN
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "Servicios" [ref=e13]:
+              - /url: /#servicios
+          - listitem [ref=e14]:
+            - link "Ejemplos" [ref=e15]:
+              - /url: /#ejemplos
+          - listitem [ref=e16]:
+            - link "Proceso" [ref=e17]:
+              - /url: /#proceso
+          - listitem [ref=e18]:
+            - link "FAQ" [ref=e19]:
+              - /url: /#faq
+          - listitem [ref=e20]:
+            - button "Select language" [ref=e21]:
+              - generic [ref=e23]:
+                - img [ref=e24]
+                - generic [ref=e27]: ES
+              - img [ref=e28]
+          - listitem [ref=e30]:
+            - link "Contactar" [ref=e31]:
+              - /url: /contacto
+  - generic [ref=e34]:
+    - paragraph [ref=e35]: Servicios
+    - heading "Webs y landings" [level=1] [ref=e36]
+    - paragraph [ref=e37]: Creamos páginas para objetivos concretos y webs completas con espacio para crecer.
+    - paragraph [ref=e38]: Una landing sirve para enfocar una acción. Una web completa sirve para construir una estructura más amplia alrededor de tu negocio.
+    - generic [ref=e39]:
+      - link "Contactar" [ref=e40] [cursor=pointer]:
+        - /url: /contacto
+      - link "Ver otros servicios" [ref=e41] [cursor=pointer]:
+        - /url: /#servicios
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Landing page o web completa" [level=2] [ref=e45]
+      - paragraph [ref=e46]: No son lo mismo. Cada formato tiene un objetivo distinto.
+    - generic [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Landing page" [level=3] [ref=e50]
+          - paragraph [ref=e51]: Una página. Un objetivo.
+        - paragraph [ref=e52]: Pensada para campañas, lanzamientos, promociones o servicios concretos. Menos secciones, más enfoque.
+        - list [ref=e53]:
+          - listitem [ref=e54]: — Campañas de anuncios
+          - listitem [ref=e55]: — Promociones
+          - listitem [ref=e56]: — Lanzamientos
+          - listitem [ref=e57]: — Captación de contactos
+          - listitem [ref=e58]: — Validar una idea
+          - listitem [ref=e59]: — Presentar un servicio concreto
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - heading "Web completa" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Una estructura con más recorrido.
+        - paragraph [ref=e64]: Pensada para negocios que necesitan explicar mejor lo que hacen, mostrar varias áreas y dejar espacio para crecer.
+        - list [ref=e65]:
+          - listitem [ref=e66]: — Servicios
+          - listitem [ref=e67]: — Productos
+          - listitem [ref=e68]: — Reservas
+          - listitem [ref=e69]: — Formularios
+          - listitem [ref=e70]: — Portfolio
+          - listitem [ref=e71]: — Idiomas
+          - listitem [ref=e72]: — Contenido
+          - listitem [ref=e73]: — Integraciones
+          - listitem [ref=e74]: — Automatizaciones
+    - paragraph [ref=e75]: No todo negocio necesita lo mismo. Primero vemos qué tiene sentido crear ahora y qué puede quedar preparado para después.
+  - generic [ref=e77]:
+    - heading "Formatos habituales" [level=2] [ref=e79]
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - heading "Landing para campaña" [level=3] [ref=e82]
+        - paragraph [ref=e83]: Una página enfocada en una acción concreta.
+      - generic [ref=e84]:
+        - heading "Web completa" [level=3] [ref=e85]
+        - paragraph [ref=e86]: Una estructura para presentar el negocio con más detalle.
+      - generic [ref=e87]:
+        - heading "Rediseño web" [level=3] [ref=e88]
+        - paragraph [ref=e89]: Una nueva versión de una web existente.
+      - generic [ref=e90]:
+        - heading "Web con integraciones" [level=3] [ref=e91]
+        - paragraph [ref=e92]: Formularios, reservas, WhatsApp o herramientas conectadas.
+  - generic [ref=e94]:
+    - heading "Qué cuidamos" [level=2] [ref=e96]
+    - list "Aspectos que cuidamos" [ref=e97]:
+      - listitem [ref=e98]: Estructura
+      - listitem [ref=e99]: Diseño
+      - listitem [ref=e100]: Responsive
+      - listitem [ref=e101]: Velocidad
+      - listitem [ref=e102]: Contacto
+      - listitem [ref=e103]: SEO básico
+      - listitem [ref=e104]: Publicación
+      - listitem [ref=e105]: Integraciones
+  - generic [ref=e107]:
+    - generic [ref=e108]:
+      - heading "Ejemplos relacionados" [level=2] [ref=e109]
+      - paragraph [ref=e110]: Tres estilos distintos para tres tipos de negocio.
+    - generic [ref=e111]:
+      - article [ref=e112]:
+        - link "MELT Hamburguesería — diseño oscuro con acento ámbar MELT Web visual para presentar marca, producto y contacto de forma clara. Hamburguesería · Concepto Ver proyecto" [ref=e113] [cursor=pointer]:
+          - /url: https://web-hambu.vercel.app/
+          - img "MELT Hamburguesería — diseño oscuro con acento ámbar" [ref=e116]
+          - generic [ref=e117]:
+            - heading "MELT" [level=3] [ref=e119]
+            - paragraph [ref=e120]: Web visual para presentar marca, producto y contacto de forma clara.
+            - generic [ref=e121]:
+              - generic [ref=e122]: Hamburguesería
+              - generic [ref=e123]: ·
+              - generic [ref=e124]: Concepto
+            - generic [ref=e125]:
+              - generic [ref=e126]: Ver proyecto
+              - img [ref=e127]
+      - article [ref=e129]:
+        - link "Juicy Brava — batidos frescos en la Costa Brava Juicy Brava Landing para negocio de batidos frescos en la Costa Brava. Batidos & Smoothies · Concepto Ver proyecto" [ref=e130] [cursor=pointer]:
+          - /url: https://juicy-brava.vercel.app/
+          - img "Juicy Brava — batidos frescos en la Costa Brava" [ref=e133]
+          - generic [ref=e134]:
+            - heading "Juicy Brava" [level=3] [ref=e136]
+            - paragraph [ref=e137]: Landing para negocio de batidos frescos en la Costa Brava.
+            - generic [ref=e138]:
+              - generic [ref=e139]: Batidos & Smoothies
+              - generic [ref=e140]: ·
+              - generic [ref=e141]: Concepto
+            - generic [ref=e142]:
+              - generic [ref=e143]: Ver proyecto
+              - img [ref=e144]
+      - article [ref=e146]:
+        - link "Azul Croissant — panadería artesanal Azul Croissant Web para panadería artesanal con carta, ubicación y pedidos. Panadería & Café · Concepto Ver proyecto" [ref=e147] [cursor=pointer]:
+          - /url: https://web-4-topaz.vercel.app
+          - img "Azul Croissant — panadería artesanal" [ref=e150]
+          - generic [ref=e151]:
+            - heading "Azul Croissant" [level=3] [ref=e153]
+            - paragraph [ref=e154]: Web para panadería artesanal con carta, ubicación y pedidos.
+            - generic [ref=e155]:
+              - generic [ref=e156]: Panadería & Café
+              - generic [ref=e157]: ·
+              - generic [ref=e158]: Concepto
+            - generic [ref=e159]:
+              - generic [ref=e160]: Ver proyecto
+              - img [ref=e161]
+  - generic [ref=e164]:
+    - heading "Cómo trabajamos" [level=2] [ref=e166]
+    - generic [ref=e167]:
+      - generic [ref=e168]:
+        - generic [ref=e169]: "1"
+        - generic [ref=e170]:
+          - heading "Entendemos el objetivo" [level=3] [ref=e171]
+          - paragraph [ref=e172]: Vemos si encaja mejor una landing, una web completa o una mejora concreta.
+      - generic [ref=e173]:
+        - generic [ref=e174]: "2"
+        - generic [ref=e175]:
+          - heading "Definimos la estructura" [level=3] [ref=e176]
+          - paragraph [ref=e177]: Ordenamos las secciones, el contenido y los puntos de contacto.
+      - generic [ref=e178]:
+        - generic [ref=e179]: "3"
+        - generic [ref=e180]:
+          - heading "Diseñamos y desarrollamos" [level=3] [ref=e181]
+          - paragraph [ref=e182]: Creamos una web adaptada al negocio y lista para publicarse.
+      - generic [ref=e183]:
+        - generic [ref=e184]: "4"
+        - generic [ref=e185]:
+          - heading "Publicamos" [level=3] [ref=e186]
+          - paragraph [ref=e187]: Revisamos los detalles finales y dejamos la web funcionando.
+  - contentinfo [ref=e188]:
+    - generic [ref=e189]:
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - generic [ref=e192]: Caselyn
+          - paragraph [ref=e193]: Webs, marketing y automatización para negocios que quieren crecer.
+        - generic [ref=e194]:
+          - paragraph [ref=e195]: Servicios
+          - list [ref=e196]:
+            - listitem [ref=e197]:
+              - link "Webs y landings" [ref=e198] [cursor=pointer]:
+                - /url: /servicios/webs-y-landings.html
+            - listitem [ref=e199]:
+              - link "Marketing" [ref=e200] [cursor=pointer]:
+                - /url: /servicios/marketing.html
+            - listitem [ref=e201]:
+              - link "Automatización" [ref=e202] [cursor=pointer]:
+                - /url: /servicios/automatizacion.html
+            - listitem [ref=e203]:
+              - link "Mantenimiento" [ref=e204] [cursor=pointer]:
+                - /url: /servicios/mantenimiento.html
+        - generic [ref=e205]:
+          - paragraph [ref=e206]: Explorar
+          - list [ref=e207]:
+            - listitem [ref=e208]:
+              - link "Ejemplos" [ref=e209] [cursor=pointer]:
+                - /url: /#ejemplos
+            - listitem [ref=e210]:
+              - link "Proceso" [ref=e211] [cursor=pointer]:
+                - /url: /#proceso
+            - listitem [ref=e212]:
+              - link "FAQ" [ref=e213] [cursor=pointer]:
+                - /url: /#faq
+            - listitem [ref=e214]:
+              - link "Contacto" [ref=e215] [cursor=pointer]:
+                - /url: /contacto.html
+        - generic [ref=e216]:
+          - paragraph [ref=e217]: Social
+          - list [ref=e218]:
+            - listitem [ref=e219]:
+              - link "Instagram" [ref=e220] [cursor=pointer]:
+                - /url: https://www.instagram.com/caselyn.digital/
+            - listitem [ref=e221]:
+              - link "TikTok" [ref=e222] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@caselyn.digital
+            - listitem [ref=e223]:
+              - link "YouTube" [ref=e224] [cursor=pointer]:
+                - /url: https://www.youtube.com/@caselyn.digital
+      - generic [ref=e225]:
+        - paragraph [ref=e226]:
+          - generic [ref=e227]: © 2026 Caselyn.
+          - generic [ref=e228]: Todos los derechos reservados.
+        - paragraph [ref=e229]:
+          - link "Privacidad" [ref=e230] [cursor=pointer]:
+            - /url: /privacidad.html
+          - link "Cookies" [ref=e231] [cursor=pointer]:
+            - /url: /cookies.html
