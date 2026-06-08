@@ -67,6 +67,22 @@ const SV_PROJECTS = [
 ];
 
 // ============================================================================
+// i18n helper
+// ============================================================================
+
+function svGetLang() {
+  return localStorage.getItem('caselyn-lang') || 'es';
+}
+
+function svT(key) {
+  const lang = svGetLang();
+  const tr = window.translations;
+  if (tr && tr[lang] && tr[lang][key]) return tr[lang][key];
+  if (tr && tr['es'] && tr['es'][key]) return tr['es'][key];
+  return '';
+}
+
+// ============================================================================
 // Portfolio render
 // ============================================================================
 
@@ -109,7 +125,7 @@ function renderSvPortfolio() {
               <span class="portfolio-card__year">${p.type}</span>
             </div>
             <div class="portfolio-card__cta">
-              <span class="portfolio-card__cta-label">${hasLive ? 'Ver proyecto' : 'Próximamente'}</span>
+              <span class="portfolio-card__cta-label">${hasLive ? (svT('portfolio.cta.live') || 'Ver proyecto') : (svT('portfolio.cta.soon') || 'Próximamente')}</span>
               <svg class="portfolio-card__cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -204,4 +220,9 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 document.addEventListener('DOMContentLoaded', () => {
   renderSvPortfolio();
   observeFadeElements();
+
+  // Re-render portfolio cards when language changes so CTA labels translate
+  window.rerenderServicesSection = function () {
+    renderSvPortfolio();
+  };
 });

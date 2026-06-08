@@ -233,7 +233,7 @@ const ALL_COUNTRIES = [
       if (filtered.length === 0) {
         const empty = document.createElement('li');
         empty.className = 'phone-country-empty';
-        empty.textContent = 'Sin resultados';
+        empty.textContent = (typeof t === 'function' && t('diag.form.picker.no.results')) || 'Sin resultados';
         list.appendChild(empty);
       } else {
         filtered.forEach(([flag, name, code]) => {
@@ -389,12 +389,12 @@ function isValidEmail(email) {
 }
 
 function validateForm(data) {
-  if (!data.name || data.name.trim().length < 2) return 'Introduce tu nombre.';
-  if (!data.email || !isValidEmail(data.email.trim())) return 'Introduce un email válido.';
-  if (!data.business || data.business.trim().length < 1) return 'Indica el nombre de tu negocio.';
-  if (!data.service || data.service === '') return 'Selecciona qué quieres crear o mejorar.';
-  if (!data.message || data.message.trim().length < 10) return 'El mensaje debe tener al menos 10 caracteres.';
-  if (data.message.trim().length > 5000) return 'El mensaje es demasiado largo.';
+  if (!data.name || data.name.trim().length < 2) return t('diag.form.error.name') || 'Introduce tu nombre.';
+  if (!data.email || !isValidEmail(data.email.trim())) return t('diag.form.error.email') || 'Introduce un email válido.';
+  if (!data.business || data.business.trim().length < 1) return t('diag.form.error.business') || 'Indica el nombre de tu negocio.';
+  if (!data.service || data.service === '') return t('diag.form.error.service') || 'Selecciona qué quieres crear o mejorar.';
+  if (!data.message || data.message.trim().length < 10) return t('diag.form.error.message.short') || 'El mensaje debe tener al menos 10 caracteres.';
+  if (data.message.trim().length > 5000) return t('diag.form.error.message.long') || 'El mensaje es demasiado largo.';
   return null;
 }
 
