@@ -101,7 +101,7 @@ const translations = {
 
         // About / GEO
         'about.title': 'Qué es Caselyn',
-        'about.text': 'Caselyn es una agencia digital que crea webs, campañas y automatizaciones simples para negocios que quieren crecer. Trabajamos proyectos como landings, webs completas, campañas, formularios, reservas, seguimiento de contactos y mantenimiento.',
+        'about.text': 'Caselyn es una agencia digital que crea webs, campañas y automatizaciones para negocios que quieren crecer. Trabajamos proyectos como landings, webs completas, campañas, formularios, reservas, seguimiento de contactos y mantenimiento.',
         'about.item1': 'Webs y landings para presentar negocios, servicios o campañas.',
         'about.item2': 'Marketing para mantener coherencia entre web, redes, anuncios y contacto.',
         'about.item3': 'Automatización para conectar formularios, contactos y herramientas.',
@@ -348,7 +348,7 @@ const translations = {
 
         // About / GEO
         'about.title': 'Què és Caselyn',
-        'about.text': 'Caselyn és una agència digital que crea webs, campanyes i automatitzacions simples per a negocis que volen créixer. Treballem projectes com landings, webs completes, campanyes, formularis, reserves, seguiment de contactes i manteniment.',
+        'about.text': 'Caselyn és una agència digital que crea webs, campanyes i automatitzacions per a negocis que volen créixer. Treballem projectes com landings, webs completes, campanyes, formularis, reserves, seguiment de contactes i manteniment.',
         'about.item1': 'Webs i landings per presentar negocis, serveis o campanyes.',
         'about.item2': 'Màrqueting per mantenir coherència entre web, xarxes, anuncis i contacte.',
         'about.item3': 'Automatització per connectar formularis, contactes i eines.',
@@ -595,7 +595,7 @@ const translations = {
 
         // About / GEO
         'about.title': 'What is Caselyn',
-        'about.text': 'Caselyn is a digital agency that creates websites, campaigns and simple automations for businesses that want to grow. We work on projects like landing pages, full websites, campaigns, forms, bookings, contact tracking and maintenance.',
+        'about.text': 'Caselyn is a digital agency that creates websites, campaigns and automations for businesses that want to grow. We work on projects like landing pages, full websites, campaigns, forms, bookings, contact tracking and maintenance.',
         'about.item1': 'Websites and landing pages to present businesses, services or campaigns.',
         'about.item2': 'Marketing to keep consistency across website, social media, ads and contact.',
         'about.item3': 'Automation to connect forms, contacts and tools.',
@@ -842,7 +842,7 @@ const translations = {
 
         // About / GEO
         'about.title': 'Qu\'est-ce que Caselyn',
-        'about.text': 'Caselyn est une agence digitale qui crée des sites web, des campagnes et des automatisations simples pour les entreprises qui veulent se développer. Nous travaillons sur des projets comme des landing pages, des sites complets, des campagnes, des formulaires, des réservations, le suivi des contacts et la maintenance.',
+        'about.text': 'Caselyn est une agence digitale qui crée des sites web, des campagnes et des automatisations pour les entreprises qui veulent se développer. Nous travaillons sur des projets comme des landing pages, des sites complets, des campagnes, des formulaires, des réservations, le suivi des contacts et la maintenance.',
         'about.item1': 'Sites web et landing pages pour présenter des entreprises, des services ou des campagnes.',
         'about.item2': 'Marketing pour maintenir la cohérence entre le site, les réseaux, les annonces et le contact.',
         'about.item3': 'Automatisation pour connecter les formulaires, les contacts et les outils.',
