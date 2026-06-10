@@ -8,27 +8,28 @@
   <!-- Primary Meta Tags -->
   <title>Contacto | Caselyn</title>
   <meta name="description"
-    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
+    content="Cuéntanos qué quieres crear o mejorar. Revisamos tu proyecto y vemos la mejor forma de ayudarte con web, marketing o automatización." />
   <meta name="robots" content="index, follow" />
 
-  <link rel="canonical" href="https://caselyn-portfolio.vercel.app/contacto" />
+  <link rel="canonical" href="https://caselyn.es/contacto" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://caselyn-portfolio.vercel.app/contacto" />
+  <meta property="og:url" content="https://caselyn.es/contacto" />
   <meta property="og:title" content="Contacto | Caselyn" />
   <meta property="og:description"
-    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
-  <meta property="og:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+    content="Cuéntanos qué quieres crear o mejorar. Revisamos tu proyecto y vemos la mejor forma de ayudarte con web, marketing o automatización." />
+  <meta property="og:image" content="https://caselyn.es/og.png" />
+  <meta property="og:site_name" content="Caselyn" />
   <meta property="og:locale" content="es_ES" />
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://caselyn-portfolio.vercel.app/contacto" />
-  <meta property="twitter:title" content="Contacto | Caselyn" />
-  <meta property="twitter:description"
-    content="Cuéntanos qué quieres crear o mejorar y revisaremos la mejor forma de ayudarte." />
-  <meta property="twitter:image" content="https://caselyn-portfolio.vercel.app/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://caselyn.es/contacto" />
+  <meta name="twitter:title" content="Contacto | Caselyn" />
+  <meta name="twitter:description"
+    content="Cuéntanos qué quieres crear o mejorar. Revisamos tu proyecto y vemos la mejor forma de ayudarte con web, marketing o automatización." />
+  <meta name="twitter:image" content="https://caselyn.es/og.png" />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
@@ -289,10 +290,10 @@
         <div class="footer-col">
           <p class="footer-col-title" data-i18n="footer.col.services">Servicios</p>
           <ul class="footer-col-list">
-            <li><a href="/servicios/webs-y-landings.html" class="footer-col-link" data-i18n="footer.link.webs">Webs y landings</a></li>
-            <li><a href="/servicios/marketing.html" class="footer-col-link" data-i18n="footer.link.marketing">Marketing</a></li>
-            <li><a href="/servicios/automatizacion.html" class="footer-col-link" data-i18n="footer.link.automation">Automatización</a></li>
-            <li><a href="/servicios/mantenimiento.html" class="footer-col-link" data-i18n="footer.link.maintenance">Mantenimiento</a></li>
+            <li><a href="/servicios/webs-y-landings" class="footer-col-link" data-i18n="footer.link.webs">Webs y landings</a></li>
+            <li><a href="/servicios/marketing" class="footer-col-link" data-i18n="footer.link.marketing">Marketing</a></li>
+            <li><a href="/servicios/automatizacion" class="footer-col-link" data-i18n="footer.link.automation">Automatización</a></li>
+            <li><a href="/servicios/mantenimiento" class="footer-col-link" data-i18n="footer.link.maintenance">Mantenimiento</a></li>
           </ul>
         </div>
 
@@ -303,7 +304,7 @@
             <li><a href="/#ejemplos" class="footer-col-link" data-i18n="footer.link.examples">Ejemplos</a></li>
             <li><a href="/#proceso" class="footer-col-link" data-i18n="footer.link.process">Proceso</a></li>
             <li><a href="/#faq" class="footer-col-link" data-i18n="footer.link.faq">FAQ</a></li>
-            <li><a href="/contacto.html" class="footer-col-link" data-i18n="footer.link.contact">Contacto</a></li>
+            <li><a href="/contacto" class="footer-col-link" data-i18n="footer.link.contact">Contacto</a></li>
           </ul>
         </div>
 
@@ -326,8 +327,8 @@
           <span data-i18n="footer.rights">Todos los derechos reservados.</span>
         </p>
         <p class="footer-legal-links">
-          <a href="/privacidad.html" class="footer-link" data-i18n="footer.privacy">Privacidad</a>
-          <a href="/cookies.html" class="footer-link" data-i18n="footer.cookies">Cookies</a>
+          <a href="/privacidad" class="footer-link" data-i18n="footer.privacy">Privacidad</a>
+          <a href="/cookies" class="footer-link" data-i18n="footer.cookies">Cookies</a>
         </p>
       </div>
 
@@ -335,24 +336,42 @@
   </footer>
 
 
+  <!-- Structured Data -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Caselyn",
-      "description": "Webs, marketing y automatización para negocios que quieren crecer",
-      "url": "https://caselyn-portfolio.vercel.app",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "ES"
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://caselyn.es/#organization",
+        "name": "Caselyn",
+        "url": "https://caselyn.es/",
+        "description": "Caselyn es una agencia digital enfocada en webs, marketing y automatización para negocios que quieren crecer.",
+        "sameAs": [
+          "https://www.instagram.com/caselyn.digital/",
+          "https://www.tiktok.com/@caselyn.digital",
+          "https://www.youtube.com/@caselyn.digital"
+        ]
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "availableLanguage": ["es", "ca", "en", "fr"]
-      },
-      "serviceType": ["Diseño Web", "Marketing Digital", "Automatización"]
-    }
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://caselyn.es/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contacto",
+            "item": "https://caselyn.es/contacto"
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
   <script src="/js/translations.js?v=7"></script>

@@ -1,24 +1,114 @@
 
-  <!-- Schema.org Structured Data for SEO -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
+        "@type": "Organization",
+        "@id": "https://caselyn.es/#organization",
         "name": "Caselyn",
-        "description": "Webs, marketing y automatización para negocios que quieren crecer",
-        "url": "https://caselyn-portfolio.vercel.app",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "ES"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer service",
-          "availableLanguage": ["es", "ca", "en", "fr"]
-        },
-        "serviceType": ["Diseño Web", "Marketing Digital", "Automatización", "Mantenimiento Web"]
+        "url": "https://caselyn.es/",
+        "description": "Caselyn es una agencia digital enfocada en webs, marketing y automatización para negocios que quieren crecer.",
+        "sameAs": [
+          "https://www.instagram.com/caselyn.digital/",
+          "https://www.tiktok.com/@caselyn.digital",
+          "https://www.youtube.com/@caselyn.digital"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://caselyn.es/#website",
+        "name": "Caselyn",
+        "url": "https://caselyn.es/",
+        "inLanguage": "es",
+        "publisher": {
+          "@id": "https://caselyn.es/#organization"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://caselyn.es/#service",
+        "name": "Caselyn",
+        "url": "https://caselyn.es/",
+        "description": "Webs, marketing y automatización para negocios que quieren crecer.",
+        "areaServed": [
+          { "@type": "Country", "name": "España" },
+          "Remoto"
+        ],
+        "serviceType": ["Diseño web", "Marketing digital", "Automatización", "Mantenimiento web"],
+        "provider": { "@id": "https://caselyn.es/#organization" },
+        "sameAs": [
+          "https://www.instagram.com/caselyn.digital/",
+          "https://www.tiktok.com/@caselyn.digital",
+          "https://www.youtube.com/@caselyn.digital"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://caselyn.es/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Solo hacéis páginas web?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. También trabajamos campañas, automatizaciones y mantenimiento según lo que necesite el proyecto."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué incluye el contacto inicial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Revisamos qué quieres crear o mejorar y te decimos qué tendría más sentido hacer primero."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo pedir solo una landing o web?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Podemos trabajar una landing, una web completa o una mejora concreta."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿También lleváis campañas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Podemos ayudarte con campañas y landings preparadas para captar clientes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecéis mantenimiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Podemos encargarnos de cambios, soporte y revisión técnica mensual."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Tenéis precios cerrados?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende del proyecto. Primero revisamos qué necesitas y después preparamos una propuesta clara."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo empezamos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Contáctanos y revisamos qué necesita tu negocio antes de proponerte nada."
+            }
+          }
+        ]
       }
-    </script>
+    ]
+  }
+  </script>
 
   <script type="module" src="/js/portfolio-data.js?v=7"></script>
   <script type="module" src="/js/portfolio-renderer.js?v=7"></script>

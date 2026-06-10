@@ -69,18 +69,10 @@ const pages = [
   {
     input: 'privacidad.html',
     output: 'privacidad.html',
-    vars: {
-      TITLE: 'Política de Privacidad - Caselyn',
-      SLUG: 'privacidad.html',
-    },
   },
   {
     input: 'cookies.html',
     output: 'cookies.html',
-    vars: {
-      TITLE: 'Política de Cookies - Caselyn',
-      SLUG: 'cookies.html',
-    },
   },
   // Service pages
   {
