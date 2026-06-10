@@ -1179,6 +1179,26 @@ a {
   cursor: pointer;
 }
 
+/* ── Service card: remove tap highlight and suppress browser native focus overlay ── */
+.service-card,
+.service-card *,
+.service-card__btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep background intact on active/focus — prevent browser blue fill */
+.service-card:focus,
+.service-card:active {
+  background-color: var(--color-surface);
+  outline: none;
+}
+
+/* Clean accessible focus ring — replaces global *:focus-visible for cards */
+.service-card:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.45);
+  outline-offset: 4px;
+}
+
 .service-card__arrow {
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);
@@ -1266,6 +1286,22 @@ a {
   flex-direction: column;
   flex: 1;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Suppress browser native blue fill on tap/focus */
+.portfolio-card__link-wrapper:focus,
+.portfolio-card__link-wrapper:active {
+  outline: none;
+  background-color: transparent;
+}
+
+/* Clean accessible focus ring surfaced on the card shell */
+.portfolio-card:focus-within .portfolio-card__link-wrapper:focus-visible,
+.portfolio-card__link-wrapper:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.45);
+  outline-offset: 4px;
+  border-radius: var(--radius-xl);
 }
 
 .portfolio-card__link-wrapper--disabled {
