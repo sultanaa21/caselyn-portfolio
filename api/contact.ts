@@ -39,11 +39,12 @@ const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || '';
 // CORS: restrict to own domain + local development
 const ALLOWED_ORIGINS = [
   'https://caselyn-portfolio.vercel.app',
-  'https://caselyn.com',
-  'https://www.caselyn.com',
+  'https://caselyn.es',
+  'https://www.caselyn.es',
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:5500',
+  'http://localhost:8080',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:5173',
   'http://127.0.0.1:5500',
